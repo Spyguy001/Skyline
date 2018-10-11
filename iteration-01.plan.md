@@ -15,7 +15,31 @@ _This entire section is optional. Note that you will have to fill it out and mor
 
 #### Roles & responsibilities
 
-Describe the different roles on the team and the responsibilities associated with each role.
+General Roles:
+
+2 Product Owners (Amrit and Fernanda)
+- Will Decide the priorities of the different tasks involved in the completion of the project.
+
+1 Scrum Master (Sumit Somani)
+- Will coordinate the members of the team.
+- Will ensure that progress is moving smoothly and the various tasks are completed on time.
+
+Dev Team (Everyone)	
+- Everyone will be responsible for contributing towards the design and coding of the project.
+			
+Other Responsibilities:
+
+Everyone: Respective sections for iteration plan/review.
+- Everyone is responsible for contributing to and reviewing these documents.
+
+Sumit & Fernanda: Database related research.
+- A document describing the various ways we can implement a database and their respective advantages and disadvantages.
+
+Josh: Diagram for the design of the product.
+- A basic visual representation such as a diagram of the GUI for the final product.
+
+Amrit, Krishna & Alex: Planned out API for a smooth transition into coding.
+- A list of various features, routines and classes that will be required for the creation of the minimum viable product.
 
 #### Events
 
@@ -45,6 +69,12 @@ _This entire section is mandatory._
  * Describe your goals for this iteration and the tasks that you will have to complete in order to achieve these goals.
  * Order the items from most to least important.
  * Feel free (but not obligated) to specify some/all tasks as user stories.
+ 
+1. User research will need  to be conducted in order to understand the needs of the users and translate it into MVP features. These features will serve as a basis for creating tasks for each future iteration until the completion of the MVP.
+
+2. The strengths and weaknesses will need to be analyzed for each medium related to the project’s implementation. The decision to either make a desktop/mobile application or a website will vastly impact the required skills for each of the tasks and thus needs to be made quickly.
+
+3. The github repository will need to be setup and ready to go so we can start coding as soon as possible.
 
 #### Artifacts
 

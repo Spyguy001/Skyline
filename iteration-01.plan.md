@@ -15,7 +15,31 @@ _This entire section is optional. Note that you will have to fill it out and mor
 
 #### Roles & responsibilities
 
-Describe the different roles on the team and the responsibilities associated with each role.
+General Roles:
+
+2 Product Owners (Amrit and Fernanda)
+- Will Decide the priorities of the different tasks involved in the completion of the project.
+
+1 Scrum Master (Sumit Somani)
+- Will coordinate the members of the team.
+- Will ensure that progress is moving smoothly and the various tasks are completed on time.
+
+Dev Team (Everyone)	
+- Everyone will be responsible for contributing towards the design and coding of the project.
+			
+Other Responsibilities:
+
+Everyone: Respective sections for iteration plan/review.
+- Everyone is responsible for contributing to and reviewing these documents.
+
+Sumit & Fernanda: Database related research.
+- A document describing the various ways we can implement a database and their respective advantages and disadvantages.
+
+Josh: Diagram for the design of the product.
+- A basic visual representation such as a diagram of the GUI for the final product.
+
+Amrit, Krishna & Alex: Planned out API for a smooth transition into coding.
+- A list of various features, routines and classes that will be required for the creation of the minimum viable product.
 
 #### Events
 
@@ -58,6 +82,8 @@ Tasks: As a dev team who just start work on their project, we want to sketch out
 
 5.Goal: Decide the database and consider any potential languages/developing software/websites we might use 
 Task: As a team of app developers who have not really started coding, we want to ask the professor/TA and do some researches about what developing software or websites we might use and decide the best database for our product, so that we can directly get to work when it come to the second or third deliverable. 
+
+
 
 
 #### Artifacts

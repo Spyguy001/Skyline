@@ -10,16 +10,16 @@ We are planning to build a condo management system that allows condos to inform 
 
 #### Q2: Who are your target users?
 
-Target users:
-1.       Condo Management staff( who want to manage their condo efficiently): can schedule events, facilitate bookings and solve logistics or post announcement for their residents.
-2.       Residents(who want to contact condo management and solve own issues efficiently): connect to their own condo and be able to check events, book facilities and send their issues to condo managements or get notifications from them.
+* Target users:
+   * 1.Condo Management staff( who want to manage their condo efficiently): can schedule events, facilitate bookings and solve logistics or post announcement for their residents.
+   * 2.Residents(who want to contact condo management and solve own issues efficiently): connect to their own condo and be able to check events, book facilities and send their issues to condo managements or get notifications from them.
 
-Personas(examples）:
-1.    Danny is a male  an experienced  condo management around 40 years old , he works on a computer and use the manage system given to login to different app or webs to do different kinds of things. He hope the system can be developed so  that  he can do all the things on one place and save much time for him.
+* Personas(examples）:
+   * 1.Danny is a male  an experienced  condo management around 40 years old , he works on a computer and use the manage system given to login to different app or webs to do different kinds of things. He hope the system can be developed so  that  he can do all the things on one place and save much time for him.
+   
+   * 2.Jessie is a female  condo management around 30 year old  ,  she use computer and phone to read all the emails and has to check all the paper forms one by one from the residents. She doesn't  do this work for a long time but she already started to get tired  of it. She wants to go through all the requests from residents quickly and correctly.
 
- 2.    Jessie is a female  condo management around 30 year old  ,  she use computer and phone to read all the emails and has to check all the paper forms one by one from the residents. She doesn't  do this work for a long time but she already started to get tired  of it. She wants to go through all the requests from residents quickly and correctly.
-
-3.      Lara is a  condo resident, she is 21 years old and studies at U of T . She uses the party room a lot as she wants to play with friends .However, it takes a lot of time for her to book a room every time as she does not know whether the room is available or not and she also needs to visit the management too. She wants to book the party room as soon as possible everytime she plans to have a party.
+   * 3.Lara is a  condo resident, she is 21 years old and studies at U of T . She uses the party room a lot as she wants to play with friends .However, it takes a lot of time for her to book a room every time as she does not know whether the room is available or not and she also needs to visit the management too. She wants to book the party room as soon as possible everytime she plans to have a party.
 
 #### Q3: Why would your users choose your product? What are they using today to solve their problem/need?
 

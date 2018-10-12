@@ -43,11 +43,26 @@ Amrit, Krishna & Alex: Planned out API for a smooth transition into coding.
 
 #### Events
 
-Describe meetings (and other events) you are planning to have:
+- We will have our `review meeting` every Tuesday from 11:00 am to 11:30 am
+(excluding the week of October 8) in BA3200. The purpose of these meetings would be 
+to discuss the completion of the tasks for the week as laid out in the planning 
+meeting the week before and/or difficulties encountered in their pursuit.
 
- * When and where? In-person or online?
- * What's the purpose of each meeting?
- * Other events could be coding sessions, code reviews, quick weekly sync' meeting online, etc.
+- We will have our `planning meetings` every Tuesday from 11:30-12pm
+These will be held in BA3200 as well. The purpose of these meetings would be
+to set the goals and tasks for the coming week and assign responsibilities.
+
+- During tutorials, we will devote any free time we have to
+discussing points which might have been left unaddressed in the planning meeting
+
+- We will have a `sync' meeting` over Discord every Thursday 
+from 9 pm to 9.30 pm to make sure everyone is on track 
+to complete the tasks discussed in the planning meeting
+
+- We do not recognize any need for joint coding sessions at this point.
+
+- Everyone should devote some time to review code by Saturday so that changes can be made and 
+merges can go through over the weekend
 
 #### Artifacts
 

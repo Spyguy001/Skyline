@@ -23,14 +23,14 @@ We are planning to build a condo management system that allows condos to inform 
 
 #### Q3: Why would your users choose your product? What are they using today to solve their problem/need?
 
-YOUR ANSWER GOES HERE ...
+On the one hand, based on our own experience and some of our peers’ experiences, we have realized that oftentimes, condo residents don’t have access to a digital platform to manage their daily condo interactions. Residents require in-person, paper-based communication with the condo administration in order to solve their issues, or in the best case, residents will use an outdated, inefficient website which is not particularly user-friendly in order to achieve this. 
 
- * Short (1 - 2 min' read max)
- * We want you to "connect the dots" for us - Why does your product (as described in your answer to Q1) fits the needs of your users (as described in your answer to Q2)?
- * Explain the benefits of your product explicitly & clearly. For example:
-    * Save users time (how much?)
-    * Allow users to discover new information (which information? And, why couldn't they discover it before?)
-    * Provide users with more accurate and/or informative data (what kind of data? Why is it useful to them?)
+On the other hand, building administration has to deal with a lot of emails, physical forms, etc, which are harder and slower to keep track of.  Thus, our condo management app aims to ease the day to day interactions of residents with their condo amenities and processes as well as to facilitate the interaction between residents and the building’s administration. 
+
+For condo residents, our app will have core features for activities which residents do on a daily basis such as booking amenities, as well as solve other frustrating processes like submitting physical forms to book elevators, signing up to receive packages, etc. The benefit for users would then be that they wouldn’t need to be in the building or even go to the lobby to deal with these issues. Similarly, they would not need to log in to complicated, old websites. Instead, they can go through our app easily and fast, and have a more pleasant experience with it.
+
+For the building administration, our app will also have core features adapted to their daily duties such as sending out announcements and posting events. It would thus help them to have a more appealing and efficient way of communicating with residents so they are up to date about the condo information.
+
 
 
 ----

@@ -66,13 +66,8 @@ merges can go through over the weekend
 
 #### Artifacts
 
-List/describe the artifacts you will produce in order to organize your team.       
-
- * Artifacts can be To-do lists, Task boards, schedule(s), etc.
- * We want to understand:
-   * How do you keep track of what needs to get done?
-   * How do you prioritize tasks?
-   * How do tasks get assigned to team members?
+JIRA BOARD (keep track of what needs to get done, assign priorities and assign to people) 
+Use Discord as communication channel.
 
 
 ## Product

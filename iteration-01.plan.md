@@ -101,6 +101,8 @@ The goals and tasks are ordered by significance (1 most important, 5 least impor
 
 List/describe the artifacts you will produce in order to present your project idea.
 
+- User research results
  - A high level program functionality document to use as reference in building the MVP. The document should break down the MVP into key features, and further detail the requirements for each key feature.
  - A rough sketch/mockup of the UI layout to use as reference for designing the applications.
  - A research document comparing the pros/cons of different databases. This is needed to help us judge which database to use moving forward.
+

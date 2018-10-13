@@ -35,8 +35,9 @@ List process-related (i.e. team organization) decisions that, in retrospect, wer
 
 List any process-related changes you are planning to make (if there are any)
 
- * Ordered from most to least important.
- * Explain why you are making a change.
+* We are planning to change our modes of communication and task delegation. Until now, we've been communicating on numerous platforms such as Slack, Discord, Messenger, etc. simultaenously, which is making our communication difficult due to having to check so many plaforms for a single piece of information. We plan on moving all of the records and communication onto a single platform to eliminate that problem. We are also delegating tasks manually for now, which does not follow Scrum methodology and is inefficient. We plan on changing this and using either Jira or Github Issues to track our progress and delegate tasks to people in the group.
+
+* We are also planning to change our meeting times and make them more regular. Due to the highly conflicting schedules of everyone in the group, it is difficult to coordinate meetings and thus we cannot have them at a regular time without coordinating many things. We plan on making a schedule and sticking to it so that we do not have to schedule each meeting individually.
 
 
 ## Product - Review

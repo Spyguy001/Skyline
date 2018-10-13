@@ -37,8 +37,20 @@ For the building administration, our app will also have core features adapted to
 
 ### Highlights
 
+#### Deciding on the project idea
+
+The biggest decision made was perhaps to go with making a condo management application rather than an alternative called InfoShare or an inventory management application. The following is a list briefing each idea, and the key drawback in pursing it:
+
+* InfoShare: An app that eliminates the inefficient exchange of information through paper (brochures, leaflets, sign up sheets) during job/club fairs. People could scan a code provided by recruiters to establish a connection through which they could send information (contact details, resume) and receive information (club website, job requirements, etc). *Drawback:* Members of the team felt it was too easy, and did not require 6 people to implement it. Existing technologies such as QR code scanning, bluetooth and NFC would simplify a lot of the backend development.
+
+* Condo Management: The idea we chose to go with, details of this idea can be found in the earlier sections of this document. *Drawback:* None of the team members are experienced in the domain of managing condos. Development would be delayed as we would need to contact existing condo managers to gain an understanding of their problems and how to solve them.
+
+* Inventory Management: A digital solution for small business owners that had to keep track of their inventory by hand. *Drawback:* The member who proposed this idea left our team and formed another one.
+
+So when the vote was held, team members chose condo management, as it was much better to spend a little time researching, than pursing a project whose scope was too small or using a former teammate's idea. 
+
+#### Other decisions
+
 * We made a decision to delay a large part of our planning process in order to research our product. We interviewed building managers, concierges, and residents of condos in order to figure out what they truly wanted from a program like ours. Not doing this would mean we could have started coding faster and done more brainstorming for ideas than taken things people requested. However, interviewing the target audience gives us valuable clarification on the real-life use of the product and lets us plan ahead better and make better features.
 
 * We decided to implement our product using a desktop application and an android app rather than making a website. Most of the group has experience in Java and thus are able to easily start coding in both the former platforms. However, the downside is that it will be difficult to make good looking interfaces and sync up the data between platforms. On the other hand, using only a website can let us make it great and work on a single stable platform, but very few of us have any experience working with websites. Thus, we held a vote, and a majority wanted to stick with their current knowledge base and so we decided to make a desktop application and an android app.
-
-* The biggest decision made was perhaps to go with making a condo management application rather than an alternative called InfoShare or an inventory management application. InfoShare was an information sharing app that let users create a simple profile and share it easily with recruiters at career and recruitment events. The inventory management application was a digital solution for small business owners that had to keep track of their inventory by hand. We did not choose it because the group member proposing it felt that we did not give it enough interest and left the group. The scope of InfoShare was much smaller than that of the condo management, and so we held a vote and chose condo management.

@@ -5,10 +5,10 @@
  > _Suggestion:_ Have your review meeting a day or two before the due date. This way you will have some time to go over (and edit) this document, and all team members should have a chance to make their contribution.
 
 
-## Iteration XX - Review & Retrospect
+## Iteration 01 - Review & Retrospect
 
- * When: FILL IN THE DATE WHEN YOU ACTUALLY HAD YOUR REVIEW MEETING
- * Where: PHYSICAL LOCATION AND/OR ONLINE
+ * When: 12th October
+ * Where: Online over Discord 
 
 ## Process - Reflection
 
@@ -58,8 +58,17 @@ List any process-related changes you are planning to make (if there are any)
 
 Going into the next iteration, our main insights are:
 
- * 2 - 4 items
- * Short (no more than one short paragraph per item)
- * High-level concepts that should guide your work for the next iteration.
- * These concepts should help you decide on where to focus your efforts.
- * Can be related to product and/or process.
+- Allocating different aspects of the MVP to groups of people
+  - Allocate the responsibility to implement features in the MVP
+    to groups of people
+- Finalizing the timeline for the product
+  - Have a detailed breakdown of the timeline for the completion 
+    of the MVP
+- Setting up the database
+  - Set up the schema for the databse
+  - Ensure everyone understands how to manipulate the database
+- Implement Accounts aspect of the product 
+  - Implementing the registration page
+  - Implementing the login page
+  - Separating User Accounts from Admin Accounts
+

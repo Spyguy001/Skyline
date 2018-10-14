@@ -6,8 +6,8 @@
 
 ## Iteration 01
 
- * Start date: PLANNING MEETING: Oct.9th
- * End date:  REVIEW MEETING：Oct.12th
+ * Start date: PLANNING MEETING: 5th October
+ * End date:  REVIEW MEETING：12th October 
 
 ## Process
 
@@ -98,21 +98,24 @@ _This entire section is mandatory._
 
 The goals and tasks are ordered by significance (1 most important, 5 least important), tasks are specified by user stories. 
 
-- 1.Goal: Decide the medium of our project, it can be either a web, a pc software or an android/ios app. 
-<br/>Tasks: As a team of app developers, we want to ask the professor/TA about which platform is better for a condo management app and do a vote to choose the ideal platforms, so that our app will have more potential users. 
+- Goal: Decide the medium of our project, it can be either a web, a pc software or an android/ios app. 
+  - Tasks: Conduct research as well as ask the professor/TA about which platform is better for 
+    a condo management app and do a vote to choose the ideal platforms, so that our app will have more potential users. 
 
-- 2.Goal: Decide the basic API and what we need to code at the first stage.
-<br/>Tasks: As a dev team who just start work on their project, we need to draw a UML graph, speicify the API and set up repo, so that we know what is the basic API look like and get ready to work on it.
+- Goal: Decide the basic API and what we need to code at the first stage.
+  - Tasks: Specify the API and set up repo, so that we know what is the 
+    basic API look like and get ready to work on it.
 
   
-- 3.Goal: have a more precise MVP with features that really satisfy what users need.
-<br/>Tasks: As a team of app developers, we want to conduct user researches by interview/do questionnaire with condo managements and residents, so that we will really understand what users need and implement our MVP features more precisely. 
+- Goal: have a more precise MVP with features that really satisfy what users need.
+  - Tasks: Conduct user researches by interview/do questionnaire with 
+    condo managements and residents, so that we really understand what users need and implement our MVP features more precisely. 
 
-- 4.Goal: have a basic UI design of the app.
-<br/>Tasks: As a dev team who just start work on their project, we want to sketch out the first prototype of our product, so we will know what is our UI look like and have a better understanding about our product.
+- Goal: have a basic UI design of the app.
+  - Tasks: Sketch out the first prototype of our product, so that we how our UI will look like and have a better understanding about our product.
 
-- 5.Goal: Decide the database and consider any potential languages/developing software/websites we might use. 
-<br/>Task: As a team of app developers who have not really started coding, we want to ask the professor/TA and do some researches about what developing software or websites we might use and decide the best database for our product, so that we can directly get to work when it comes to the second or third deliverable. 
+- Goal: Decide the database and consider any potential libraries we might use. 
+  - Task: Do researches about what libraries we might use and decide the best database for our product, so that we can directly get to work when it comes to the second or third deliverable. 
 
 
 
@@ -122,7 +125,7 @@ The goals and tasks are ordered by significance (1 most important, 5 least impor
 List/describe the artifacts you will produce in order to present your project idea.
 
 - User research results
- - A high level program functionality document to use as reference in building the MVP. The document should break down the MVP into key features, and further detail the requirements for each key feature.
- - A rough sketch/mockup of the UI layout to use as reference for designing the applications.
- - A research document comparing the pros/cons of different databases. This is needed to help us judge which database to use moving forward.
+- A high level program functionality document to use as reference in building the MVP. The document should break down the MVP into key features, and further detail the requirements for each key feature.
+- A rough sketch/mockup of the UI layout to use as reference for designing the applications.
+- A research document comparing the pros/cons of different databases. This is needed to help us judge which database to use moving forward.
 

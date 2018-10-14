@@ -68,26 +68,26 @@ merges can go through over the weekend
 
  - Issue tracking board: Github Issues 
 
-We wanted to incorporate an issue tracking board which satisfied a comprehensive set of criteria so that we could keep track of what needs to get done, prioritize tasks and assign tasks all at once. We were mainly deciding between Github Issues and JIRA. After doing some research, we realized both of these platforms satisfy the requirements/uses we were looking for:
+	We wanted to incorporate an issue tracking board which satisfied a comprehensive set of criteria so that we could keep track of what needs to get done, prioritize tasks and assign tasks all at once. We were mainly deciding between Github Issues and JIRA. After doing some research, we realized both of these platforms satisfy the requirements/uses we were looking for:
 
 
-|                           | Github Issues | JIRA |
-|---------------------------|---------------|------|
-| Create tasks              | Y             | Y    |
-| Prioritize tasks          | Y             | Y    |
-| Track progress of tasks   | Y             | Y    |
-| Relate tasks with sprints | Y             | Y    |
-| Assign tasks              | Y             | Y    |
-| Track sprint performance  | Y             | Y    |
+	|                           | Github Issues | JIRA |
+	|---------------------------|---------------|------|
+	| Create tasks              | Y             | Y    |
+	| Prioritize tasks          | Y             | Y    |
+	| Track progress of tasks   | Y             | Y    |
+	| Relate tasks with sprints | Y             | Y    |
+	| Assign tasks              | Y             | Y    |
+	| Track sprint performance  | Y             | Y    |
 
-However there were two additional points that led us to choose Github Issues over JIRA:
-- With Github Issues we could have our code and issue tracking board all on the same place
-- JIRA provides additional functionality through plug-ins and add-ons but we will not use this for our project
-- JIRA has a free trial of 7 days but then it is paid, where as Github Issues is free.
+	However there were two additional points that led us to choose Github Issues over JIRA:
+	- With Github Issues we could have our code and issue tracking board all on the same place
+	- JIRA provides additional functionality through plug-ins and add-ons but we will not use this for our project
+	- JIRA has a free trial of 7 days but then it is paid, where as Github Issues is free.
 
 - Communication channel: Discord 
 
-We were initially using Slack, however Discord allows channels to have voice-calling on top of just chatting, which is useful for meetings.
+	We were initially using Slack, however Discord allows channels to have voice-calling on top of just chatting, which is useful for meetings.
 
 
 ## Product

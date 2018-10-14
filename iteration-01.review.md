@@ -1,4 +1,4 @@
-# YOUR PRODUCT/TEAM NAME
+# SKYLINE
 
  > _Note:_ This document is meant to be written during (or shortly after) your review meeting, which should happen fairly close to the due date.      
  >      
@@ -14,21 +14,21 @@
 
 #### Decisions that turned out well
 
-List process-related (i.e. team organization) decisions that, in retrospect, turned out to be successful.
+ 1. In-depth construction of each idea presented allowed for the selection of the best possible project in accordance to the team's skills. Each of the main ideas (Condo App, Info Sharing, Quiz App) were thoroughly researched and considered in terms of viable implementation and consumer demand.
+ 
+2. Consideration of the various ways to implement the project (Website vs. Android App/Desktop Application) and the skills required for each implementation. This uncovered many of the flaws and advantages to each approach allowing us to select the ideal platform.
 
+3. All conflicts within the team during the planning phase were resolved quickly and gracefully. This allowed for the focus to be shifted onto the project itself.
 
- * 2 - 4 decisions.
- * Ordered from most to least important.
- * Explain why (i.e. give a supporting argument) you consider a decision to be successful.
- * Feel free to refer/link to process artifact(s).
 
 #### Decisions that did not turn out as well as we hoped
 
-List process-related (i.e. team organization) decisions that, in retrospect, were not as successful as you thought they would be.
+1. Coding has been delayed due to a lack of conclusive decisions and initiative. While the planning was very thorough this resulted in a slow start towards actually implementing the selected idea.
 
- * 2 - 4 decisions.
- * Ordered from most to least important.
- * Feel free to refer/link to process artifact(s).
+2. Indecisiveness in the selection of the project idea delayed the planning of the details related to the implementation itself.
+
+3. Disorganization in the various forms of communication resulted in splintered information. Various important notes are scattered across different apps and websites.
+
 
 
 #### Planned changes
@@ -71,4 +71,3 @@ Going into the next iteration, our main insights are:
   - Implementing the registration page
   - Implementing the login page
   - Separating User Accounts from Admin Accounts
-

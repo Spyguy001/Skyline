@@ -1,4 +1,4 @@
-﻿# YOUR PRODUCT/TEAM NAME
+﻿# SKYLINE
 
  > _Note:_ This document is meant to evolve throughout the planning phase of your project.    
  > That is, it makes sense for you commit regularly to this file while working on the project (especially edits/additions/deletions to the _Highlights_ section).
@@ -23,14 +23,11 @@ We are planning to build a condo management system that allows condos to inform 
 
 #### Q3: Why would your users choose your product? What are they using today to solve their problem/need?
 
-On the one hand, based on our own experience and some of our peers’ experiences, we have realized that oftentimes, condo residents don’t have access to a digital platform to manage their daily condo interactions. Residents require in-person, paper-based communication with the condo administration in order to solve their issues, or in the best case, residents will use an outdated, inefficient website which is not particularly user-friendly in order to achieve this. 
+Condo residents sometimes don’t have access to a digital platform to manage their daily condo interactions. Instead, they require in-person, paper-based communication with the condo administration in order to solve their issues. Other times, residents have will use a website platform such as BuildingLink or FrontDesk. However, these are outdated, inefficient and not user-friendly.
 
 On the other hand, building administration has to deal with a lot of emails, physical forms, etc, which are harder and slower to keep track of.  Thus, our condo management app aims to ease the day to day interactions of residents with their condo amenities and processes as well as to facilitate the interaction between residents and the building’s administration. 
 
-For condo residents, our app will have core features for activities which residents do on a daily basis such as booking amenities, as well as solve other frustrating processes like submitting physical forms to book elevators, signing up to receive packages, etc. The benefit for users would then be that they wouldn’t need to be in the building or even go to the lobby to deal with these issues. Similarly, they would not need to log in to complicated, old websites. Instead, they can go through our app easily and fast, and have a more pleasant experience with it.
-
-For the building administration, our app will also have core features adapted to their daily duties such as sending out announcements and posting events. It would thus help them to have a more appealing and efficient way of communicating with residents so they are up to date about the condo information.
-
+Based on the description of our condo app in question 1, the benefit for residents would then be that they wouldn’t need to be in the building or even go to the lobby to deal with these issues. Similarly, they would not need to log in to complicated, old websites. Instead, they can go through our app easily and fast, and have a more pleasant experience with it. The benefit for the building's administration is that they would have a more appealing and efficient way of communicating with residents so they are up to date and engaged with what takes place in the condo.
 
 
 ----
@@ -45,12 +42,12 @@ The biggest decision made was perhaps to go with making a condo management appli
 
 * Condo Management: The idea we chose to go with, details of this idea can be found in the earlier sections of this document. *Drawback:* None of the team members are experienced in the domain of managing condos. Development would be delayed as we would need to contact existing condo managers to gain an understanding of their problems and how to solve them.
 
-* Inventory Management: A digital solution for small business owners that had to keep track of their inventory by hand. *Drawback:* The member who proposed this idea left our team and formed another one.
+* Inventory Management: A digital solution for small business owners that had to keep track of their inventory by hand. *Drawback:* The member who proposed this idea left our team and formed another one. 
 
-So when the vote was held, team members chose condo management, as it was much better to spend a little time researching, than pursing a project whose scope was too small or using a former teammate's idea. 
+So when the vote was held, team members chose condo management, as it was much better to spend some time researching, than pursing a project whose scope was too small or using a former teammate's idea. 
 
 #### Other decisions
 
-* We made a decision to delay a large part of our planning process in order to research our product. We interviewed building managers, concierges, and residents of condos in order to figure out what they truly wanted from a program like ours. Not doing this would mean we could have started coding faster and done more brainstorming for ideas than taken things people requested. However, interviewing the target audience gives us valuable clarification on the real-life use of the product and lets us plan ahead better and make better features.
+* We made a decision to delay a large part of our planning process in order to research our product. We interviewed building managers, concierges, and residents of condos in order to figure out what they truly wanted from a program like ours. Not doing this has given us valuable clarification on the real-life use of the product and has let us plan ahead better and make better features.
 
 * We decided to implement our product using a desktop application and an android app rather than making a website. Most of the group has experience in Java and thus are able to easily start coding in both the former platforms. However, the downside is that it will be difficult to make good looking interfaces and sync up the data between platforms. On the other hand, using only a website can let us make it great and work on a single stable platform, but very few of us have any experience working with websites. Thus, we held a vote, and a majority wanted to stick with their current knowledge base and so we decided to make a desktop application and an android app.

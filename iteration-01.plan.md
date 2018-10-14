@@ -1,4 +1,4 @@
-# YOUR PRODUCT/TEAM NAME
+# SKYLINE
 
  > _Note:_ This document is meant to be written during (or shortly after) your initial planning meeting.     
  > It does not really make sense for you to edit this document much (if at all) while working on the project - Instead, at the end of the planning phase, you can refer back to this document and decide which parts of your plan you are happy with and which parts you would like to change.
@@ -66,8 +66,28 @@ merges can go through over the weekend
 
 #### Artifacts
 
-JIRA BOARD (keep track of what needs to get done, assign priorities and assign to people) 
-Use Discord as communication channel.
+ - Issue tracking board: Github Issues 
+
+	We wanted to incorporate an issue tracking board which satisfied a comprehensive set of criteria so that we could keep track of what needs to get done, prioritize tasks and assign tasks all at once. We were mainly deciding between Github Issues and JIRA. After doing some research, we realized both of these platforms satisfy the requirements/uses we were looking for:
+
+
+	|                           | Github Issues | JIRA |
+	|---------------------------|---------------|------|
+	| Create tasks              | Y             | Y    |
+	| Prioritize tasks          | Y             | Y    |
+	| Track progress of tasks   | Y             | Y    |
+	| Relate tasks with sprints | Y             | Y    |
+	| Assign tasks              | Y             | Y    |
+	| Track sprint performance  | Y             | Y    |
+
+	However there were two additional points that led us to choose Github Issues over JIRA:
+	- With Github Issues we could have our code and issue tracking board all on the same place
+	- JIRA provides additional functionality through plug-ins and add-ons but we will not use this for our project
+	- JIRA has a free trial of 7 days but then it is paid, where as Github Issues is free.
+
+- Communication channel: Discord 
+
+	We were initially using Slack, however Discord allows channels to have voice-calling on top of just chatting, which is useful for meetings.
 
 
 ## Product
@@ -101,6 +121,8 @@ The goals and tasks are ordered by significance (1 most important, 5 least impor
 
 List/describe the artifacts you will produce in order to present your project idea.
 
+- User research results
  - A high level program functionality document to use as reference in building the MVP. The document should break down the MVP into key features, and further detail the requirements for each key feature.
  - A rough sketch/mockup of the UI layout to use as reference for designing the applications.
  - A research document comparing the pros/cons of different databases. This is needed to help us judge which database to use moving forward.
+

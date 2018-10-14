@@ -101,8 +101,8 @@ The goals and tasks are ordered by significance (1 most important, 5 least impor
 - 1.Goal: Decide the medium of our project, it can be either a web, a pc software or an android/ios app. 
 <br/>Tasks: As a team of app developers, we want to ask the professor/TA about which platform is better for a condo management app and do a vote to choose the ideal platforms, so that our app will have more potential users. 
 
-- 2.Goal: Decide the basic api and what we need to code at the first stage.
-<br/>Tasks: As a dev team who just start work on their project, we need to draw a UML graph and set up repo, so that we know what is the basic api look like and get ready to work on it.
+- 2.Goal: Decide the basic API and what we need to code at the first stage.
+<br/>Tasks: As a dev team who just start work on their project, we need to draw a UML graph, speicify the API and set up repo, so that we know what is the basic API look like and get ready to work on it.
 
   
 - 3.Goal: have a more precise MVP with features that really satisfy what users need.
@@ -112,7 +112,7 @@ The goals and tasks are ordered by significance (1 most important, 5 least impor
 <br/>Tasks: As a dev team who just start work on their project, we want to sketch out the first prototype of our product, so we will know what is our UI look like and have a better understanding about our product.
 
 - 5.Goal: Decide the database and consider any potential languages/developing software/websites we might use. 
-<br/>Task: As a team of app developers who have not really started coding, we want to ask the professor/TA and do some researches about what developing software or websites we might use and decide the best database for our product, so that we can directly get to work when it come to the second or third deliverable. 
+<br/>Task: As a team of app developers who have not really started coding, we want to ask the professor/TA and do some researches about what developing software or websites we might use and decide the best database for our product, so that we can directly get to work when it comes to the second or third deliverable. 
 
 
 

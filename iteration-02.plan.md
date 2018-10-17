@@ -7,7 +7,7 @@
 ## Iteration 02
 
  * Start date: PLANNING MEETING: October 16, 2018
- * End date: FILL IN THE DATE WHEN YOU ARE PLANNING TO HAVE YOUR REVIEW MEETING
+ * End date: REVIEW MEETING: October 30, 2018
 
 ## Process
 

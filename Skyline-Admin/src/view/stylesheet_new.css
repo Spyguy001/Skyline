@@ -1,0 +1,70 @@
+﻿.root {
+    -fx-font-family: "Helvetica";
+}
+
+/* === PANES === */
+
+.pane-dark {
+    -fx-background-color: #452F74;
+}
+
+.pane-light {
+    -fx-background-color: #655091;
+}
+
+/* === LABELS ===*/
+
+.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+    -fx-background-color: none;
+}
+
+.label-title {
+    -fx-font-size: 32px;
+}
+
+/* === MENUS ===*/
+
+.menu-bar {
+    -fx-background-color: #655091;
+}
+
+.menu {
+    -fx-pref-width: 60px;
+    /*
+    -fx-border-color: white;
+    -fx-border-insets: 0;
+    -fx-border-width: 0 2 0 2;
+    */
+}
+
+.menu:hover,
+.menu:showing,
+.menu-item:focused {
+    -fx-background-color: none;
+}
+
+
+.menu .label {}
+
+.menu-item .label {}
+
+.menu-item:focused {
+    -fx-background-color: white;
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: #655091;
+}
+
+.context-menu {
+    -fx-background-color: #8B7AAE;
+    -fx-padding: 0 0 0 0;
+}
+
+/* === VIEWS === */
+
+list-view {
+
+}

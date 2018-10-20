@@ -37,6 +37,25 @@ public class DatabaseInteractor {
 
     public Announcement getAnnouncement(){return null;}
 
+    public void makeResident(String name, String username, String room) throws InterruptedException, ExecutionException{
+        DocumentReference docRef = db.collection("residents").document(name);
+        // Add document data with an additional field ("middle")
+        Map<String, Object> data = new HashMap<>();
+        data.put("name", name);
+        data.put("username", username);
+        data.put("room", room);
+
+        ApiFuture<WriteResult> result = docRef.set(data);
+        System.out.println("Update time : " + result.get().getUpdateTime());
+    }
+
+    public void deleteResident(String name) throws InterruptedException, ExecutionException {
+        // asynchronously delete a document
+        ApiFuture<WriteResult> writeResult = db.collection("residents").document(name).delete();
+        // ...
+        System.out.println("Update time : " + writeResult.get().getUpdateTime());
+    }
+
     public List<Condo> getCondos(String owner) throws InterruptedException, ExecutionException{
         List<Condo> condos = new ArrayList<>();
         ApiFuture<QuerySnapshot> query = db.collection("condos").get();

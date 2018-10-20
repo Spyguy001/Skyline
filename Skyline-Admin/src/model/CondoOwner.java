@@ -8,33 +8,33 @@ import java.util.concurrent.ExecutionException;
 public class CondoOwner {
 
   private List<Condo> condos;
-  private DatabaseInteractor db;
+  private DatabaseInteractor databaseInteractor;
   private String owner;
 
-  public CondoOwner(DatabaseInteractor db, String name) throws InterruptedException, ExecutionException {
-    this.db = db;
+  public CondoOwner(DatabaseInteractor databaseInteractor, String name) throws InterruptedException, ExecutionException {
+    this.databaseInteractor = databaseInteractor;
     this.condos = new ArrayList<>();
     this.owner = name;
     this.getCondos();
   }
 
   private void deleteManager(String name) throws InterruptedException, ExecutionException {
-    this.db.deleteManager(name);
+    this.databaseInteractor.deleteManager(name);
   }
 
   private void makeManager(String name, String condo) throws InterruptedException, ExecutionException{
-    this.db.makeManager(name, condo);
+    this.databaseInteractor.makeManager(name, condo);
   }
 
   private void deleteCondo(String id) throws InterruptedException, ExecutionException {
-    this.db.deleteCondo(id);
+    this.databaseInteractor.deleteCondo(id);
   }
 
   private void makeCondo(String name, String address) throws InterruptedException, ExecutionException {
-    this.db.makeCondo(name, address, this.owner);
+    this.databaseInteractor.makeCondo(name, address, this.owner);
   }
 
   private void getCondos() throws InterruptedException, ExecutionException {
-    this.condos = db.getCondos(this.owner);
+    this.condos = databaseInteractor.getCondos(this.owner);
   }
 }

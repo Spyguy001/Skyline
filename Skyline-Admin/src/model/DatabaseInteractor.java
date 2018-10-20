@@ -31,11 +31,11 @@ public class DatabaseInteractor {
         this.db = FirestoreClient.getFirestore();
     }
 
-    public Event getEvent(){return null;}
+    public List<Event> getEvents(Condo condo){return null;}
 
-    public Amenity getAmenity(){return null;}
+    public List<Amenity> getAmenities(Condo condo){return null;}
 
-    public Announcement getAnnouncement(){return null;}
+    public List<Announcement> getAnnouncements(Condo condo){return null;}
 
     public void makeResident(String name, String username, String room) throws InterruptedException, ExecutionException{
         DocumentReference docRef = db.collection("residents").document(name);

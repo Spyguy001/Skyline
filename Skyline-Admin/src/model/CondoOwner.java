@@ -1,4 +1,4 @@
-package sample;
+package model;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentReference;
@@ -12,10 +12,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
+import model.Condo;
 
 public class CondoOwner {
 
-  private List<Condo> condos;
+  private List<model.Condo> condos;
   private Firestore db;
   private String owner;
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="view.EventsController">
+    <fx:define>
+        <Double fx:id="WIDTH" fx:value="400.0"/>
+        <Double fx:id="HEIGHT" fx:value="500.0"/>
+    </fx:define>
+    <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="$HEIGHT"
+          prefWidth="$WIDTH">
+        <children>
+            <Pane styleClass="pane-top" prefHeight="${HEIGHT * 0.1}"></Pane>
+            <StackPane styleClass="pane-mid" fx:id="subPane2" prefHeight="${HEIGHT * 0.2}" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+                       AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                <children>
+                    <Label alignment="CENTER" prefWidth="Infinity" styleClass="label-title"
+                           text="Skyline"/>
+                </children>
+            </StackPane>
+            <fx:include fx:id="FileMenu" source="FileMenu.fxml"/>
+            <fx:include fx:id="ManagerButtons" source="Manager.fxml"/>
+        </children>
+    </VBox>
+</AnchorPane>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="rootPane" prefHeight="200" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EventsController">
+    <fx:define>
+        <Double fx:id="WIDTH" fx:value="400.0"/>
+        <Double fx:id="HEIGHT" fx:value="500.0"/>
+    </fx:define>
+    <children>
+      <VBox prefHeight="${HEIGHT * 0.6}" prefWidth="$WIDTH">
+         <children>
+            <ListView fx:id="eventsList" prefHeight="${HEIGHT * 0.48}" prefWidth="$WIDTH" />
+            <HBox id="hbox-events" prefHeight="${HEIGHT * 0.12}" prefWidth="$WIDTH">
+               <children>
+                  <Button mnemonicParsing="false" text="Add Event" onAction="#addEvent"/>
+                  <Button mnemonicParsing="false" text="Remove Event" onAction="#removeEvent"/>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

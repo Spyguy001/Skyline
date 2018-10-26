@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="view.ManagerController">
+    <StackPane fx:id="subPane" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+               AnchorPane.rightAnchor="0.0">
+        <VBox>
+        <ToolBar prefHeight="45.0">
+            <items>
+                <Button styleClass="button-manager" mnemonicParsing="false" text="Events" onAction="#loadEvents"/>
+                <Button styleClass="button-manager" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Announcements" onAction="#loadAnnouncements"/>
+                <Button styleClass="button-manager" layoutX="94.0" layoutY="10.0" mnemonicParsing="false" text="Amenities" onAction="#loadAmenities"/>
+            </items>
+        </ToolBar>
+        <AnchorPane fx:id="rootPane" prefHeight="200">
+            <fx:include source="Events.fxml"/>
+        </AnchorPane>
+        </VBox>
+    </StackPane>
+</AnchorPane>

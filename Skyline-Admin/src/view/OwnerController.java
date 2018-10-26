@@ -1,8 +1,6 @@
 package view;
 
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -10,13 +8,12 @@ import javafx.scene.control.ListView;
 import javafx.beans.value.ChangeListener;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 
-public class Controller {
+public class OwnerController {
 
     private int condoID = 0; // For testing purposes
-    HashMap<Number, ArrayList<String>> condosToManagers = new HashMap<Number, ArrayList<String>>();
+    HashMap<String, ArrayList<String>> condosToManagers = new HashMap<>();
 
     @FXML
     private ListView<String> listCondos;
@@ -29,30 +26,31 @@ public class Controller {
 
     @FXML
     private void createCondo(){
-        listCondos.getItems().add(String.valueOf(condoID));
-        condosToManagers.put(condoID, new ArrayList<String>());
+        listCondos.getItems().add("Condo" + condoID);
+        condosToManagers.put("Condo" + condoID, new ArrayList<String>());
         condoID++;
     }
 
     @FXML
     private void addManager(){
-        int selectedID = Integer.parseInt(listCondos.getSelectionModel().getSelectedItem());
+        String selected = listCondos.getSelectionModel().getSelectedItem();
 
-        if (condosToManagers.get(selectedID) == null) {
+        if (condosToManagers.get(selected) == null) {
             ArrayList<String> list = new ArrayList<String>();
             list.add("Manager");
-            condosToManagers.put(selectedID, list);
+            condosToManagers.put(selected, list);
             listManagers.getItems().add("Manager");
         }else{
-            condosToManagers.get(selectedID).add("Manager");
+            condosToManagers.get(selected).add("Manager");
             listManagers.getItems().add("Manager");
         }
     }
     @FXML
     private void initialize(){
-        listCondos.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+
+        listCondos.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 listManagers.getItems().clear();
                 listManagers.getItems().addAll(condosToManagers.get(newValue)); }
         });

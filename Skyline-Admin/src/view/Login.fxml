@@ -12,19 +12,19 @@
         <Double fx:id="HEIGHT" fx:value="500.0"/>
     </fx:define>
     <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="$HEIGHT"
-          prefWidth="$WIDTH" style="-fx-background-color: #452F74;">
+          prefWidth="$WIDTH" style="-fx-background-color: #545AA7;">
         <children>
             <StackPane styleClass="pane-mid" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
                        AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                 <children>
                     <Label alignment="CENTER" prefWidth="Infinity" styleClass="label-title"
-                           text="Skyline" style="-fx-background-color: #452F74"/>
+                           text="Skyline" style="-fx-background-color: none"/>
                 </children>
             </StackPane>
-            <GridPane prefWidth="$WIDTH" style="-fx-background-color: #452F74;">
+            <GridPane prefWidth="$WIDTH" style="-fx-background-color: none;">
                 <columnConstraints>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="${WIDTH * 0.5}"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="${WIDTH * 0.5}"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="${WIDTH * 0.25}"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="${WIDTH * 0.50}"/>
                 </columnConstraints>
                 <rowConstraints>
                     <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES"/>
@@ -34,20 +34,20 @@
                     <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES"/>
                 </rowConstraints>
                 <children>
-                    <Label style="-fx-text-fill: white;" text="Username:" GridPane.rowIndex="1"/>
+                    <Label style="-fx-text-fill: white;" text="Username:    " GridPane.rowIndex="1" GridPane.halignment="RIGHT"/>
                     <TextField fx:id="username" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                    <Label style="-fx-text-fill: white;" text="Password:" GridPane.rowIndex="2"/>
+                    <Label style="-fx-text-fill: white;" text="Password:    " GridPane.rowIndex="2" GridPane.halignment="RIGHT"/>
                     <TextField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
                     <Pane nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1"
                           GridPane.rowIndex="4">
                         <children>
-                            <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="39.0" prefWidth="83.0"
+                            <Button styleClass="button-utility" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="39.0" prefWidth="83.0"
                                     text="Sign In" onAction="#signIn"/>
                         </children>
                     </Pane>
                 </children>
                 <VBox.margin>
-                    <Insets left="75.0" right="75.0"/>
+                    <Insets left="50.0" right="75.0"/>
                 </VBox.margin>
             </GridPane>
         </children>

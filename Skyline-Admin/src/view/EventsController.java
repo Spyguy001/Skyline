@@ -1,6 +1,7 @@
 package view;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
@@ -13,7 +14,8 @@ public class EventsController {
     private ListView<String> eventsList;
 
     @FXML
-    private void initialize(){}
+    private void initialize(){
+    }
 
     @FXML
     private void addEvent(){

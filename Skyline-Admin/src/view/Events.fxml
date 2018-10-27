@@ -16,12 +16,19 @@
       <VBox prefHeight="${HEIGHT * 0.6}" prefWidth="$WIDTH">
          <children>
             <ListView fx:id="eventsList" prefHeight="${HEIGHT * 0.48}" prefWidth="$WIDTH" />
-            <HBox id="hbox-events" prefHeight="${HEIGHT * 0.12}" prefWidth="$WIDTH">
-               <children>
-                  <Button mnemonicParsing="false" text="Add Event" onAction="#addEvent"/>
-                  <Button mnemonicParsing="false" text="Remove Event" onAction="#removeEvent"/>
+             <GridPane prefHeight="${HEIGHT * 0.12}" prefWidth="$WIDTH" style="-fx-background-color: white">
+             <columnConstraints>
+                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="${WIDTH * 0.5}"/>
+                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="${WIDTH * 0.5}"/>
+             </columnConstraints>
+             <rowConstraints>
+                 <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES"/>
+             </rowConstraints>
+             <children>
+                  <Button styleClass="button-utility" mnemonicParsing="false" text="Add Event" onAction="#addEvent" GridPane.halignment="CENTER"/>
+                  <Button styleClass="button-utility" mnemonicParsing="false" text="Remove Event" onAction="#removeEvent" GridPane.columnIndex="1" GridPane.halignment="CENTER"/>
                </children>
-            </HBox>
+            </GridPane>
          </children>
       </VBox>
    </children>

@@ -7,10 +7,15 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 
 public class ManagerController {
+
+    @FXML
+    private Button buttonEvents;
     @FXML
     private AnchorPane rootPane;
     @FXML
-    private void initialize(){}
+    private void initialize(){
+        buttonEvents.requestFocus();
+    }
 
     @FXML
     private void loadEvents()throws IOException{

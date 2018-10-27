@@ -11,7 +11,7 @@
             fx:controller="view.FileMenuController">
     <StackPane fx:id="subPane" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                AnchorPane.rightAnchor="0.0">
-        <MenuBar prefHeight="32.0" style="-fx-background-color: #655091;" VBox.vgrow="NEVER">
+        <MenuBar prefHeight="32.0" VBox.vgrow="NEVER">
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>

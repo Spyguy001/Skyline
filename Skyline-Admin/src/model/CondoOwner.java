@@ -22,8 +22,8 @@ public class CondoOwner {
     this.databaseInteractor.deleteManager(name);
   }
 
-  private void makeManager(String name, String condo) throws InterruptedException, ExecutionException{
-    this.databaseInteractor.makeManager(name, condo);
+  private void makeManager(String uid, String name, String condo) throws InterruptedException, ExecutionException{
+    this.databaseInteractor.makeManager(uid, name, condo);
   }
 
   private void deleteCondo(String id) throws InterruptedException, ExecutionException {

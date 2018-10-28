@@ -38,6 +38,7 @@
                     <TextField fx:id="username" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                     <Label style="-fx-text-fill: white;" text="Password:    " GridPane.rowIndex="2" GridPane.halignment="RIGHT"/>
                     <TextField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <Label fx:id="loginFailed" style="-fx-text-fill: red;" text="" GridPane.rowIndex="4"/>
                     <Pane nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1"
                           GridPane.rowIndex="4">
                         <children>

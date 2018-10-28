@@ -3,11 +3,11 @@ package view;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import model.DatabaseInteractor;
 import model.FirebaseAuthHandler;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.Map;
@@ -26,6 +26,9 @@ public class LoginController {
     private TextField password;
 
     @FXML
+    private Label loginFailed;
+
+    @FXML
     private void initialize() throws IOException {
         this.authHandler = new FirebaseAuthHandler();
         this.dbInteractor = new DatabaseInteractor();
@@ -40,7 +43,8 @@ public class LoginController {
             uid = this.authHandler.verifyUserAuth(username.getText(), password.getText());
             user = this.dbInteractor.getUser(uid);
         } catch(Exception e) {
-            System.err.println(e.toString());
+            System.err.println(e.getMessage());
+            loginFailed.setText(e.getMessage());
             return;
         }
 

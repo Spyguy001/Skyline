@@ -44,6 +44,8 @@ public class FirebaseAuthHandler {
                 throw new IllegalArgumentException("Couldn't find your email id.");
             case "INVALID_PASSWORD":
                 throw new IllegalArgumentException("Wrong password.");
+            case "INVALID_EMAIL":
+                throw new IllegalArgumentException("Invalid email.");
             default:
                 throw new RuntimeException("Error: " + errorMessage);
         }

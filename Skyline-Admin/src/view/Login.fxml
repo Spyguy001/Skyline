@@ -38,11 +38,11 @@
                     <TextField fx:id="username" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                     <Label style="-fx-text-fill: white;" text="Password:    " GridPane.rowIndex="2" GridPane.halignment="RIGHT"/>
                     <TextField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                    <Label fx:id="loginFailed" style="-fx-text-fill: red;" text="" GridPane.rowIndex="4"/>
+                    <Label fx:id="loginFailed" style="-fx-text-fill: red;" text="" GridPane.rowIndex="3" GridPane.columnSpan="2"/>
                     <Pane nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1"
                           GridPane.rowIndex="4">
                         <children>
-                            <Button styleClass="button-utility" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="39.0" prefWidth="83.0"
+                            <Button styleClass="button-signIn" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="39.0" prefWidth="83.0"
                                     text="Sign In" onAction="#signIn"/>
                         </children>
                     </Pane>

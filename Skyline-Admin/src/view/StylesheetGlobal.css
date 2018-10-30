@@ -135,6 +135,16 @@
     -fx-background-color: #F1CC66;
 }
 
+.button-signIn{
+    -fx-background-color: #545AA7;
+    -fx-pref-width: 125px;
+    -fx-text-fill: white;
+}
+
+.button-signIn:hover{
+    -fx-background-color: #F1CC66;
+}
+
 #testing{
    -fx-border-color: black;
    -fx-border-insets: 0;

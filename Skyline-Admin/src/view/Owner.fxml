@@ -26,15 +26,21 @@
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="192.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="${HEIGHT * 0.6}" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="${HEIGHT * 0.05}" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="${HEIGHT * 0.05}" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ListView fx:id="listCondos" prefHeight="200.0" prefWidth="200.0" />
-            <ListView fx:id="listManagers" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
-            <Button fx:id="buttonCreateCondo" mnemonicParsing="false" onAction="#createCondo" text="Create Condo" GridPane.rowIndex="1" />
-             <Button fx:id="buttonAddManager" mnemonicParsing="false" onAction="#addManager" text="Add Manager" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+             <ListView fx:id="listCondos" prefHeight="200.0" prefWidth="200.0" />
+             <ListView fx:id="listManagers" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1"/>
+             <HBox GridPane.rowIndex="1" GridPane.halignment="CENTER">
+                 <Button fx:id="buttonCreateCondo" styleClass="button-manager" mnemonicParsing="false" onAction="#createCondo" text="Create Condo" />
+                 <Button fx:id="buttonDeleteCondo" styleClass="button-manager" style="-fx-pref-width: 25px;" mnemonicParsing="false" onAction="#deleteCondo" text="X"/>
+             </HBox>
+             <HBox GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="CENTER">
+                 <Button fx:id="buttonAddManager" styleClass="button-manager" mnemonicParsing="false" onAction="#addManager" text="Add Manager"/>
+                 <Button fx:id="buttonDeleteManager" styleClass="button-manager" style="-fx-pref-width: 25px;" mnemonicParsing="false" onAction="#deleteManager" text="X"/>
+             </HBox>
          </children>
       </GridPane>
    </children>

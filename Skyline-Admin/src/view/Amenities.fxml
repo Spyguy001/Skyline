@@ -7,13 +7,29 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="200">
+<AnchorPane fx:id="rootPane" prefHeight="200" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AmenitiesController">
+    <fx:define>
+        <Double fx:id="WIDTH" fx:value="400.0"/>
+        <Double fx:id="HEIGHT" fx:value="500.0"/>
+    </fx:define>
     <children>
-        <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" textAlignment="CENTER"
-               textFill="#9f9f9f" wrapText="false" text="AMENITIES">
-            <font>
-                <Font size="18.0"/>
-            </font>
-        </Label>
+        <VBox prefHeight="${HEIGHT * 0.6}" prefWidth="$WIDTH">
+            <children>
+                <ListView fx:id="amenityList" prefHeight="${HEIGHT * 0.48}" prefWidth="$WIDTH" />
+                <GridPane prefHeight="${HEIGHT * 0.12}" prefWidth="$WIDTH" style="-fx-background-color: white">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="${WIDTH * 0.5}"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="${WIDTH * 0.5}"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <Button styleClass="button-utility" mnemonicParsing="false" text="Add Amenity" onAction="#addAmenity" GridPane.halignment="CENTER"/>
+                        <Button styleClass="button-utility" mnemonicParsing="false" text="Remove Amenity" onAction="#removeAmenity" GridPane.columnIndex="1" GridPane.halignment="CENTER"/>
+                    </children>
+                </GridPane>
+            </children>
+        </VBox>
     </children>
 </AnchorPane>

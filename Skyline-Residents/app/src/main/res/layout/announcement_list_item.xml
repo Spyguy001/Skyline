@@ -21,7 +21,7 @@
 
             <TextView
                 android:id="@+id/announcementItemDate"
-                android:layout_width="wrap_content"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:text="Date"
                 android:layout_marginTop="5dp"
@@ -30,16 +30,19 @@
 
             <TextView
                 android:id="@+id/announcementItemDetails"
+                android:padding="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:layout_toRightOf="@+id/announcementItemDate"
                 android:layout_toLeftOf="@+id/announceItemFlag"
                 android:text="Description"
                 android:layout_marginStart="10dp"
                 android:layout_toStartOf="@+id/announceItemFlag"
-                android:layout_toEndOf="@+id/announcementItemDate" />
+                android:layout_toEndOf="@+id/announcementItemDate"
+                android:textStyle="bold"/>
 
             <ImageView
                 android:id="@+id/announceItemFlag"

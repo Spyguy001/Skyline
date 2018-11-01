@@ -43,7 +43,7 @@ public class AnnouncementsAdapter extends RecyclerView.Adapter<AnnouncementsAdap
         //holder.commentOwner.setText(commentList.get(position).getMessageOwner().getName());
         holder.announcementTitle.setText(annoucnementToAdd.getTitle());
         holder.announcementDetails.setText(annoucnementToAdd.getDescription());
-        holder.announcementDate.setText(annoucnementToAdd.getDate().toString());
+        holder.announcementDate.setText(annoucnementToAdd.getDate().toLocaleString());
 
         if (annoucnementToAdd.getImportant() == null || !annoucnementToAdd.getImportant()) {
             holder.announcementFlag.setImageResource(0);

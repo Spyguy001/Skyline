@@ -68,9 +68,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         final String email = loginEmail.getText().toString().trim();
         final String password = loginPassword.getText().toString().trim();
 
-        progressDialog.setMessage("Please wait while you are being logged in...");
-        progressDialog.show();
-
         // pre-verification checks
         if (email.isEmpty() || password.isEmpty()) {
 
@@ -79,8 +76,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             builder.setMessage("Please enter an email and a password");
             builder.show();
             return;
-
         }
+
+        progressDialog.setMessage("Please wait while you are being logged in...");
+        progressDialog.show();
 
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(
                 LoginActivity.this, new OnCompleteListener<AuthResult>() {

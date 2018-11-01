@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import model.DatabaseInteractor;
@@ -24,7 +25,7 @@ public class LoginController {
     private TextField username;
 
     @FXML
-    private TextField password;
+    private PasswordField password;
 
     @FXML
     private Label loginFailed;

@@ -6,12 +6,8 @@ public class Event {
 
     private Date date;
     private String title;
-    private String details;
+    private String description;
     private String place;
-
-    public Event(String title) {
-        this.title = title;
-    }
 
     public Date getDate() {
         return date;
@@ -29,12 +25,12 @@ public class Event {
         this.title = title;
     }
 
-    public String getDetails() {
-        return details;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDetails(String details) {
-        this.details = details;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getPlace() {

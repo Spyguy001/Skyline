@@ -13,8 +13,11 @@ public class Amenity {
         return details;
     }
 
-    public Amenity(String name) {
-
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
     }
 }

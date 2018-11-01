@@ -38,8 +38,8 @@ public class AmenitiesAdapter extends RecyclerView.Adapter<AmenitiesAdapter.Amme
         Amenity amenityToAdd = ammenitiesList.get(ammenitiesList.size() - 1 - position);
 
         //holder.commentOwner.setText(commentList.get(position).getMessageOwner().getName());
-        holder.announcementName.setText(amenityToAdd.getName());
-        holder.announcementDetails.setText(amenityToAdd.getDetails());
+        holder.amenityName.setText(amenityToAdd.getName());
+        holder.amenityDetails.setText(amenityToAdd.getDetails());
     }
 
     @Override
@@ -49,15 +49,15 @@ public class AmenitiesAdapter extends RecyclerView.Adapter<AmenitiesAdapter.Amme
 
     class AmmenitiesViewHolder extends RecyclerView.ViewHolder{
 
-        TextView announcementName;
-        TextView announcementDetails;
+        TextView amenityName;
+        TextView amenityDetails;
 
 
         public AmmenitiesViewHolder(View itemView) {
             super(itemView);
 
-            announcementName = (TextView) itemView.findViewById(R.id.amenityItemName);
-            announcementDetails = (TextView) itemView.findViewById((R.id.amenityItemDetails));
+            amenityName = (TextView) itemView.findViewById(R.id.amenityItemName);
+            amenityDetails = (TextView) itemView.findViewById((R.id.amenityItemDetails));
         }
     }
 }

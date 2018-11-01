@@ -1,17 +1,16 @@
 package com.share.info.skyline.RecyclerViewAdapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.share.info.skyline.LoginActivity;
 import com.share.info.skyline.Model.Announcement;
 import com.share.info.skyline.R;
 
@@ -43,14 +42,18 @@ public class AnnouncementsAdapter extends RecyclerView.Adapter<AnnouncementsAdap
 
         //holder.commentOwner.setText(commentList.get(position).getMessageOwner().getName());
         holder.announcementTitle.setText(annoucnementToAdd.getTitle());
-        holder.announcementDetails.setText(annoucnementToAdd.getDetails());
+        holder.announcementDetails.setText(annoucnementToAdd.getDescription());
         holder.announcementDate.setText(annoucnementToAdd.getDate().toString());
+
+        if (annoucnementToAdd.getImportant() == null || !annoucnementToAdd.getImportant()) {
+            holder.announcementFlag.setImageResource(0);
+        }
 
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setMessage(annoucnementToAdd.getDetails());
+                builder.setMessage(annoucnementToAdd.getDescription());
                 builder.show();
             }
         });
@@ -70,6 +73,8 @@ public class AnnouncementsAdapter extends RecyclerView.Adapter<AnnouncementsAdap
         TextView announcementDetails;
         TextView announcementDate;
 
+        ImageView announcementFlag;
+
 
         public AnnouncementsViewHolder(View itemView) {
             super(itemView);
@@ -79,6 +84,8 @@ public class AnnouncementsAdapter extends RecyclerView.Adapter<AnnouncementsAdap
             announcementTitle = (TextView) itemView.findViewById(R.id.announcementItemDetails);
             announcementDetails = (TextView) itemView.findViewById((R.id.announcementItemDetails));
             announcementDate = (TextView) itemView.findViewById(R.id.announcementItemDate);
+
+            announcementFlag = (ImageView) itemView.findViewById(R.id.announceItemFlag);
         }
     }
 }

@@ -5,13 +5,9 @@ import java.util.Date;
 public class Announcement {
 
     private String title;
-    private String details;
+    private String description;
     private Date date;
     private Boolean important;
-
-    public Announcement(String title) {
-        this.title = title;
-    }
 
     public String getTitle() {
         return title;
@@ -21,12 +17,12 @@ public class Announcement {
         this.title = title;
     }
 
-    public String getDetails() {
-        return details;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDetails(String details) {
-        this.details = details;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Date getDate() {

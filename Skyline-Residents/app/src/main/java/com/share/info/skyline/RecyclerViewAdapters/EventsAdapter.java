@@ -41,8 +41,8 @@ public class EventsAdapter extends
 
         //holder.commentOwner.setText(commentList.get(position).getMessageOwner().getName());
         holder.eventTitle.setText(eventToAdd.getTitle());
-        holder.eventDetails.setText(eventToAdd.getDetails());
-        holder.eventDate.setText(eventToAdd.getDate().toString());
+        holder.eventDetails.setText(eventToAdd.getDescription());
+//        holder.eventDate.setText(eventToAdd.getDate().toString());
     }
 
     @Override

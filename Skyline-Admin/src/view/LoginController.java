@@ -3,6 +3,7 @@ package view;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -58,8 +59,9 @@ public class LoginController {
             rootPane.getChildren().setAll(pane);
         }
         else {
-            // throw a popup later
-            System.err.println("Resident account not supported");
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Need to be a condo owner or manager to login!");
+            alert.setHeaderText("Insufficient Access Level");
+            alert.showAndWait();
         }
 
         // TODO: Implement User Authentication

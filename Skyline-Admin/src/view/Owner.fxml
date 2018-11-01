@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="view.OwnerController">
+            fx:controller="controller.OwnerController">
     <fx:define>
         <Double fx:id="WIDTH" fx:value="400.0"/>
         <Double fx:id="HEIGHT" fx:value="500.0"/>

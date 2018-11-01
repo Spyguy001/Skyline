@@ -7,7 +7,7 @@ import com.share.info.skyline.Model.Event;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LocalFirebase implements DatabaseController {
+public class LocalFirebase implements LocalDatabase {
 
     private List<Event> eventList;
     private List<Amenity> amenityList;
@@ -17,12 +17,6 @@ public class LocalFirebase implements DatabaseController {
         this.eventList = new ArrayList<>();
         this.amenityList = new ArrayList<>();
         this.announcementsList = new ArrayList<>();
-    }
-
-    public LocalFirebase(List<Event> eventList, List<Amenity> amenityList, List<Announcement> announcementsList) {
-        this.eventList = eventList;
-        this.amenityList = amenityList;
-        this.announcementsList = announcementsList;
     }
 
     @Override
@@ -41,18 +35,18 @@ public class LocalFirebase implements DatabaseController {
     }
 
     @Override
-    public void updateAnnouncements() {
-
+    public void clearEvents() {
+        this.eventList.clear();
     }
 
     @Override
-    public void updateEvents() {
-
+    public void clearAnnouncements() {
+        this.announcementsList.clear();
     }
 
     @Override
-    public void updateAmenities() {
-
+    public void clearAmenities() {
+        this.amenityList.clear();
     }
 
     @Override
@@ -68,5 +62,20 @@ public class LocalFirebase implements DatabaseController {
     @Override
     public void addAnnouncement(Announcement announcement) {
         this.announcementsList.add(announcement);
+    }
+
+    @Override
+    public void updateEvents(List<Event> eventList) {
+        this.eventList = eventList;
+    }
+
+    @Override
+    public void updateAmenities(List<Amenity> amenityList) {
+        this.amenityList = amenityList;
+    }
+
+    @Override
+    public void updateAnnouncements(List<Announcement> announcementList) {
+        this.announcementsList = announcementList;
     }
 }

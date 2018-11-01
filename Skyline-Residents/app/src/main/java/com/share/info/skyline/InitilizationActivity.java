@@ -12,20 +12,16 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
+import com.share.info.skyline.Database.DataFetchCallback;
+import com.share.info.skyline.Database.LocalDatabase;
 import com.share.info.skyline.Database.LocalFirebase;
-import com.share.info.skyline.Model.Amenity;
-import com.share.info.skyline.Model.Announcement;
+import com.share.info.skyline.Database.RemoteFirebase;
 import com.share.info.skyline.Model.CondoController;
-import com.share.info.skyline.Model.Event;
 
-import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class InitilizationActivity extends AppCompatActivity {
+public class InitilizationActivity extends AppCompatActivity implements DataFetchCallback {
 
-    private static final String ANNOUCEMENTS = "Announcements";
-    private static final String EVENTS = "Events";
-    private static final String AMENITIES = "Amenities";
     private static final String USERS = "Users";
     private FirebaseFirestore firebaseFirestore;
     private DocumentReference condoDocumentReference;
@@ -82,113 +78,23 @@ public class InitilizationActivity extends AppCompatActivity {
     private void initilizeCondoController() {
 
         CondoController condoController = CondoController.getInstance();
-        final LocalFirebase localFirebase = new LocalFirebase();
-        condoController.init(localFirebase, "XYZ");
 
-        // semaphore to ensure all data is fetched before switching to home
-        final CountDownLatch done = new CountDownLatch(3);
+        LocalDatabase localFirebase = new LocalFirebase();
 
-        // get Events get Announcements get Amenities
+        RemoteFirebase remoteDatabase = RemoteFirebase.getInstance();
+        remoteDatabase.init(condoDocumentReference);
 
-        condoDocumentReference
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-
-                        if (documentSnapshot.exists()) {
-
-                            condoDocumentReference.collection(AMENITIES)
-                                    .get()
-                                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                        @Override
-                                        public void onSuccess(QuerySnapshot documentSnapshots) {
-
-                                            if(!documentSnapshots.isEmpty()) {
-
-                                                for (DocumentSnapshot amenitySnapshot : documentSnapshots) {
-                                                    localFirebase.addAmenity(amenitySnapshot.toObject(Amenity.class));
-                                                }
-                                            }
-                                            dataFetched(done);
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            Log.d("ERROR", e.toString());
-                                        }
-                                    });
-
-                            condoDocumentReference.collection(ANNOUCEMENTS)
-                                    .get()
-                                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                        @Override
-                                        public void onSuccess(QuerySnapshot documentSnapshots) {
-
-                                            if(!documentSnapshots.isEmpty()) {
-
-                                                for (DocumentSnapshot announcementSnapshot : documentSnapshots) {
-                                                    localFirebase.addAnnouncement(announcementSnapshot.toObject(Announcement.class));
-                                                }
-                                            }
-                                            dataFetched(done);
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            Log.d("ERROR", e.toString());
-                                        }
-                                    });
-
-                            condoDocumentReference.collection(EVENTS)
-                                    .get()
-                                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                        @Override
-                                        public void onSuccess(QuerySnapshot documentSnapshots) {
-
-                                            if(!documentSnapshots.isEmpty()) {
-
-                                                for (DocumentSnapshot eventSnapshot : documentSnapshots) {
-                                                    localFirebase.addEvent(eventSnapshot.toObject(Event.class));
-                                                }
-                                            }
-                                            dataFetched(done);
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            Log.d("ERROR", e.toString());
-                                        }
-                                    });
-
-                            Log.d("SUCCESS", "Document retrieved successfully");
-
-                        } else {
-                            Log.d("ERROR", "could not find document");
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("ERROR", e.toString());
-                    }
-                });
-
+        condoController.init(remoteDatabase, localFirebase);
+        condoController.fetch(this);
     }
 
-    private void dataFetched(CountDownLatch partial) {
-        partial.countDown();
-        if (partial.getCount() == 0) {
-            // end progress bar
-            initializeProgressDialogue.dismiss();
-
-            // switch to home page
-            finish();
-            startActivity( new Intent(this, HomePageActivity.class));
-        }
+    @Override
+    public void onDataFetch() {
+        // end progress bar
+        initializeProgressDialogue.dismiss();
+        // switch to home page
+        finish();
+        startActivity( new Intent(this, HomePageActivity.class));
     }
+
 }

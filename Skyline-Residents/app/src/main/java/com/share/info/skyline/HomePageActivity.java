@@ -1,8 +1,11 @@
 package com.share.info.skyline;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -19,6 +22,7 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.share.info.skyline.FeatureFragments.AmenitiesFragment;
 import com.share.info.skyline.FeatureFragments.AnnouncementFragment;
 import com.share.info.skyline.FeatureFragments.EventsFragment;
@@ -39,6 +43,7 @@ public class HomePageActivity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +65,7 @@ public class HomePageActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-
+        firebaseAuth = FirebaseAuth.getInstance();
     }
 
 
@@ -83,7 +88,37 @@ public class HomePageActivity extends AppCompatActivity {
             return true;
         }
 
+        if (id == R.id.action_logout) {
+            logout();
+        }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    private void logout() {
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(HomePageActivity.this);
+        alertBuilder
+                .setTitle("Log Out ?")
+                .setMessage("Are you sure you want to log out ?");
+        alertBuilder
+
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        firebaseAuth.signOut();
+                        finish();
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+        alertBuilder.show();
     }
 
     /**
@@ -140,7 +175,7 @@ public class HomePageActivity extends AppCompatActivity {
                 case 1: return new AmenitiesFragment();
                 case 2: return new AnnouncementFragment();
             }
-            return null;
+            return new EventsFragment();
         }
 
         @Override

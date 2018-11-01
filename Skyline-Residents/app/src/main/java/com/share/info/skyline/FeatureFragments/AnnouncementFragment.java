@@ -4,13 +4,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.share.info.skyline.Database.CondoController;
+import com.share.info.skyline.Model.CondoController;
 import com.share.info.skyline.R;
 import com.share.info.skyline.RecyclerViewAdapters.AnnouncementsAdapter;
 
@@ -33,6 +34,11 @@ public class AnnouncementFragment extends Fragment {
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                DividerItemDecoration.VERTICAL);
+
+        recyclerView.addItemDecoration(dividerItemDecoration);
 
         announcementsAdapter = new AnnouncementsAdapter(getActivity(), condoController.getCondoAnnouncements());
         recyclerView.setAdapter(announcementsAdapter);

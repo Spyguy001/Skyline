@@ -1,16 +1,19 @@
 package com.share.info.skyline.FeatureFragments;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.share.info.skyline.Database.CondoController;
+import com.share.info.skyline.Model.CondoController;
 import com.share.info.skyline.R;
 import com.share.info.skyline.RecyclerViewAdapters.EventsAdapter;
 
@@ -35,9 +38,13 @@ public class EventsFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                DividerItemDecoration.VERTICAL);
+
+        recyclerView.addItemDecoration(dividerItemDecoration);
+
         eventsAdapter = new EventsAdapter(getActivity(), condoController.getCondoEvent());
         recyclerView.setAdapter(eventsAdapter);
-
 
     }
 }

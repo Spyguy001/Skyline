@@ -64,14 +64,5 @@ public class LoginController {
             alert.setHeaderText("Insufficient Access Level");
             alert.showAndWait();
         }
-
-        // TODO: Implement User Authentication
-        /*if (username.getText().equals("owner")){
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("Owner.fxml"));
-            rootPane.getChildren().setAll(pane);
-        }else {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("Index.fxml"));
-            rootPane.getChildren().setAll(pane);
-        }*/
     }
 }

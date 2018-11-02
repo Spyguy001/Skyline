@@ -5,7 +5,6 @@ import java.util.List;
 
 public class AccountsManager {
 	
-	  private List<ResidentAccount> reidents;
 
 
 	  public void AccountManger()  {

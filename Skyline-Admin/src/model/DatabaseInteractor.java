@@ -2,17 +2,22 @@ package model;
 
 import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.auth.oauth2.ServiceAccountCredentials;
 import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.FirestoreOptions;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +27,11 @@ public class DatabaseInteractor {
     private Firestore db;
 
     public DatabaseInteractor() throws IOException{
-        GoogleCredentials credentials = GoogleCredentials.getApplicationDefault();
+			GoogleCredentials credentials;
+			File credentialsPath = new File("service_account.json");  // TODO: update to your key path.
+			try (FileInputStream serviceAccountStream = new FileInputStream(credentialsPath)) {
+				credentials = ServiceAccountCredentials.fromStream(serviceAccountStream);
+			}
         FirebaseOptions options = new FirebaseOptions.Builder()
             .setCredentials(credentials)
             .setProjectId("skyline-admin-219803")
@@ -120,8 +129,7 @@ public class DatabaseInteractor {
         System.out.println("Update time : " + writeResult.get().getUpdateTime());
     }
 
-    public void makeManager(String uid, String name, String condo) 
-        throws InterruptedException, ExecutionException{
+    public void makeManager(String uid, String name, String condo) throws InterruptedException, ExecutionException{
         DocumentReference docRef = db.collection("Users").document(uid);
 
         Map<String, Object> data = new HashMap<>();

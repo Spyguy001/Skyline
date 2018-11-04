@@ -3,38 +3,37 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
-public class CondoOwner {
+public class CondoOwner extends User{
 
-  private List<Condo> condos;
-  private DatabaseInteractor databaseInteractor;
-  private String owner;
+    private IDatabase database;
 
-  public CondoOwner(DatabaseInteractor databaseInteractor, String name) throws InterruptedException, ExecutionException {
-    this.databaseInteractor = databaseInteractor;
-    this.condos = new ArrayList<>();
-    this.owner = name;
-    this.getCondos();
-  }
+    public CondoOwner(IDatabase database){
+        this.database = database;
+    }
 
-  private void deleteManager(String name) throws InterruptedException, ExecutionException {
-    this.databaseInteractor.deleteManager(name);
-  }
+    public void removeManager(CondoManager manager, Condo condo) {
+        condo.getManagerIDs().remove(manager.getId());
+        this.database.removeManagerFromCondo(manager.getId(), condo.getId());
+        this.database.removeCondoFromUser(manager.getId(), condo.getId());
+    }
 
-  private void makeManager(String uid, String name, String condo) throws InterruptedException, ExecutionException{
-    this.databaseInteractor.makeManager(uid, name, condo);
-  }
+    public void addManager(CondoManager manager, Condo condo) {
+        this.database.createUser(manager);
+        condo.getManagerIDs().add(manager.getId());
+        this.database.addManagerToCondo(manager.getId(), condo.getId());
+        this.database.addCondoToUser(manager.getId(), condo.getId());
+    }
 
-  private void deleteCondo(String id) throws InterruptedException, ExecutionException {
-    this.databaseInteractor.deleteCondo(id);
-  }
+    public void removeCondo(Condo condo) {
+        this.getCondos().remove(condo);
+        this.database.removeCondoFromUser(this.getId(), condo.getId());
+        this.database.deleteCondo(condo.getId());
+    }
 
-  private void makeCondo(String name, String address) throws InterruptedException, ExecutionException {
-    this.databaseInteractor.makeCondo(name, address, this.owner);
-  }
-
-  private void getCondos() throws InterruptedException, ExecutionException {
-    this.condos = databaseInteractor.getCondos(this.owner);
-  }
+    public void addCondo(Condo condo) {
+        this.database.createCondo(condo);
+        this.getCondos().add(condo);
+        this.database.addCondoToUser(this.getId(), condo.getId());
+    }
 }

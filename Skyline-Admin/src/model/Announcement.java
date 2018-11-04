@@ -9,7 +9,7 @@ public class Announcement {
     private boolean important;
 
     public Announcement(){
-        //keep constructor and add new ones as needed
+        //need empty constructor for firebase
     }
 
     public Date getDate() {

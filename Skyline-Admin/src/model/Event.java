@@ -8,7 +8,7 @@ public class Event {
     private String description;
 
     public Event(){
-        //keep constructor and add new ones as needed
+        //need empty constructor for firebase
     }
 
     public Date getDate() {

@@ -5,7 +5,7 @@ public class Amenity {
     private String details;
 
     public Amenity(){
-        //keep constructor and add new ones as needed
+        //need empty constructor for firebase
     }
 
     public String getName() {

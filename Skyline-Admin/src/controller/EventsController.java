@@ -1,17 +1,28 @@
 package controller;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
+import model.Event;
+import model.IDatabase;
 
-import java.util.Optional;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class EventsController {
     @FXML
-    private ListView<String> eventsList;
+    private TableView<Event> eventsTable;
+
+    @FXML
+    private TextField title;
+
+    @FXML
+    private TextArea description;
+
+    @FXML
+    private TextField date;
 
     @FXML
     private void initialize(){
@@ -19,33 +30,41 @@ public class EventsController {
 
     @FXML
     private void addEvent(){
-        // TODO: Implement a dialog box with more fields
-        TextInputDialog dialog = new TextInputDialog("New Event");
-
-        dialog.setTitle("Add New Event");
-        dialog.setHeaderText(null);
-        dialog.setContentText("Event Title:");
-
-        Optional<String> result = dialog.showAndWait();
-
-        result.ifPresent(title -> {
-            eventsList.getItems().add(title);
-        });
+        if (title.getText().equals("") || description.getText().equals("") || date.getText().equals("")){
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill in all the required fields!", ButtonType.CANCEL);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }else {
+            try {
+                // TODO: Add an event to the database, the following code is for testing
+                Event ev = new Event();
+                ev.setTitle(title.getText());
+                Date dateA = new SimpleDateFormat("dd/MM/yyyy").parse(date.getText());
+                ev.setDate(dateA);
+                ev.setDescription(description.getText());
+                eventsTable.getItems().add(ev);
+            }catch(ParseException e){
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter a valid date!", ButtonType.CANCEL);
+                alert.setHeaderText(null);
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
     private void removeEvent(){
-        if (eventsList.getSelectionModel().getSelectedItem() == null){
+        if (eventsTable.getSelectionModel().getSelectedItem() == null){
             Alert alert = new Alert(Alert.AlertType.ERROR, "Please select an event!", ButtonType.CANCEL);
             alert.setHeaderText(null);
             alert.showAndWait();
         }else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete " + eventsList.getSelectionModel().getSelectedItem() + " ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+            // TODO: Remove an event from the database
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete " + eventsTable.getSelectionModel().getSelectedItem() + " ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
             alert.setHeaderText(null);
             alert.showAndWait();
 
             if (alert.getResult() == ButtonType.YES) {
-                eventsList.getItems().remove(eventsList.getSelectionModel().getSelectedIndex());
+                eventsTable.getItems().remove(eventsTable.getSelectionModel().getSelectedItem());
             }
         }
     }

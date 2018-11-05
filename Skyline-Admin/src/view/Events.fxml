@@ -16,7 +16,7 @@
         <Double fx:id="HEIGHT" fx:value="480.0"/>
     </fx:define>
     <children>
-        <GridPane style="-fx-background-color: #ABAFDF;" hgap="10">
+        <GridPane style="-fx-background-color: #ABAFDF;" prefWidth="$WIDTH" hgap="10">
             <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0"
                                    prefWidth="${WIDTH * 0.15}"/>
@@ -52,18 +52,18 @@
                 <Button styleClass="button-utility" mnemonicParsing="false" text="Remove Event" onAction="#removeEvent"
                         GridPane.rowIndex="6" GridPane.columnIndex="1" GridPane.halignment="CENTER"/>
 
-                <TableView fx:id="eventsTable" prefHeight="${HEIGHT * 0.48}" prefWidth="$WIDTH" GridPane.columnIndex="2"
+                <TableView fx:id="eventsTable" prefHeight="${HEIGHT * 0.48}" GridPane.columnIndex="2"
                            GridPane.columnSpan="2" GridPane.rowSpan="7">
                     <columns>
-                        <TableColumn fx:id="dateCol" text="Date" prefWidth="${WIDTH * 0.10}">
+                        <TableColumn fx:id="dateCol" text="Date" prefWidth="${WIDTH * 0.20}">
                             <cellValueFactory><PropertyValueFactory property="date" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="titleCol" text="Title" prefWidth="${WIDTH * 0.10}">
+                        <TableColumn fx:id="titleCol" text="Title" prefWidth="${WIDTH * 0.20}">
                             <cellValueFactory><PropertyValueFactory property="title" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="descCol" text="Description" prefWidth="${WIDTH * 0.50}">
+                        <TableColumn fx:id="descCol" text="Description" prefWidth="${WIDTH * 0.30}">
                             <cellValueFactory><PropertyValueFactory property="description" />
                             </cellValueFactory>
                         </TableColumn>
@@ -75,6 +75,9 @@
                     <sortOrder>
                         <fx:reference source="dateCol"/>
                     </sortOrder>
+                    <placeholder>
+                        <Label text="There are currently no events."/>
+                    </placeholder>
                 </TableView>
             </children>
         </GridPane>

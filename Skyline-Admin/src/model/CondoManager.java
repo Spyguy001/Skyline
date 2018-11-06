@@ -1,4 +1,4 @@
 package model;
 
-public class CondoManager {
+public class CondoManager extends User {
 }

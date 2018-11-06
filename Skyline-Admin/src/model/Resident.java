@@ -1,16 +1,7 @@
 package model;
 
-public class Resident {
-    private String name;
+public class Resident extends User {
     private String lot;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getLot() {
         return lot;

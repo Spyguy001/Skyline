@@ -96,7 +96,7 @@ public class DatabaseInteractor {
         List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
         for (QueryDocumentSnapshot document : documents) {
             if (document.get("owner").equals(owner)) {
-                condos.add(new Condo(document.getString("name"), document.getString("address")));
+                // condos.add(new Condo(document.getString("name"), document.getString("address")));
                 System.out.println("Condo: " + document.getId());
                 System.out.println("Name: " + document.getString("name"));
                 if (document.contains("owner")) {

@@ -7,26 +7,33 @@ public interface IDatabase {
     public void deleteUser(String uid);
     public boolean hasUser(String uid);
     public User getUser(String uid);
+
+    public void createCondo(Condo condo);
+    public void deleteCondo(String cid);
+    public boolean hasCondo(String cid);
+    public Condo getCondo(String cid);
+
     public List<Condo> getCondosForUser(String uid);
-    public void addCondoToUser(String uid, Condo condo);
-    public void removeCondoFromUser(String uid, Condo condo);
+    public void addCondoToUser(String uid, String cid);
+    public void removeCondoFromUser(String uid, String cid);
 
+    public void addManagerToCondo(String uid, String cid);
+    public void removeManagerFromCondo(String uid, String cid);
+    public List<CondoManager> getManagersForCondo(String cid);
 
-    public void addManagerToCondo(CondoManager manager, Condo condo);
-    public void removeManagerFromCondo(CondoManager manager, Condo condo);
+    public void addResidentToCondo(String uid, String cid);
+    public void removeResidentFromCondo(String uid, String cid);
+    public List<Resident> getResidentsForCondo(String cid);
 
-    public void addResidentToCondo(Resident resident, Condo condo);
-    public void removeResidentFromCondo(Resident resident, Condo condo);
+    public void addEventToCondo(Event event, String cid);
+    public void removeEventFromCondo(String eid, String cid);
+    public List<Event> getEventsForCondo(String cid);
 
-    public void addEventToCondo(Event event, Condo condo);
-    public void removeEventFromCondo(Event event, Condo condo);
-    public List<Event> getEventsForCondo(Condo condo);
+    public void addAmenityToCondo(Amenity amenity, String cid);
+    public void removeAmenityFromCondo(String aid, String cid);
+    public List<Amenity> getAmenitiesForCondo(String cid);
 
-    public void addAmenityToCondo(Amenity amenity, Condo condo);
-    public void removeAmenityFromCondo(Amenity amenity, Condo condo);
-    public List<Amenity> getAmenitiesForCondo(Condo condo);
-
-    public void addAnnouncementToCondo(Announcement announcement, Condo condo);
-    public void removeAnnouncementFromCondo(Announcement announcement, Condo condo);
-    public List<Announcement> getAnnouncementsForCondo(Condo condo);
+    public void addAnnouncementToCondo(Announcement announcement, String cid);
+    public void removeAnnouncementFromCondo(String aid, String cid);
+    public List<Announcement> getAnnouncementsForCondo(String cid);
 }

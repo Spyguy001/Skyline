@@ -6,11 +6,13 @@ public class Condo {
     private String id;
     private String name;
     private String address;
+    private String oid;
 
     private List<Event> events;
     private List<Amenity> amenities;
     private List<Announcement> announcements;
     private List<String> managerIDs;
+    private List<String> residentIDs;
 
     /* no args constructor required for serialize/deserialize */
     public Condo() {}
@@ -37,6 +39,14 @@ public class Condo {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getOid() {
+        return oid;
+    }
+
+    public void setOid(String oid) {
+        this.oid = oid;
     }
 
     public List<Event> getEvents() {
@@ -69,5 +79,13 @@ public class Condo {
 
     public void setManagerIDs(List<String> managerIDs) {
         this.managerIDs = managerIDs;
+    }
+
+    public List<String> getResidentIDs() {
+        return residentIDs;
+    }
+
+    public void setResidentIDs(List<String> residentIDs) {
+        this.residentIDs = residentIDs;
     }
 }

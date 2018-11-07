@@ -6,7 +6,7 @@ public class Condo {
     private String id;
     private String name;
     private String address;
-    private String oid;
+    private String ownerId;
 
     private List<Event> events;
     private List<Amenity> amenities;
@@ -41,12 +41,12 @@ public class Condo {
         this.address = address;
     }
 
-    public String getOid() {
-        return oid;
+    public String getOwnerId() {
+        return ownerId;
     }
 
-    public void setOid(String oid) {
-        this.oid = oid;
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
     }
 
     public List<Event> getEvents() {
@@ -91,11 +91,6 @@ public class Condo {
 
     @Override
     public boolean equals(Object obj) {
-        if(!(obj instanceof Condo)) {
-            return false;
-        }
-
-        Condo condo = (Condo)obj;
-        return this.getId().equals(condo.getId());
+        return obj instanceof Condo && this.getId().equals(((Condo) obj).getId());
     }
 }

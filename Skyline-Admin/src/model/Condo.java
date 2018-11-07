@@ -88,4 +88,14 @@ public class Condo {
     public void setResidentIDs(List<String> residentIDs) {
         this.residentIDs = residentIDs;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Condo)) {
+            return false;
+        }
+
+        Condo condo = (Condo)obj;
+        return this.getId().equals(condo.getId());
+    }
 }

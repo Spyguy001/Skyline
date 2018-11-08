@@ -12,8 +12,8 @@
 <AnchorPane fx:id="rootPane" prefHeight="200" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.EventsController">
     <fx:define>
-        <Double fx:id="WIDTH" fx:value="720.0"/>
-        <Double fx:id="HEIGHT" fx:value="480.0"/>
+        <Double fx:id="WIDTH" fx:value="1024.0"/>
+        <Double fx:id="HEIGHT" fx:value="576.0"/>
     </fx:define>
     <children>
         <GridPane style="-fx-background-color: #ABAFDF;" prefWidth="$WIDTH" hgap="10">
@@ -41,12 +41,24 @@
                        GridPane.halignment="RIGHT"/>
                 <TextField fx:id="title" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
                 <Label style="-fx-text-fill: white;" text="Description:    " GridPane.rowIndex="1"
-                       GridPane.halignment="RIGHT"/>
-                <TextArea fx:id="description" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                       GridPane.halignment="RIGHT" GridPane.rowSpan="2" GridPane.valignment="CENTER"/>
+                <TextArea fx:id="description" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2"/>
                 <Label style="-fx-text-fill: white;" text="Date:    " GridPane.rowIndex="3"
                        GridPane.halignment="RIGHT"/>
                 <TextField fx:id="date" GridPane.columnIndex="1" GridPane.rowIndex="3" promptText="dd/MM/yyyy"/>
-
+                <Label style="-fx-text-fill: white;" text="Time:    " GridPane.rowIndex="4"
+                       GridPane.halignment="RIGHT" GridPane.valignment="TOP"/>
+                <HBox GridPane.columnIndex="1" GridPane.rowIndex="4">
+                    <TextField fx:id="time" promptText=""/>
+                    <ChoiceBox fx:id="timeChoice" value="PM">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="PM" />
+                                <String fx:value="AM" />
+                            </FXCollections>
+                        </items>
+                    </ChoiceBox>
+                </HBox>
                 <Button styleClass="button-utility" mnemonicParsing="false" text="Add Event" onAction="#addEvent"
                         GridPane.rowIndex="6" GridPane.halignment="CENTER"/>
                 <Button styleClass="button-utility" mnemonicParsing="false" text="Remove Event" onAction="#removeEvent"

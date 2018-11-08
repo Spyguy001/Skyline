@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("../view/Login.fxml"));
         primaryStage.setTitle("Skyline");
-        Scene scene = new Scene(root, 720, 480);
+        Scene scene = new Scene(root, 1024, 576);
         primaryStage.setScene(scene);
         scene.getStylesheets().add("view/StylesheetGlobal.css");
         primaryStage.show();

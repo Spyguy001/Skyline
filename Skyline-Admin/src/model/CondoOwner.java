@@ -8,6 +8,10 @@ public class CondoOwner extends User{
 
     private IDatabase database;
 
+    public CondoOwner(){
+        //empty constructor for firebase
+    }
+
     public CondoOwner(IDatabase database){
         this.database = database;
     }

@@ -554,7 +554,17 @@ public class DatabaseHandler implements IDatabase {
         DocumentSnapshot document;
         try {
             document = future.get();
-            return document.toObject(User.class);
+            int level = document.getLong("level").intValue();
+            switch (level) {
+                case 0:
+                    return document.toObject(Resident.class);
+                case 1:
+                    return document.toObject(CondoManager.class);
+                case 2:
+                    return document.toObject(CondoOwner.class);
+                default:
+                    return null;
+            }
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }

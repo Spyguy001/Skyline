@@ -14,6 +14,7 @@ public class CondoOwner extends User{
 
     public CondoOwner(IDatabase database){
         this.database = database;
+
     }
 
     public void removeManager(CondoManager manager, Condo condo) {

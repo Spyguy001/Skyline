@@ -63,12 +63,9 @@ public class LoginController {
             AnchorPane pane = fxmlLoader.load();
             OwnerController controller = fxmlLoader.<OwnerController>getController();
 
-            CondoOwner owner = new CondoOwner(database);
-            owner.setCondos(user.getCondos());
-            owner.setId(user.getId());
-            owner.setLevel(user.getLevel());
-            owner.setName(user.getName());
-            controller.setCondoOwner(owner);
+            user.setCondos(database.getCondosForUser(user.getId()));
+            System.out.println(user.getCondos().size());
+            controller.setCondoOwner((CondoOwner)user);
 
             rootPane.getChildren().setAll(pane);
         }

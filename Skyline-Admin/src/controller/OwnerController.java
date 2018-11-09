@@ -37,7 +37,7 @@ public class OwnerController {
     @FXML
     private TextField password;
     
-    private void setCondoOwner(CondoOwner condoOwner){
+    public void setCondoOwner(CondoOwner condoOwner){
         this.condoOwner = condoOwner;
     }
 

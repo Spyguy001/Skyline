@@ -1,5 +1,6 @@
 package controller;
 
+import Database.DatabaseHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
@@ -8,15 +9,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import model.DatabaseInteractor;
-import model.FirebaseAuthHandler;
+import model.*;
 
 import java.io.IOException;
 import java.util.Map;
 
 public class LoginController {
     private FirebaseAuthHandler authHandler;
-    private DatabaseInteractor dbInteractor;
+    private IDatabase database;
 
     @FXML
     private AnchorPane rootPane;
@@ -33,30 +33,43 @@ public class LoginController {
     @FXML
     private void initialize() throws IOException {
         this.authHandler = new FirebaseAuthHandler();
-        this.dbInteractor = new DatabaseInteractor();
+        this.database = new DatabaseHandler();
     }
 
     @FXML
     private void signIn() throws IOException {
         String uid;
-        Map<String, String> user;
+        User user;
 
         try {
             uid = this.authHandler.verifyUserAuth(username.getText(), password.getText());
-            user = this.dbInteractor.getUser(uid);
+            user = this.database.getUser(uid);
         } catch(Exception e) {
             System.err.println(e.getMessage());
+            e.printStackTrace();
             loginFailed.setText(e.getMessage());
             return;
         }
 
-        int userLevel = Integer.parseInt(user.get("level"));
+        int userLevel = user.getLevel();
         if(userLevel == 1) {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("../view/Index.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Index.fxml"));
+            AnchorPane pane = fxmlLoader.load();
+            //ManagerController controller = fxmlLoader.<ManagerController>getController();
             rootPane.getChildren().setAll(pane);
         }
         else if(userLevel == 2) {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("../view/Owner.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Owner.fxml"));
+            AnchorPane pane = fxmlLoader.load();
+            OwnerController controller = fxmlLoader.<OwnerController>getController();
+
+            CondoOwner owner = new CondoOwner(database);
+            owner.setCondos(user.getCondos());
+            owner.setId(user.getId());
+            owner.setLevel(user.getLevel());
+            owner.setName(user.getName());
+            controller.setCondoOwner(owner);
+
             rootPane.getChildren().setAll(pane);
         }
         else {

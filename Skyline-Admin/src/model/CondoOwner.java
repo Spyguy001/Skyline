@@ -41,4 +41,8 @@ public class CondoOwner extends User{
         this.getCondos().add(condo);
         this.database.addCondoToUser(this.getId(), condo.getId());
     }
+
+    public void setDatabase(IDatabase database){
+        this.database = database;
+    }
 }

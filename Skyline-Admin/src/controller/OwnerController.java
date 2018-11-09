@@ -39,6 +39,15 @@ public class OwnerController {
     
     public void setCondoOwner(CondoOwner condoOwner){
         this.condoOwner = condoOwner;
+        this.updateCondosList();
+    }
+
+    private void updateCondosList(){
+        //UPDATE MANAGERS HERE TOO
+        for(Condo c : this.condoOwner.getCondos()){
+            this.condosToManagers.put(c, new ArrayList<>());
+            listCondos.getItems().add(c);
+        }
     }
 
     @FXML
@@ -53,6 +62,7 @@ public class OwnerController {
             condo.setAddress(address.getText());
             condo.setName(nameCondo.getText());
             condo.setId(address.getText());
+            System.out.println(condoOwner.getCondos());
 
             this.condoOwner.addCondo(condo);
 

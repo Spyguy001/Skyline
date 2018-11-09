@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import model.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class LoginController {
@@ -63,9 +64,10 @@ public class LoginController {
             AnchorPane pane = fxmlLoader.load();
             OwnerController controller = fxmlLoader.<OwnerController>getController();
 
-            user.setCondos(database.getCondosForUser(user.getId()));
-            System.out.println(user.getCondos().size());
-            controller.setCondoOwner((CondoOwner)user);
+            CondoOwner owner = (CondoOwner)user;
+            owner.setCondos(database.getCondosForUser(owner.getId()));
+            owner.setDatabase(database);
+            controller.setCondoOwner(owner);
 
             rootPane.getChildren().setAll(pane);
         }

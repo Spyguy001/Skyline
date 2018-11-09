@@ -3,10 +3,10 @@ package model;
 import java.util.List;
 
 public abstract class User {
-    private String id;
-    private String name;
-    private Integer level;
-    private List<Condo> condos;
+    protected String id;
+    protected String name;
+    protected Integer level;
+    protected List<Condo> condos;
 
     public String getId() {
         return id;

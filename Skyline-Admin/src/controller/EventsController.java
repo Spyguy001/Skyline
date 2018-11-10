@@ -3,7 +3,13 @@ package controller;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.Event;
 import model.IDatabase;
@@ -74,6 +80,7 @@ public class EventsController {
                     alert.showAndWait();
                 }else {
                     eventsTable.getItems().add(ev);
+                    createEventPopup();
                 }
             }catch(ParseException e){
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter a valid date!", ButtonType.CANCEL);
@@ -99,5 +106,52 @@ public class EventsController {
                 eventsTable.getItems().remove(eventsTable.getSelectionModel().getSelectedItem());
             }
         }
+    }
+
+    private void createEventPopup(){
+        eventsTable.setRowFactory( tv -> {
+            TableRow<Event> row = new TableRow<>();
+            row.setOnMouseClicked(e -> {
+                if (e.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    // Create new stage for the dialog window
+                    final Stage dialog = new Stage();
+                    dialog.initModality(Modality.APPLICATION_MODAL);
+                    dialog.initOwner(eventsTable.getScene().getWindow());
+                    Event event = eventsTable.getSelectionModel().getSelectedItem();
+                    dialog.setTitle(event.getTitle());
+
+                    // Create the grid pane containing all the info
+                    GridPane gridPane = new GridPane();
+                    gridPane.setId("dialog-window");
+
+                    // Add constraints to the grid pane
+                    ColumnConstraints c1 = new ColumnConstraints();
+                    c1.setPercentWidth(25);
+                    ColumnConstraints c2 = new ColumnConstraints();
+                    c2.setPercentWidth(75);
+                    gridPane.getColumnConstraints().addAll(c1, c2);
+                    RowConstraints r1 = new RowConstraints();
+                    r1.setPercentHeight(25);
+                    RowConstraints r2 = new RowConstraints();
+                    r2.setPercentHeight(75);
+                    gridPane.getRowConstraints().addAll(r1, r2);
+
+                    // Add the info to the grid pane
+                    gridPane.add(new Label("Date:"), 0, 0);
+                    gridPane.add(new Label(event.getDate().toString()), 1, 0);
+                    gridPane.add(new Label("Description:"), 0, 1);
+                    Label desc = new Label(event.getDescription());
+                    desc.setWrapText(true);
+                    gridPane.add(desc, 1, 1);
+
+                    // Create the new scene
+                    Scene scene = new Scene(gridPane, 300, 200);
+                    scene.getStylesheets().add("view/StylesheetGlobal.css");
+                    dialog.setScene(scene);
+                    dialog.show();
+                }
+            });
+            return row ;
+        });
     }
 }

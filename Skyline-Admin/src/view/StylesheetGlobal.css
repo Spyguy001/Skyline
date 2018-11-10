@@ -181,6 +181,16 @@
     -fx-background-color: #F1CC66;
 }
 
+/* === DIALOG === */
+
+#dialog-window{
+    -fx-background-color: #545AA7;
+}
+
+#dialog-window .label {
+    -fx-text-fill: white;
+}
+
 #testing{
    -fx-border-color: black;
    -fx-border-insets: 0;

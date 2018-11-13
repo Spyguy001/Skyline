@@ -28,7 +28,7 @@
 /* === MENUS === */
 
 .menu-bar {
-    -fx-background-color: none;
+    -fx-background-color: linear-gradient(to right, #545AA7, #ABAFDF);;
 }
 
 .menu

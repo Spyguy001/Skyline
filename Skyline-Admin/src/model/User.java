@@ -56,4 +56,9 @@ public abstract class User {
     public boolean equals(Object obj) {
         return obj instanceof User && this.getId().equals(((User) obj).getId());
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

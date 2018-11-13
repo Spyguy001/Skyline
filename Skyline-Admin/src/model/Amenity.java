@@ -23,4 +23,9 @@ public class Amenity {
     public void setDetails(String details) {
         this.details = details;
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

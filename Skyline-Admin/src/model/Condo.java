@@ -146,4 +146,9 @@ public class Condo {
     public boolean equals(Object obj) {
         return obj instanceof Condo && this.getId().equals(((Condo) obj).getId());
     }
+
+    @Override
+    public String toString() {
+        return name + " @ " + address;
+    }
 }

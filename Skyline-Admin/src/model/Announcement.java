@@ -43,4 +43,9 @@ public class Announcement {
     public void setImportant(boolean important) {
         this.important = important;
     }
+
+    @Override
+    public String toString() {
+        return this.title;
+    }
 }

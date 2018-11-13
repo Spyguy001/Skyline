@@ -1,5 +1,6 @@
 package controller;
 
+import Database.DatabaseHandler;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -7,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.beans.value.ChangeListener;
 import model.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +16,7 @@ import java.util.stream.Collectors;
 
 public class OwnerController {
 
-    private HashMap<Condo, ArrayList<CondoManager>> condosToManagers = new HashMap<>();
+    private HashMap<Condo, List<CondoManager>> condosToManagers = new HashMap<>();
     private CondoOwner condoOwner;
     private IDatabase database;
 
@@ -45,14 +47,12 @@ public class OwnerController {
     
     public void setCondoOwner(CondoOwner condoOwner){
         this.condoOwner = condoOwner;
-        this.updateCondosList();
+        this.updateCondosToManagersMap();
     }
 
-    private void updateCondosList(){
+    private void updateCondosToManagersMap(){
         for(Condo c : this.condoOwner.getCondos()){
-            ArrayList<CondoManager> managers = new ArrayList<>(this.database.getManagersForCondo(c.getId()));
-            c.setManagerIDs(managers.stream().map(CondoManager::getId).collect(Collectors.toList()));
-            this.condosToManagers.put(c, managers);
+            this.condosToManagers.put(c, this.database.getManagersForCondo(c.getId()));
             listCondos.getItems().add(c);
         }
     }
@@ -166,7 +166,7 @@ public class OwnerController {
     }
 
     @FXML
-    private void initialize(){
+    private void initialize() throws IOException{
         listCondos.setCellFactory(param -> new ListCell<Condo>(){
             @Override
             protected void updateItem(Condo condo, boolean empty){

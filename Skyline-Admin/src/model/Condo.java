@@ -14,16 +14,16 @@ public class Condo {
     private List<Event> events;
     private List<Amenity> amenities;
     private List<Announcement> announcements;
-    private List<String> managerIDs;
-    private List<String> residentIDs;
+    private List<CondoManager> managers;
+    private List<Resident> residents;
 
     /* no args constructor required for serialize/deserialize */
     public Condo() {
         this.events = new ArrayList<>();
         this.amenities = new ArrayList<>();
         this.announcements = new ArrayList<>();
-        this.managerIDs = new ArrayList<>();
-        this.residentIDs = new ArrayList<>();
+        this.managers = new ArrayList<>();
+        this.residents = new ArrayList<>();
     }
 
     public String getId() {
@@ -110,36 +110,37 @@ public class Condo {
     }
 
     @Exclude
-    public List<String> getManagerIDs() {
-        return new ArrayList<>(managerIDs);
+    public List<CondoManager> getManagers() {
+        return new ArrayList<>(managers);
     }
 
-    public void addToManagerIDsList(String id){
-        this.managerIDs.add(id);
+    public void addToManagersList(CondoManager manager){
+        this.managers.add(manager);
     }
 
-    public void removeFromManagerIDsList(String id){
-        this.managerIDs.remove(id);
+    public void removeFromManagersList(CondoManager manager){
+        this.managers.remove(manager);
     }
-    public void setManagerIDs(List<String> managerIDs) {
-        this.managerIDs = managerIDs;
+
+    public void setManagers(List<CondoManager> managers) {
+        this.managers = managers;
     }
 
     @Exclude
-    public List<String> getResidentIDs() {
-        return new ArrayList<>(residentIDs);
+    public List<Resident> getResidents() {
+        return new ArrayList<>(residents);
     }
 
-    public void addToResidentIDsList(String id){
-        this.residentIDs.add(id);
+    public void addToResidentsList(Resident resident){
+        this.residents.add(resident);
     }
 
-    public void removeFromResidentIDsList(String id){
-        this.residentIDs.remove(id);
+    public void removeFromResidentsList(Resident resident){
+        this.residents.remove(resident);
     }
 
-    public void setResidentIDs(List<String> residentIDs) {
-        this.residentIDs = residentIDs;
+    public void setResidents(List<Resident> residents) {
+        this.residents = residents;
     }
 
     @Override

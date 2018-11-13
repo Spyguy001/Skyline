@@ -14,14 +14,14 @@ public class CondoOwner extends User{
     }
 
     public void removeManager(CondoManager manager, Condo condo) {
-        condo.getManagerIDs().remove(manager.getId());
+        condo.removeFromManagersList(manager);
         this.database.removeManagerFromCondo(manager.getId(), condo.getId());
         this.database.removeCondoFromUser(manager.getId(), condo.getId());
     }
 
     public void addManager(CondoManager manager, Condo condo) {
         this.database.createUser(manager);
-        condo.getManagerIDs().add(manager.getId());
+        condo.addToManagersList(manager);
         this.database.addManagerToCondo(manager.getId(), condo.getId());
         this.database.addCondoToUser(manager.getId(), condo.getId());
     }

@@ -67,6 +67,7 @@ public class LoginController {
             CondoOwner owner = (CondoOwner)user;
             owner.setCondos(database.getCondosForUser(owner.getId()));
             owner.setDatabase(database);
+            controller.setDatabase(database);
             controller.setCondoOwner(owner);
 
             rootPane.getChildren().setAll(pane);

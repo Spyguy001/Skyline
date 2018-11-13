@@ -9,12 +9,14 @@ import model.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class OwnerController {
 
     private HashMap<Condo, ArrayList<CondoManager>> condosToManagers = new HashMap<>();
     private CondoOwner condoOwner;
+    private IDatabase database;
 
     @FXML
     private ListView<Condo> listCondos;
@@ -36,6 +38,10 @@ public class OwnerController {
 
     @FXML
     private TextField password;
+
+    public void setDatabase(IDatabase database){
+        this.database = database;
+    }
     
     public void setCondoOwner(CondoOwner condoOwner){
         this.condoOwner = condoOwner;
@@ -43,9 +49,13 @@ public class OwnerController {
     }
 
     private void updateCondosList(){
-        //UPDATE MANAGERS HERE TOO
         for(Condo c : this.condoOwner.getCondos()){
-            this.condosToManagers.put(c, new ArrayList<>());
+            System.out.println(c);
+            ArrayList<CondoManager> managers = new ArrayList<>(this.database.getManagersForCondo(c.getId()));
+            for(CondoManager manager : managers){
+                c.addToManagerIDsList(manager.getId());
+            }
+            this.condosToManagers.put(c, managers);
             listCondos.getItems().add(c);
         }
     }
@@ -62,7 +72,7 @@ public class OwnerController {
             condo.setAddress(address.getText());
             condo.setName(nameCondo.getText());
             condo.setId(address.getText());
-            System.out.println(condoOwner.getCondos());
+            condo.setOwnerId(this.condoOwner.getId());
 
             this.condoOwner.addCondo(condo);
 
@@ -87,7 +97,16 @@ public class OwnerController {
                 alert.showAndWait();
             } else {
                 CondoManager manager = new CondoManager();
-                String uid = new FirebaseAuthHandler().createUserAcc(email.getText(), password.getText());
+                String uid = "";
+                try {
+                    uid = new FirebaseAuthHandler().createUserAcc(email.getText(), password.getText());
+                }
+                catch (IllegalArgumentException e){
+                    Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK);
+                    alert.setHeaderText(null);
+                    alert.showAndWait();
+                    return;
+                }
                 manager.setId(uid);
                 manager.setName(nameManager.getText());
                 manager.setLevel(1);

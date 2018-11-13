@@ -10,11 +10,7 @@ public class CondoOwner extends User{
 
     public CondoOwner(){
         //empty constructor for firebase
-    }
-
-    public CondoOwner(IDatabase database){
-        this.database = database;
-
+        this.setCondos(new ArrayList<>());
     }
 
     public void removeManager(CondoManager manager, Condo condo) {
@@ -31,14 +27,14 @@ public class CondoOwner extends User{
     }
 
     public void removeCondo(Condo condo) {
-        this.getCondos().remove(condo);
+        this.removeFromCondoList(condo);
         this.database.removeCondoFromUser(this.getId(), condo.getId());
         this.database.deleteCondo(condo.getId());
     }
 
     public void addCondo(Condo condo) {
         this.database.createCondo(condo);
-        this.getCondos().add(condo);
+        this.addToCondoList(condo);
         this.database.addCondoToUser(this.getId(), condo.getId());
     }
 

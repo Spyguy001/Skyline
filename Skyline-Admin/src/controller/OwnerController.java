@@ -166,7 +166,7 @@ public class OwnerController {
     }
 
     @FXML
-    private void initialize() throws IOException{
+    private void initialize(){
         listCondos.setCellFactory(param -> new ListCell<Condo>(){
             @Override
             protected void updateItem(Condo condo, boolean empty){

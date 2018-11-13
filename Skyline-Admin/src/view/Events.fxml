@@ -45,12 +45,12 @@
                 <TextArea fx:id="description" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2"/>
                 <Label style="-fx-text-fill: white;" text="Date:    " GridPane.rowIndex="3"
                        GridPane.halignment="RIGHT"/>
-                <TextField fx:id="date" GridPane.columnIndex="1" GridPane.rowIndex="3" promptText="dd/MM/yyyy"/>
+                <TextField fx:id="date" GridPane.columnIndex="1" GridPane.rowIndex="3" promptText="dd/mm/yyyy"/>
                 <Label style="-fx-text-fill: white;" text="Time:    " GridPane.rowIndex="4"
                        GridPane.halignment="RIGHT" GridPane.valignment="TOP"/>
                 <HBox GridPane.columnIndex="1" GridPane.rowIndex="4">
-                    <TextField fx:id="time" promptText=""/>
-                    <ChoiceBox fx:id="timeChoice" value="PM">
+                    <TextField fx:id="time" promptText="hh:ss"/>
+                    <ChoiceBox styleClass="button-utility" fx:id="timeChoice" value="PM">
                         <items>
                             <FXCollections fx:factory="observableArrayList">
                                 <String fx:value="PM" />

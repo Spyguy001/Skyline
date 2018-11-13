@@ -12,6 +12,10 @@
     -fx-background-color: #3A4092;
 }
 
+.main-tool-bar{
+    -fx-background-color: linear-gradient(to right, #545AA7, #ABAFDF);
+}
+
 /* === PANES === */
 .pane-top{
     -fx-background-color: #3A4092;
@@ -24,7 +28,7 @@
 /* === MENUS === */
 
 .menu-bar {
-    -fx-background-color: linear-gradient(to right, #545AA7, #ABAFDF);
+    -fx-background-color: none;
 }
 
 .menu
@@ -167,6 +171,10 @@
    */
 }
 
+.button-utility .label{
+    -fx-text-fill: white;
+}
+
 .button-utility:hover{
     -fx-background-color: #F1CC66;
 }
@@ -180,6 +188,16 @@
 .button-signIn:hover{
     -fx-background-color: #F1CC66;
 }
+
+.button-signOut{
+    -fx-background-color: none;
+    -fx-text-fill: white;
+}
+
+.button-signOut:hover{
+    -fx-text-fill: #F1CC66;
+}
+
 
 /* === DIALOG === */
 

@@ -8,8 +8,8 @@
 <AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.LoginController">
     <fx:define>
-        <Double fx:id="WIDTH" fx:value="720.0"/>
-        <Double fx:id="HEIGHT" fx:value="480.0"/>
+        <Double fx:id="WIDTH" fx:value="1024.0"/>
+        <Double fx:id="HEIGHT" fx:value="576.0"/>
     </fx:define>
     <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="$HEIGHT"
           prefWidth="$WIDTH" style="-fx-background-color: #545AA7;">

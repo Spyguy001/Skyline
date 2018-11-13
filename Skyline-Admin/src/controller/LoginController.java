@@ -44,7 +44,6 @@ public class LoginController {
 
         try {
             uid = this.authHandler.verifyUserAuth(username.getText(), password.getText());
-            user = this.database.getUser(uid);
         } catch(Exception e) {
             System.err.println(e.getMessage());
             e.printStackTrace();
@@ -52,6 +51,7 @@ public class LoginController {
             return;
         }
 
+        user = this.database.getUser(uid);
         int userLevel = user.getLevel();
         if(userLevel == 1) {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Index.fxml"));

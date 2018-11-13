@@ -10,7 +10,7 @@ import model.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.stream.Collectors;
 
 public class OwnerController {
 
@@ -50,11 +50,8 @@ public class OwnerController {
 
     private void updateCondosList(){
         for(Condo c : this.condoOwner.getCondos()){
-            System.out.println(c);
             ArrayList<CondoManager> managers = new ArrayList<>(this.database.getManagersForCondo(c.getId()));
-            for(CondoManager manager : managers){
-                c.addToManagerIDsList(manager.getId());
-            }
+            c.setManagerIDs(managers.stream().map(CondoManager::getId).collect(Collectors.toList()));
             this.condosToManagers.put(c, managers);
             listCondos.getItems().add(c);
         }
@@ -97,7 +94,7 @@ public class OwnerController {
                 alert.showAndWait();
             } else {
                 CondoManager manager = new CondoManager();
-                String uid = "";
+                String uid;
                 try {
                     uid = new FirebaseAuthHandler().createUserAcc(email.getText(), password.getText());
                 }

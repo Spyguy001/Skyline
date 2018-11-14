@@ -12,8 +12,6 @@ import javafx.scene.layout.AnchorPane;
 import model.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Map;
 
 public class LoginController {
     private FirebaseAuthHandler authHandler;
@@ -54,7 +52,7 @@ public class LoginController {
         user = this.database.getUser(uid);
         int userLevel = user.getLevel();
         if(userLevel == 1) {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Index.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Manager.fxml"));
             AnchorPane pane = fxmlLoader.load();
             //ManagerController controller = fxmlLoader.<ManagerController>getController();
             rootPane.getChildren().setAll(pane);

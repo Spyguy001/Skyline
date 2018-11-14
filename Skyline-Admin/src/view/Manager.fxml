@@ -41,7 +41,6 @@
                         </items>
                     </ToolBar>
                     <AnchorPane fx:id="selectedButtonPane" prefHeight="200">
-                        <fx:include source="Events.fxml"/>
                     </AnchorPane>
                 </VBox>
             </StackPane>

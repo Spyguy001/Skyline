@@ -11,12 +11,15 @@ import javafx.scene.layout.RowConstraints;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import model.Condo;
+import model.CondoManager;
 import model.Event;
 import model.IDatabase;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class EventsController {
     @FXML
@@ -37,10 +40,28 @@ public class EventsController {
     @FXML
     private ChoiceBox<String> timeChoice;
 
+    private IDatabase database;
+    private CondoManager manager;
+    private Condo condo;
+
+    public void setCondo(Condo condo) {
+        this.condo = condo;
+    }
+
+    public void setManager(CondoManager manager) {
+        this.manager = manager;
+    }
+
+    public void loadEventsForCondo(){
+        for(Event event : this.condo.getEvents()){
+            System.out.println(event.getDate());
+            eventsTable.getItems().add(event);
+        }
+    }
+
     @FXML
     private void initialize(){
-        //eventsTable.getColumns().forEach(this::addDescriptionTooltip);
-        // TODO: Initialize eventsTable with data from the database.
+        eventsTable.getColumns().forEach(this::addDescriptionTooltip);
     }
 
     private <T> void addDescriptionTooltip(TableColumn<Event,T> column) {
@@ -67,19 +88,21 @@ public class EventsController {
         }else {
             try {
                 // TODO: Add an event to the database, the following code is for testing
-                Event ev = new Event();
-                ev.setTitle(title.getText());
+                Event event = new Event();
+                event.setTitle(title.getText());
                 String dateWithTime = date.getText() + " " + time.getText() + " " + timeChoice.getValue();
                 Date dateA = new SimpleDateFormat("dd/MM/yyyy h:mm a").parse(dateWithTime);
-                ev.setDate(dateA);
-                ev.setDescription(description.getText());
+                event.setDate(dateA);
+                event.setId(Long.toString(System.currentTimeMillis()));
+                event.setDescription(description.getText());
                 String[] hoursMinutes = time.getText().split(":");
                 if (Integer.parseInt(hoursMinutes[0]) < 1 || Integer.parseInt(hoursMinutes[0]) > 12 || Integer.parseInt(hoursMinutes[0]) < 0 || Integer.parseInt(hoursMinutes[1]) > 59){
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter a valid time!", ButtonType.CANCEL);
                     alert.setHeaderText(null);
                     alert.showAndWait();
                 }else {
-                    eventsTable.getItems().add(ev);
+                    this.manager.addEventToCondo(event, this.condo);
+                    eventsTable.getItems().add(event);
                     createEventPopup();
                 }
             }catch(ParseException e){

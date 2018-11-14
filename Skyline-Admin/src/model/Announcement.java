@@ -3,6 +3,7 @@ package model;
 import java.util.Date;
 
 public class Announcement {
+    private String id;
     private Date date;
     private String title;
     private String description;
@@ -10,6 +11,14 @@ public class Announcement {
 
     public Announcement(){
         //need empty constructor for firebase
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Date getDate() {
@@ -42,6 +51,11 @@ public class Announcement {
 
     public void setImportant(boolean important) {
         this.important = important;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Announcement && this.getId().equals(((Announcement) obj).getId());
     }
 
     @Override

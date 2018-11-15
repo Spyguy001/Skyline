@@ -14,6 +14,7 @@ import model.CondoManager;
 import model.Event;
 import model.IDatabase;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -61,6 +62,7 @@ public class EventsController {
     @FXML
     private void initialize(){
         eventsTable.getColumns().forEach(this::addDescriptionTooltip);
+        date.setValue(LocalDate.now());
     }
 
     private <T> void addDescriptionTooltip(TableColumn<Event,T> column) {
@@ -80,7 +82,7 @@ public class EventsController {
 
     @FXML
     private void addEvent(){
-        if (title.getText().equals("") || description.getText().equals("")){
+        if (title.getText().equals("") || description.getText().equals("") || date.getValue() == null){
             Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill in all the required fields!", ButtonType.CANCEL);
             alert.setHeaderText(null);
             alert.showAndWait();

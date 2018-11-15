@@ -121,7 +121,9 @@ public class EventsController {
             alert.showAndWait();
 
             if (alert.getResult() == ButtonType.YES) {
-                eventsTable.getItems().remove(eventsTable.getSelectionModel().getSelectedItem());
+                Event event = eventsTable.getSelectionModel().getSelectedItem();
+                this.manager.removeEventFromCondo(event, this.condo);
+                eventsTable.getItems().remove(event);
             }
         }
     }

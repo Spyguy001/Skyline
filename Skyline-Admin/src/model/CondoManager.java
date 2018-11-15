@@ -18,12 +18,12 @@ public class CondoManager extends User {
     public void addEventToCondo(Event event, Condo condo) {
         condo.addToEventsList(event);
         this.database.addEventToCondo(event, condo.getId());
-        System.out.println(event.getId());
-        System.out.println(condo.getId());
-        System.out.println(this.database.getEventsForCondo(condo.getId()).size());
     }
 
-    public void removeEventFromCondo(Event event, Condo condo) {}
+    public void removeEventFromCondo(Event event, Condo condo) {
+        condo.removeFromEventsList(event);
+        this.database.removeEventFromCondo(event.getId(), condo.getId());
+    }
 
     public void addAmenityToCondo(Amenity amenity, Condo condo) {}
 

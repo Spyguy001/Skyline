@@ -93,4 +93,8 @@ public class CondoController implements DatabaseCallback {
             currentDataCallBack.onDataFetch();
         }
     }
+
+    public void addEvent(Event event) {
+        this.remoteDatabse.addEvent(event);
+    }
 }

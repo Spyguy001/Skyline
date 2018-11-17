@@ -12,19 +12,26 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.share.info.skyline.Database.DataFetchCallback;
 import com.share.info.skyline.Database.LocalDatabase;
 import com.share.info.skyline.Database.LocalFirebase;
 import com.share.info.skyline.Database.RemoteFirebase;
 import com.share.info.skyline.Model.CondoController;
+import com.share.info.skyline.Model.Event;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class InitilizationActivity extends AppCompatActivity implements DataFetchCallback {
 
     private static final String USERS = "Users";
+    private static final String CONDOS = "Condos";
     private FirebaseFirestore firebaseFirestore;
-    private DocumentReference condoDocumentReference;
+    private List<DocumentReference> condoDocumentReferenceList;
 
     private ProgressDialog retrieveProgressDialog;
     private ProgressDialog initializeProgressDialogue;
@@ -33,6 +40,8 @@ public class InitilizationActivity extends AppCompatActivity implements DataFetc
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         firebaseFirestore = FirebaseFirestore.getInstance();
+
+        condoDocumentReferenceList = new ArrayList<>();
 
         retrieveProgressDialog = new ProgressDialog(this);
         initializeProgressDialogue = new ProgressDialog(this);
@@ -48,28 +57,29 @@ public class InitilizationActivity extends AppCompatActivity implements DataFetc
 
         firebaseFirestore.collection(USERS)
                 .document(userId)
+                .collection(CONDOS)
                 .get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if(!queryDocumentSnapshots.isEmpty()) {
 
-                        // retrieve condo
-                        condoDocumentReference = documentSnapshot.getDocumentReference("condo");
-
-                        // end progress bar
-                        retrieveProgressDialog.dismiss();
-                        // start progress bar
-                        initializeProgressDialogue.setMessage("Initializing your Condo ...");
-                        initializeProgressDialogue.show();
-                        initilizeCondoController();
-
+                            for (DocumentSnapshot condoRefSnapshot : queryDocumentSnapshots) {
+                                condoDocumentReferenceList.add((DocumentReference) condoRefSnapshot.get("docRef"));
+                            }
+                            // end progress bar
+                            retrieveProgressDialog.dismiss();
+                            // start progress bar
+                            initializeProgressDialogue.setMessage("Initializing your Condo ...");
+                            initializeProgressDialogue.show();
+                            initilizeCondoController();
+                        }
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
 
-                        Log.w("ERROR", e.toString());
                     }
                 });
 
@@ -82,7 +92,8 @@ public class InitilizationActivity extends AppCompatActivity implements DataFetc
         LocalDatabase localFirebase = new LocalFirebase();
 
         RemoteFirebase remoteDatabase = RemoteFirebase.getInstance();
-        remoteDatabase.init(condoDocumentReference);
+        // TODO: allow for multiple condos to be viewed in the future
+        remoteDatabase.init(condoDocumentReferenceList.get(0));
 
         condoController.init(remoteDatabase, localFirebase);
         condoController.fetch(this);

@@ -7,7 +7,8 @@ public class Event {
     private Date date;
     private String title;
     private String description;
-    private String place;
+    private String location;
+    private String id;
 
     public Date getDate() {
         return date;
@@ -33,11 +34,19 @@ public class Event {
         this.description = description;
     }
 
-    public String getPlace() {
-        return place;
+    public String getLocation() {
+        return this.location;
     }
 
-    public void setPlace(String place) {
-        this.place = place;
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

@@ -56,14 +56,17 @@ public class RemoteFirebase implements RemoteDatabase {
                                         @Override
                                         public void onSuccess(QuerySnapshot documentSnapshots) {
 
-                                            if(!documentSnapshots.isEmpty()) {
+                                            List<Event> events = new ArrayList<>();
 
-                                                List<Event> events = new ArrayList<>();
+                                            if(!documentSnapshots.isEmpty()) {
                                                 for (DocumentSnapshot eventSnapshot : documentSnapshots) {
                                                     events.add(eventSnapshot.toObject(Event.class));
                                                 }
-                                                databaseCallback.eventsCallback(events);
                                             }
+
+                                            databaseCallback.eventsCallback(events);
+
+                                            Log.d("SUCCESS", "Events Document retrieved successfully");
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -72,8 +75,6 @@ public class RemoteFirebase implements RemoteDatabase {
                                             Log.d("ERROR", e.toString());
                                         }
                                     });
-
-                            Log.d("SUCCESS", "Document retrieved successfully");
 
                         } else {
                             Log.d("ERROR", "could not find document");
@@ -87,7 +88,6 @@ public class RemoteFirebase implements RemoteDatabase {
                     }
                 });
     }
-
 
     @Override
     public void fetchAnnouncements(final DatabaseCallback databaseCallback) {
@@ -106,15 +106,17 @@ public class RemoteFirebase implements RemoteDatabase {
                                         @Override
                                         public void onSuccess(QuerySnapshot documentSnapshots) {
 
-                                            if(!documentSnapshots.isEmpty()) {
+                                            List<Announcement> announcements = new ArrayList<>();
 
-                                                List<Announcement> announcements = new ArrayList<>();
+                                            if(!documentSnapshots.isEmpty()) {
                                                 for (DocumentSnapshot announcementSnapshot : documentSnapshots) {
                                                     announcements.add(announcementSnapshot.toObject(Announcement.class));
                                                 }
-                                                databaseCallback.announcementsCallback(announcements);
                                             }
 
+                                            databaseCallback.announcementsCallback(announcements);
+
+                                            Log.d("SUCCESS", "Announcements Document retrieved successfully");
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -123,8 +125,6 @@ public class RemoteFirebase implements RemoteDatabase {
                                             Log.d("ERROR", e.toString());
                                         }
                                     });
-
-                            Log.d("SUCCESS", "Document retrieved successfully");
 
                         } else {
                             Log.d("ERROR", "could not find document");
@@ -156,14 +156,17 @@ public class RemoteFirebase implements RemoteDatabase {
                                         @Override
                                         public void onSuccess(QuerySnapshot documentSnapshots) {
 
-                                            if(!documentSnapshots.isEmpty()) {
+                                            List<Amenity> amenities = new ArrayList<>();
 
-                                                List<Amenity> amenities = new ArrayList<>();
+                                            if(!documentSnapshots.isEmpty()) {
                                                 for (DocumentSnapshot amenitySnapshot : documentSnapshots) {
                                                     amenities.add(amenitySnapshot.toObject(Amenity.class));
                                                 }
-                                                databaseCallback.amenitiesCallback(amenities);
                                             }
+
+                                            databaseCallback.amenitiesCallback(amenities);
+
+                                            Log.d("SUCCESS", "Amenities Document retrieved successfully");
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -172,9 +175,6 @@ public class RemoteFirebase implements RemoteDatabase {
                                             Log.d("ERROR", e.toString());
                                         }
                                     });
-
-
-                            Log.d("SUCCESS", "Document retrieved successfully");
 
                         } else {
                             Log.d("ERROR", "could not find document");
@@ -187,5 +187,29 @@ public class RemoteFirebase implements RemoteDatabase {
                         Log.w("ERROR", e.toString());
                     }
                 });
+    }
+
+    @Override
+    public void addEvent(Event event) {
+        condoDocumentReference
+                .collection(EVENTS)
+                .document(event.getId())
+                .set(event)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
+    }
+
+    @Override
+    public void bookAmenity() {
+
     }
 }

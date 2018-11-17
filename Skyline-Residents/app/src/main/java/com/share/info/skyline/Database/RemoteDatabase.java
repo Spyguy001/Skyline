@@ -11,4 +11,7 @@ public interface RemoteDatabase {
     public void fetchEvents(DatabaseCallback databaseCallback);
     public void fetchAnnouncements(DatabaseCallback databaseCallback);
     public void fetchAmenities(DatabaseCallback databaseCallback);
+
+    public void addEvent(Event event);
+    public void bookAmenity();
 }

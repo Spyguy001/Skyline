@@ -36,4 +36,6 @@ public interface IDatabase {
     public void addAnnouncementToCondo(Announcement announcement, String cid);
     public void removeAnnouncementFromCondo(String aid, String cid);
     public List<Announcement> getAnnouncementsForCondo(String cid);
+
+    public void sendNotificationToResidentsOfCondo(Announcement announcement, String cid);
 }

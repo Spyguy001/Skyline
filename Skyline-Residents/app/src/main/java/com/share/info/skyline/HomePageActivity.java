@@ -23,6 +23,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.share.info.skyline.Database.RemoteFirebase;
 import com.share.info.skyline.FeatureFragments.AmenitiesFragment;
 import com.share.info.skyline.FeatureFragments.AnnouncementFragment;
 import com.share.info.skyline.FeatureFragments.EventsFragment;
@@ -103,7 +104,12 @@ public class HomePageActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
+
+                        // if the user has logged out, set push message token to null
+                        RemoteFirebase.getInstance().updateToken(null);
+
                         firebaseAuth.signOut();
+
                         finish();
                         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                     }
@@ -114,6 +120,7 @@ public class HomePageActivity extends AppCompatActivity {
                         dialog.dismiss();
                     }
                 });
+
 
         alertBuilder.show();
     }

@@ -6,14 +6,19 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.share.info.skyline.Database.RemoteFirebase;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -92,6 +97,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             finish();
                             Intent intent = new Intent(getApplicationContext(), InitilizationActivity.class);
                             intent.putExtra("uid", firebaseAuth.getCurrentUser().getUid());
+
+                            // TODO: this is a temporary hack
+                            FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener( LoginActivity.this,
+                                    new OnSuccessListener<InstanceIdResult>() {
+                                @Override
+                                public void onSuccess(InstanceIdResult instanceIdResult) {
+                                    String newToken = instanceIdResult.getToken();
+                                    RemoteFirebase.getInstance().updateToken(newToken);
+
+                                }
+                            });
+
                             startActivity(intent);
 
                         } else {

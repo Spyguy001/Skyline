@@ -5,8 +5,10 @@ import android.util.Log;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.share.info.skyline.Model.Amenity;
 import com.share.info.skyline.Model.Announcement;
@@ -21,6 +23,7 @@ public class RemoteFirebase implements RemoteDatabase {
     private static final String ANNOUCEMENTS = "Announcements";
     private static final String EVENTS = "Events";
     private static final String AMENITIES = "Amenities";
+    private static final String USERS = "Users";
 
     private static RemoteFirebase remoteFirebase = null;
     private DocumentReference condoDocumentReference;
@@ -58,7 +61,7 @@ public class RemoteFirebase implements RemoteDatabase {
 
                                             List<Event> events = new ArrayList<>();
 
-                                            if(!documentSnapshots.isEmpty()) {
+                                            if (!documentSnapshots.isEmpty()) {
                                                 for (DocumentSnapshot eventSnapshot : documentSnapshots) {
                                                     events.add(eventSnapshot.toObject(Event.class));
                                                 }
@@ -108,7 +111,7 @@ public class RemoteFirebase implements RemoteDatabase {
 
                                             List<Announcement> announcements = new ArrayList<>();
 
-                                            if(!documentSnapshots.isEmpty()) {
+                                            if (!documentSnapshots.isEmpty()) {
                                                 for (DocumentSnapshot announcementSnapshot : documentSnapshots) {
                                                     announcements.add(announcementSnapshot.toObject(Announcement.class));
                                                 }
@@ -158,7 +161,7 @@ public class RemoteFirebase implements RemoteDatabase {
 
                                             List<Amenity> amenities = new ArrayList<>();
 
-                                            if(!documentSnapshots.isEmpty()) {
+                                            if (!documentSnapshots.isEmpty()) {
                                                 for (DocumentSnapshot amenitySnapshot : documentSnapshots) {
                                                     amenities.add(amenitySnapshot.toObject(Amenity.class));
                                                 }
@@ -211,5 +214,25 @@ public class RemoteFirebase implements RemoteDatabase {
     @Override
     public void bookAmenity() {
 
+    }
+
+    @Override
+    public void updateToken(String token) {
+
+        FirebaseFirestore.getInstance().collection(USERS)
+                .document(FirebaseAuth.getInstance().getUid())
+                .update("token", token)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("SUCCESS", "updated user token successfully");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e("UPDATE_TOKEN", e.toString());
+                    }
+                });
     }
 }

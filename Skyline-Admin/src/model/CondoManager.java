@@ -53,4 +53,8 @@ public class CondoManager extends User {
         condo.removeFromAnnouncementsList(announcement);
         this.database.removeAnnouncementFromCondo(announcement.getId(), condo.getId());
     }
+
+    public void sendNotificationToResidents(Announcement announcement, Condo condo) {
+        this.database.sendNotificationToResidentsOfCondo(announcement, condo.getId());
+    }
 }

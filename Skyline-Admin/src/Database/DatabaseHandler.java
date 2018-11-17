@@ -7,6 +7,9 @@ import com.google.cloud.firestore.*;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingException;
+import com.google.firebase.messaging.Message;
 import model.*;
 
 import java.io.FileInputStream;
@@ -28,6 +31,7 @@ public class DatabaseHandler implements IDatabase {
     private final String AMENITIES = "Amenities";
     private final String ANNOUNCEMENTS = "Announcements";
     private final String CONDOS = "Condos";
+    private final String DOCREF = "docRef";
 
     public DatabaseHandler() throws IOException {
         FileInputStream serviceFile = new FileInputStream("ServiceAccountKey.json");
@@ -80,7 +84,7 @@ public class DatabaseHandler implements IDatabase {
             for (QueryDocumentSnapshot document : documents) {
 
                 // get the document in which the condo info is stored
-                DocumentReference documentReference = (DocumentReference) document.get("docRef");
+                DocumentReference documentReference = (DocumentReference) document.get(DOCREF);
                 ApiFuture<DocumentSnapshot> future = this.db.document(documentReference.getPath()).get();
                 DocumentSnapshot documentSnapshot = future.get();
 
@@ -103,7 +107,7 @@ public class DatabaseHandler implements IDatabase {
     @Override
     public void addCondoToUser(String uid, String cid) {
         HashMap<String, DocumentReference> condoObj = new HashMap<>();
-        condoObj.put("docRef", getCondoDocRef(cid));
+        condoObj.put(DOCREF, getCondoDocRef(cid));
 
         ApiFuture<WriteResult> writeResult = this.db.collection(USERS)
             .document(uid)
@@ -154,7 +158,7 @@ public class DatabaseHandler implements IDatabase {
     public void addManagerToCondo(String uid, String cid) {
 
         HashMap<String, DocumentReference> managerObj = new HashMap<>();
-        managerObj.put("docRef", getUserDocRef(uid));
+        managerObj.put(DOCREF, getUserDocRef(uid));
 
         ApiFuture<WriteResult> writeResult = this.db.collection(CONDOS)
             .document(cid)
@@ -205,7 +209,7 @@ public class DatabaseHandler implements IDatabase {
             for (QueryDocumentSnapshot document : documents) {
 
                 // get the document in which the condo info is stored
-                DocumentReference documentReference = (DocumentReference) document.get("docRef");
+                DocumentReference documentReference = (DocumentReference) document.get(DOCREF);
                 ApiFuture<DocumentSnapshot> future = this.db.document(documentReference.getPath()).get();
                 DocumentSnapshot documentSnapshot = future.get();
 
@@ -230,7 +234,7 @@ public class DatabaseHandler implements IDatabase {
     public void addResidentToCondo(String uid, String cid) {
 
         HashMap<String, DocumentReference> residentObj = new HashMap<>();
-        residentObj.put("docRef", getUserDocRef(uid));
+        residentObj.put(DOCREF, getUserDocRef(uid));
 
         ApiFuture<WriteResult> writeResult = this.db.collection(CONDOS)
             .document(cid)
@@ -281,7 +285,7 @@ public class DatabaseHandler implements IDatabase {
             for (QueryDocumentSnapshot document : documents) {
 
                 // get the document in which the resident info is stored
-                DocumentReference documentReference = (DocumentReference) document.get("docRef");
+                DocumentReference documentReference = (DocumentReference) document.get(DOCREF);
                 ApiFuture<DocumentSnapshot> future = this.db.document(documentReference.getPath()).get();
                 DocumentSnapshot documentSnapshot = future.get();
 
@@ -647,5 +651,58 @@ public class DatabaseHandler implements IDatabase {
         }
 
         return null;
+    }
+
+    public void sendNotificationToResidentsOfCondo(Announcement announcement, String cid) {
+
+        Map<String, String> messageData = new HashMap<>();
+        messageData.put("title", announcement.getTitle());
+        messageData.put("details", announcement.getDescription());
+
+        // get a list of all the "resident" documents the condo has
+        ApiFuture<QuerySnapshot> query = db.collection(CONDOS)
+            .document(cid)
+            .collection(RESIDENTS)
+            .get();
+
+        // build and send message for each resident
+        QuerySnapshot querySnapshot;
+        try {
+            querySnapshot = query.get();
+            List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
+
+            for (QueryDocumentSnapshot document : documents) {
+
+                // get the document in which the resident info is stored
+                DocumentReference documentReference = (DocumentReference) document.get(DOCREF);
+                ApiFuture<DocumentSnapshot> future = this.db.document(documentReference.getPath()).get();
+                DocumentSnapshot documentSnapshot = future.get();
+
+                String registrationToken  = documentSnapshot.getString("token");
+
+                if (registrationToken != null) {
+
+                    // See documentation on defining a message payload.
+                    Message message = Message.builder()
+                        .putAllData(messageData)
+                        .setToken(registrationToken)
+                        .build();
+
+                    // Send a message to the device corresponding to the provided
+                    // registration token.
+                    String response = null;
+                    try {
+                        response = FirebaseMessaging.getInstance().send(message);
+                    } catch (FirebaseMessagingException e) {
+                        e.printStackTrace();
+                    }
+                    // Response is a message ID string.
+                    System.out.println("Successfully sent message: " + response);
+                }
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+
     }
 }

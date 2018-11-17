@@ -92,7 +92,12 @@ public class AnnouncementsController {
             an.setDate(date);
             an.setDescription(description.getText());
             an.setImportant(important.isSelected());
+
             this.manager.addAnnouncementToCondo(an, this.condo);
+            if (notification.isSelected()) {
+                this.manager.sendNotificationToResidents(an, this.condo);
+            }
+
             announcementsTable.getItems().add(an);
             createAnnouncementPopup();
         }

@@ -14,4 +14,6 @@ public interface RemoteDatabase {
 
     public void addEvent(Event event);
     public void bookAmenity();
+
+    void updateToken(String s);
 }

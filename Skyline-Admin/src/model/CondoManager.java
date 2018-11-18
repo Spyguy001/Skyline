@@ -12,11 +12,16 @@ public class CondoManager extends User {
     }
 
     public void addResidentToCondo(Resident resident, Condo condo) {
-
+        this.database.createUser(resident);
+        condo.addToResidentsList(resident);
+        this.database.addResidentToCondo(resident.getId(), condo.getId());
+        this.database.addCondoToUser(resident.getId(), condo.getId());
     }
 
     public void removeResidentFromCondo(Resident resident, Condo condo) {
-
+        condo.removeFromResidentsList(resident);
+        this.database.removeResidentFromCondo(resident.getId(), condo.getId());
+        this.database.removeCondoFromUser(resident.getId(), condo.getId());
     }
 
     public void addEventToCondo(Event event, Condo condo) {

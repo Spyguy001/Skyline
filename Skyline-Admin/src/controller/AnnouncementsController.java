@@ -45,7 +45,7 @@ public class AnnouncementsController {
     }
 
     public void loadAnnouncementsForCondo(){
-        for(Announcement announcement: this.condo.getAnnouncements()){
+        for (Announcement announcement: this.condo.getAnnouncements()){
             announcementsTable.getItems().add(announcement);
         }
     }
@@ -100,9 +100,8 @@ public class AnnouncementsController {
             alert.setHeaderText(null);
             alert.showAndWait();
         } else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete " +
-                    announcementsTable.getSelectionModel().getSelectedItem().getTitle() + " ?", ButtonType.YES,
-                    ButtonType.NO, ButtonType.CANCEL);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete " + announcementsTable.getSelectionModel()
+                    .getSelectedItem().getTitle() + " ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
             alert.setHeaderText(null);
             alert.showAndWait();
 

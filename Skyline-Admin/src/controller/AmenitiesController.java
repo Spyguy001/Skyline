@@ -40,7 +40,7 @@ public class AmenitiesController {
     }
 
     public void loadAmenitiesForCondo(){
-        for(Amenity amenity: this.condo.getAmenities()){
+        for (Amenity amenity: this.condo.getAmenities()){
             amenitiesTable.getItems().add(amenity);
         }
     }

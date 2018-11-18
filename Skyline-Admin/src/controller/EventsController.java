@@ -54,7 +54,6 @@ public class EventsController {
 
     public void loadEventsForCondo(){
         for(Event event : this.condo.getEvents()){
-            System.out.println(event.getDate());
             eventsTable.getItems().add(event);
         }
     }

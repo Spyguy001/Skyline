@@ -307,7 +307,7 @@ public class DatabaseHandler implements IDatabase {
         ApiFuture<WriteResult> writeResult = this.db.collection(CONDOS)
             .document(cid)
             .collection(EVENTS)
-            .document(event.getTitle())
+            .document(event.getId())
             .set(event, SetOptions.merge());
 
         writeResult.isDone();
@@ -372,7 +372,7 @@ public class DatabaseHandler implements IDatabase {
         ApiFuture<WriteResult> writeResult = this.db.collection(CONDOS)
             .document(cid)
             .collection(AMENITIES)
-            .document(amenity.getName())
+            .document(amenity.getId())
             .set(amenity, SetOptions.merge());
 
         writeResult.isDone();
@@ -438,7 +438,7 @@ public class DatabaseHandler implements IDatabase {
         ApiFuture<WriteResult> writeResult = this.db.collection(CONDOS)
             .document(cid)
             .collection(ANNOUNCEMENTS)
-            .document(announcement.getTitle())
+            .document(announcement.getId())
             .set(announcement, SetOptions.merge());
 
         writeResult.isDone();

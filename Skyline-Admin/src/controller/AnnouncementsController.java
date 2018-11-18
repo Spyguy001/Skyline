@@ -81,7 +81,7 @@ public class AnnouncementsController {
         } else {
             Announcement an = new Announcement();
             an.setTitle(title.getText());
-            an.setId("test");
+            an.setId(Long.toString(System.currentTimeMillis()));
             //DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             Date date = new Date();
             an.setDate(date);

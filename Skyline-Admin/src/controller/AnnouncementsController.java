@@ -10,7 +10,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.Amenity;
 import model.Announcement;
+import model.Condo;
+import model.CondoManager;
 
 import java.util.Date;
 
@@ -30,9 +33,25 @@ public class AnnouncementsController {
     @FXML
     private CheckBox important;
 
+    private CondoManager manager;
+    private Condo condo;
+
+    public void setCondo(Condo condo) {
+        this.condo = condo;
+    }
+
+    public void setManager(CondoManager manager) {
+        this.manager = manager;
+    }
+
+    public void loadAnnouncementsForCondo(){
+        for(Announcement announcement: this.condo.getAnnouncements()){
+            announcementsTable.getItems().add(announcement);
+        }
+    }
+
     @FXML
     private void initialize() {
-        // TODO: Initialize announcementsTable with data from the database.
         impCol.setCellFactory(col -> new TableCell<Announcement, Boolean>() {
             private final ImageView imageView = new ImageView();
 
@@ -60,7 +79,6 @@ public class AnnouncementsController {
             alert.setHeaderText(null);
             alert.showAndWait();
         } else {
-            // TODO: Add an Announcement to the database, the following code is for testing
             Announcement an = new Announcement();
             an.setTitle(title.getText());
             an.setId("test");
@@ -69,6 +87,7 @@ public class AnnouncementsController {
             an.setDate(date);
             an.setDescription(description.getText());
             an.setImportant(important.isSelected());
+            this.manager.addAnnouncementToCondo(an, this.condo);
             announcementsTable.getItems().add(an);
             createAnnouncementPopup();
         }
@@ -81,12 +100,14 @@ public class AnnouncementsController {
             alert.setHeaderText(null);
             alert.showAndWait();
         } else {
-            // TODO: Remove an Announcement from the database
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete " + announcementsTable.getSelectionModel().getSelectedItem().getTitle() + " ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete " +
+                    announcementsTable.getSelectionModel().getSelectedItem().getTitle() + " ?", ButtonType.YES,
+                    ButtonType.NO, ButtonType.CANCEL);
             alert.setHeaderText(null);
             alert.showAndWait();
 
             if (alert.getResult() == ButtonType.YES) {
+                this.manager.removeAnnouncementFromCondo(announcementsTable.getSelectionModel().getSelectedItem(), this.condo);
                 announcementsTable.getItems().remove(announcementsTable.getSelectionModel().getSelectedItem());
             }
         }

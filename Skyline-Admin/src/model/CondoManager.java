@@ -25,9 +25,15 @@ public class CondoManager extends User {
         this.database.removeEventFromCondo(event.getId(), condo.getId());
     }
 
-    public void addAmenityToCondo(Amenity amenity, Condo condo) {}
+    public void addAmenityToCondo(Amenity amenity, Condo condo) {
+        condo.addToAmenitiesList(amenity);
+        this.database.addAmenityToCondo(amenity, condo.getId());
+    }
 
-    public void removeAmenityFromCondo(Amenity amenity, Condo condo) {}
+    public void removeAmenityFromCondo(Amenity amenity, Condo condo) {
+        condo.removeFromAmenitiesList(amenity);
+        this.database.removeAmenityFromCondo(amenity.getId(), condo.getId());
+    }
 
     public void addAnnouncementToCondo(Announcement announcement, Condo condo) {}
 

@@ -9,6 +9,8 @@ import javafx.scene.layout.RowConstraints;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Amenity;
+import model.Condo;
+import model.CondoManager;
 import model.Event;
 
 import java.text.ParseException;
@@ -26,6 +28,23 @@ public class AmenitiesController {
     @FXML
     private TextArea details;
 
+    private CondoManager manager;
+    private Condo condo;
+
+    public void setCondo(Condo condo) {
+        this.condo = condo;
+    }
+
+    public void setManager(CondoManager manager) {
+        this.manager = manager;
+    }
+
+    public void loadAmenitiesForCondo(){
+        for(Amenity amenity: this.condo.getAmenities()){
+            amenitiesTable.getItems().add(amenity);
+        }
+    }
+
     @FXML
     private void addAmenity() {
         if (name.getText().equals("") || details.getText().equals("")) {
@@ -37,7 +56,8 @@ public class AmenitiesController {
             Amenity am = new Amenity();
             am.setName(name.getText());
             am.setDetails(details.getText());
-            am.setId("test");
+            am.setId(Long.toString(System.currentTimeMillis()));
+            this.manager.addAmenityToCondo(am, this.condo);
             amenitiesTable.getItems().add(am);
             createAmenityPopup();
         }
@@ -57,6 +77,7 @@ public class AmenitiesController {
 
             if (alert.getResult() == ButtonType.YES) {
                 Amenity toRemove = amenitiesTable.getSelectionModel().getSelectedItem();
+                this.manager.removeAmenityFromCondo(toRemove, this.condo);
                 amenitiesTable.getItems().remove(toRemove);
             }
         }

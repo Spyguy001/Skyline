@@ -65,8 +65,9 @@ public class ManagerController {
         AnchorPane pane = fxmlLoader.load();
         AmenitiesController controller = fxmlLoader.<AmenitiesController>getController();
         //TODO: Set database, manager, condo using singleton
-        //controller.setManager(this.manager);
-        //controller.setCondo(this.condo);
+        controller.setManager(this.manager);
+        controller.setCondo(this.condo);
+        controller.loadAmenitiesForCondo();
         selectedButtonPane.getChildren().setAll(pane);
     }
 

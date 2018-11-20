@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<AnchorPane fx:id="rootPane" prefHeight="200" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.ResidentsController">
+    <fx:define>
+        <Double fx:id="WIDTH" fx:value="1024.0"/>
+        <Double fx:id="HEIGHT" fx:value="576.0"/>
+    </fx:define>
+    <children>
+        <GridPane style="-fx-background-color: #ABAFDF;" prefWidth="$WIDTH" hgap="10">
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0"
+                                   prefWidth="${WIDTH * 0.15}"/>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0"
+                                   prefWidth="${WIDTH * 0.15}"/>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0"
+                                   prefWidth="${WIDTH * 0.35}"/>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0"
+                                   prefWidth="${WIDTH * 0.35}"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="${HEIGHT * 0.1}" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="${HEIGHT * 0.1}" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="${HEIGHT * 0.1}" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="${HEIGHT * 0.1}" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="${HEIGHT * 0.1}" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="${HEIGHT * 0.1}" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="${HEIGHT * 0.1}" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <Label style="-fx-text-fill: white;" text="Name:    " GridPane.rowIndex="0"
+                       GridPane.halignment="RIGHT"/>
+                <TextField fx:id="name" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Label style="-fx-text-fill: white;" text="Email:    " GridPane.rowIndex="1"
+                       GridPane.halignment="RIGHT"/>
+                <TextField fx:id="email" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Label style="-fx-text-fill: white;" text="Password:    " GridPane.rowIndex="2"
+                       GridPane.halignment="RIGHT"/>
+                <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Label style="-fx-text-fill: white;" text="Lot:    " GridPane.rowIndex="3"
+                       GridPane.halignment="RIGHT"/>
+                <TextField fx:id="lot" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                <Button styleClass="button-utility" mnemonicParsing="false" text="Add Resident" onAction="#addResident"
+                        GridPane.rowIndex="6" GridPane.halignment="CENTER"/>
+                <Button styleClass="button-utility" mnemonicParsing="false" text="Remove Resident" onAction="#removeResident"
+                        GridPane.rowIndex="6" GridPane.columnIndex="1" GridPane.halignment="CENTER"/>
+
+                <TableView fx:id="residentsTable" prefHeight="${HEIGHT * 0.48}" GridPane.columnIndex="2"
+                           GridPane.columnSpan="2" GridPane.rowSpan="7">
+                    <columns>
+                        <TableColumn fx:id="nameCol" text="Name" prefWidth="${WIDTH * 0.50}">
+                            <cellValueFactory><PropertyValueFactory property="name" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="lotCol" text="Lot" prefWidth="${WIDTH * 0.20}">
+                            <cellValueFactory><PropertyValueFactory property="lot" />
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                        </FXCollections>
+                    </items>
+                    <sortOrder>
+                        <fx:reference source="nameCol"/>
+                    </sortOrder>
+                    <placeholder>
+                        <Label text="There are currently no residents."/>
+                    </placeholder>
+                </TableView>
+            </children>
+        </GridPane>
+    </children>
+</AnchorPane>

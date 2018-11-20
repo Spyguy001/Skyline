@@ -18,8 +18,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class LoginController {
-    private FirebaseAuthHandler authHandler;
-    private IDatabase database;
+    private static FirebaseAuthHandler authHandler;
+    private static IDatabase database;
 
     @FXML
     private AnchorPane rootPane;
@@ -35,8 +35,12 @@ public class LoginController {
 
     @FXML
     private void initialize() throws IOException {
-        this.authHandler = new FirebaseAuthHandler();
-        this.database = new DatabaseHandler();
+        if(authHandler == null){
+            authHandler = new FirebaseAuthHandler();
+        }
+        if(database == null){
+            database = new DatabaseHandler();
+        }
 
         //press enter to login
         rootPane.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -57,7 +61,7 @@ public class LoginController {
         User user;
 
         try {
-            uid = this.authHandler.verifyUserAuth(username.getText(), password.getText());
+            uid = authHandler.verifyUserAuth(username.getText(), password.getText());
         } catch(Exception e) {
             System.err.println(e.getMessage());
             e.printStackTrace();
@@ -65,25 +69,26 @@ public class LoginController {
             return;
         }
 
-        user = this.database.getUser(uid);
+        user = database.getUser(uid);
         int userLevel = user.getLevel();
         if(userLevel == 1) {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Manager.fxml"));
             AnchorPane pane = fxmlLoader.load();
             ManagerController controller = fxmlLoader.<ManagerController>getController();
             CondoManager manager = (CondoManager) user;
-            manager.setDatabase(this.database);
-            manager.setCondos(this.database.getCondosForUser(manager.getId()));
+            manager.setDatabase(database);
+            manager.setCondos(database.getCondosForUser(manager.getId()));
 
             for(Condo condo : manager.getCondos()){
-                condo.setEvents(this.database.getEventsForCondo(condo.getId()));
-                condo.setAmenities(this.database.getAmenitiesForCondo(condo.getId()));
-                condo.setAnnouncements(this.database.getAnnouncementsForCondo(condo.getId()));
-                condo.setManagers(this.database.getManagersForCondo(condo.getId()));
-                condo.setResidents(this.database.getResidentsForCondo(condo.getId()));
+                condo.setEvents(database.getEventsForCondo(condo.getId()));
+                condo.setAmenities(database.getAmenitiesForCondo(condo.getId()));
+                condo.setAnnouncements(database.getAnnouncementsForCondo(condo.getId()));
+                condo.setManagers(database.getManagersForCondo(condo.getId()));
+                condo.setResidents(database.getResidentsForCondo(condo.getId()));
             }
 
             controller.setManager(manager);
+            controller.setDatabase(database);
             controller.setupPanes();
 
             rootPane.getChildren().setAll(pane);

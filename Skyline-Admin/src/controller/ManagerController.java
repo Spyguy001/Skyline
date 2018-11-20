@@ -16,6 +16,9 @@ public class ManagerController {
     private int DEFAULT = 0;
 
     @FXML
+    private AnchorPane rootPane;
+
+    @FXML
     private Button buttonEvents;
     @FXML
     private AnchorPane selectedButtonPane;
@@ -25,6 +28,10 @@ public class ManagerController {
     private IDatabase database;
     private CondoManager manager;
     private Condo condo;
+
+    public void setDatabase(IDatabase database) {
+        this.database = database;
+    }
 
     public void setManager(CondoManager manager) {
         this.manager = manager;
@@ -89,16 +96,33 @@ public class ManagerController {
     }
 
     @FXML
-    private void signOut(){
-        // TODO: Implement sign out functionality
+    private void signOut() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Login.fxml"));
+        AnchorPane pane = fxmlLoader.load();
+        rootPane.getChildren().setAll(pane);
     }
 
     @FXML
     private void refresh() throws IOException{
+        //get all the condo attributes again
+        this.condo = this.database.getCondo(this.condo.getId());
+        this.condo.setEvents(this.database.getEventsForCondo(condo.getId()));
+        this.condo.setAmenities(this.database.getAmenitiesForCondo(condo.getId()));
+        this.condo.setAnnouncements(this.database.getAnnouncementsForCondo(condo.getId()));
+        this.condo.setManagers(this.database.getManagersForCondo(condo.getId()));
+        this.condo.setResidents(this.database.getResidentsForCondo(condo.getId()));
+
+        //refresh the right scene
         switch(activePane){
-            case("events"): loadEvents();
-            case("amenities"): loadAmenities();
-            case("announcements"): loadAnnouncements();
+            case("events"):
+                loadEvents();
+                break;
+            case("amenities"):
+                loadAmenities();
+                break;
+            case("announcements"):
+                loadAnnouncements();
+                break;
         }
     }
 }

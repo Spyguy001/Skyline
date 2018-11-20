@@ -26,8 +26,8 @@
                 </children>
             </StackPane>
             <ToolBar styleClass="main-tool-bar" prefHeight="32.0">
-                <Button styleClass="button-signOut" mnemonicParsing="false" text="Refresh" onAction="#signOut"/>
-                <Button styleClass="button-signOut" mnemonicParsing="false" text="Sign Out" onAction="#refresh"/>
+                <Button styleClass="button-signOut" mnemonicParsing="false" text="Refresh" onAction="#refresh"/>
+                <Button styleClass="button-signOut" mnemonicParsing="false" text="Sign Out" onAction="#signOut"/>
             </ToolBar>
             <StackPane fx:id="subPane" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
                        AnchorPane.leftAnchor="0.0"

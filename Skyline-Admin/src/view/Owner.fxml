@@ -23,8 +23,8 @@
                 </children>
             </StackPane>
             <ToolBar styleClass="main-tool-bar" prefHeight="32.0" prefWidth="Infinity">
-                <Button styleClass="button-signOut" mnemonicParsing="false" text="Refresh" onAction="#signOut"/>
-                <Button styleClass="button-signOut" mnemonicParsing="false" text="Sign Out" onAction="#refresh"/>
+                <Button styleClass="button-signOut" mnemonicParsing="false" text="Refresh" onAction="#refresh"/>
+                <Button styleClass="button-signOut" mnemonicParsing="false" text="Sign Out" onAction="#signOut"/>
             </ToolBar>
             <GridPane style="-fx-background-color: #ABAFDF;" hgap="10">
                 <columnConstraints>

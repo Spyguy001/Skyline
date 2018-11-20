@@ -3,9 +3,11 @@ package controller;
 import Database.DatabaseHandler;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 
 import javafx.beans.value.ChangeListener;
+import javafx.scene.layout.AnchorPane;
 import model.*;
 
 import java.io.IOException;
@@ -19,6 +21,9 @@ public class OwnerController {
     private HashMap<Condo, List<CondoManager>> condosToManagers = new HashMap<>();
     private CondoOwner condoOwner;
     private IDatabase database;
+
+    @FXML
+    private AnchorPane rootPane;
 
     @FXML
     private ListView<Condo> listCondos;
@@ -51,6 +56,7 @@ public class OwnerController {
     }
 
     private void updateCondosToManagersMap(){
+        this.condosToManagers = new HashMap<>();
         for(Condo c : this.condoOwner.getCondos()){
             this.condosToManagers.put(c, this.database.getManagersForCondo(c.getId()));
             listCondos.getItems().add(c);
@@ -200,13 +206,17 @@ public class OwnerController {
     }
 
     @FXML
-    private void signOut(){
-        // TODO: Implement sign out functionality
+    private void signOut() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Login.fxml"));
+        AnchorPane pane = fxmlLoader.load();
+        rootPane.getChildren().setAll(pane);
     }
 
     @FXML
     private void refresh(){
-        // TODO: Implement refresh functionality
+        this.condoOwner = (CondoOwner)this.database.getUser(this.condoOwner.getId());
+        this.condoOwner.setCondos(this.database.getCondosForUser(this.condoOwner.getId()));
+        this.updateCondosToManagersMap();
     }
 }
 

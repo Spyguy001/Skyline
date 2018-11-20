@@ -41,6 +41,8 @@
                                     text="Announcements" onAction="#loadAnnouncements"/>
                             <Button styleClass="button-manager" layoutX="94.0" layoutY="10.0" mnemonicParsing="false"
                                     text="Amenities" onAction="#loadAmenities"/>
+                            <Button styleClass="button-manager" layoutX="94.0" layoutY="10.0" mnemonicParsing="false"
+                                    text="Residents" onAction="#loadResidents"/>
                         </items>
                     </ToolBar>
                     <AnchorPane fx:id="selectedButtonPane" prefHeight="200">

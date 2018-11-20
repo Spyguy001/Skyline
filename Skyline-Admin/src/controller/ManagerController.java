@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import model.Condo;
 import model.CondoManager;
-import model.Event;
 import model.IDatabase;
 
 import java.io.IOException;
@@ -96,6 +95,18 @@ public class ManagerController {
     }
 
     @FXML
+    private void loadResidents()throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Residents.fxml"));
+        AnchorPane pane = fxmlLoader.load();
+        ResidentsController controller = fxmlLoader.<ResidentsController>getController();
+        //TODO: Set database, manager, condo using singleton
+        //controller.setManager(this.manager);
+        //controller.setCondo(this.condo);
+        //controller.loadResidentsForCondo();
+        selectedButtonPane.getChildren().setAll(pane);
+        activePane = "residents";
+    }
+    @FXML
     private void signOut() throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Login.fxml"));
         AnchorPane pane = fxmlLoader.load();
@@ -122,6 +133,9 @@ public class ManagerController {
                 break;
             case("announcements"):
                 loadAnnouncements();
+                break;
+            case("residents"):
+                loadResidents();;
                 break;
         }
     }

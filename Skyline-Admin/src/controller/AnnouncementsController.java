@@ -3,6 +3,9 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
@@ -15,6 +18,7 @@ import model.Announcement;
 import model.Condo;
 import model.CondoManager;
 
+import java.awt.*;
 import java.util.Date;
 
 public class AnnouncementsController {
@@ -32,6 +36,9 @@ public class AnnouncementsController {
 
     @FXML
     private CheckBox important;
+
+    @FXML
+    private CheckBox notification;
 
     private CondoManager manager;
     private Condo condo;
@@ -157,5 +164,16 @@ public class AnnouncementsController {
             });
             return row;
         });
+    }
+
+    @FXML
+    private void importantCheck(){
+        if (important.isSelected()){
+            notification.setDisable(false);
+            notification.setSelected(true);
+        }else{
+            notification.setDisable(true);
+            notification.setSelected(false);
+        }
     }
 }

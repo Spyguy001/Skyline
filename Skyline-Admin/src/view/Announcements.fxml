@@ -47,7 +47,11 @@
                 <Label style="-fx-text-fill: white;" text="Important:   " GridPane.rowIndex="3"
                        GridPane.halignment="RIGHT" GridPane.valignment="CENTER"/>
                 <CheckBox fx:id="important" GridPane.rowIndex="3" GridPane.columnIndex="1"
-                          GridPane.halignment="LEFT" GridPane.valignment="CENTER"/>
+                          GridPane.halignment="LEFT" GridPane.valignment="CENTER" onAction="#importantCheck"/>
+                <Label style="-fx-text-fill: white;" text="Notification:   " GridPane.rowIndex="4"
+                       GridPane.halignment="RIGHT" GridPane.valignment="CENTER"/>
+                <CheckBox fx:id="notification" GridPane.rowIndex="4" GridPane.columnIndex="1"
+                          GridPane.halignment="LEFT" GridPane.valignment="CENTER" disable="true"/>
 
                 <Button styleClass="button-utility" mnemonicParsing="false" text="Add Announcement"
                         onAction="#addAnnouncement"

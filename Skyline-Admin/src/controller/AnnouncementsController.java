@@ -13,12 +13,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.Amenity;
 import model.Announcement;
 import model.Condo;
 import model.CondoManager;
 
-import java.awt.*;
 import java.util.Date;
 
 public class AnnouncementsController {

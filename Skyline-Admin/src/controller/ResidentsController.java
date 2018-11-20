@@ -2,7 +2,9 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import model.Resident;
+import model.*;
+
+import java.util.ArrayList;
 
 public class ResidentsController {
     @FXML
@@ -20,8 +22,26 @@ public class ResidentsController {
     @FXML
     private TextField lot;
 
+    private Condo condo;
+
+    private CondoManager manager;
+
     @FXML
     public void initialize(){}
+
+    public void setCondo(Condo condo) {
+        this.condo = condo;
+    }
+
+    public void setManager(CondoManager manager) {
+        this.manager = manager;
+    }
+
+    public void loadResidentsForCondo(){
+        for(Resident resident : this.condo.getResidents()){
+            residentsTable.getItems().add(resident);
+        }
+    }
 
     @FXML
     private void addResident(){
@@ -38,11 +58,26 @@ public class ResidentsController {
         else {
                 // TODO: Add a resident to the database, the following code is for testing
                 Resident resident = new Resident();
-                resident.setId("1");
-                //resident.setCondos();
-                //resident.setLevel();
+                String uid;
+                try {
+                    uid = new FirebaseAuthHandler().createUserAcc(email.getText(), password.getText());
+                }
+                catch (IllegalArgumentException e){
+                    Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK);
+                    alert.setHeaderText(null);
+                    alert.showAndWait();
+                    return;
+                }
+                resident.setId(uid);
+                resident.setLevel(0);
                 resident.setName(name.getText());
+                ArrayList<Condo> condoList = new ArrayList<>();
+                condoList.add(condo);
+                resident.setCondos(condoList);
                 resident.setLot(lot.getText());
+
+                this.manager.addResidentToCondo(resident, condo);
+
                 residentsTable.getItems().add(resident);
         }
     }
@@ -60,6 +95,7 @@ public class ResidentsController {
             alert.showAndWait();
 
             if (alert.getResult() == ButtonType.YES) {
+                this.manager.removeResidentFromCondo(residentsTable.getSelectionModel().getSelectedItem(), condo);
                 residentsTable.getItems().remove(residentsTable.getSelectionModel().getSelectedItem());
             }
         }

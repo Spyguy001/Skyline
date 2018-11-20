@@ -198,6 +198,16 @@ public class OwnerController {
                 listManagers.getItems().addAll(condosToManagers.get(newValue)); }
         });
     }
+
+    @FXML
+    private void signOut(){
+        // TODO: Implement sign out functionality
+    }
+
+    @FXML
+    private void refresh(){
+        // TODO: Implement refresh functionality
+    }
 }
 
 

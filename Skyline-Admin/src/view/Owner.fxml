@@ -22,7 +22,10 @@
                            text="Skyline"/>
                 </children>
             </StackPane>
-            <fx:include fx:id="FileMenu" source="FileMenu.fxml"/>
+            <ToolBar styleClass="main-tool-bar" prefHeight="32.0" prefWidth="Infinity">
+                <Button styleClass="button-signOut" mnemonicParsing="false" text="Refresh" onAction="#signOut"/>
+                <Button styleClass="button-signOut" mnemonicParsing="false" text="Sign Out" onAction="#refresh"/>
+            </ToolBar>
             <GridPane style="-fx-background-color: #ABAFDF;" hgap="10">
                 <columnConstraints>
                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0"

@@ -20,6 +20,8 @@ public class ManagerController {
     @FXML
     private AnchorPane selectedButtonPane;
 
+    private String activePane;
+
     private IDatabase database;
     private CondoManager manager;
     private Condo condo;
@@ -57,6 +59,7 @@ public class ManagerController {
         controller.setCondo(this.condo);
         controller.loadEventsForCondo();
         selectedButtonPane.getChildren().setAll(pane);
+        activePane = "events";
     }
 
     @FXML
@@ -69,6 +72,7 @@ public class ManagerController {
         controller.setCondo(this.condo);
         controller.loadAmenitiesForCondo();
         selectedButtonPane.getChildren().setAll(pane);
+        activePane = "amenities";
     }
 
     @FXML
@@ -81,5 +85,20 @@ public class ManagerController {
         controller.setCondo(this.condo);
         controller.loadAnnouncementsForCondo();
         selectedButtonPane.getChildren().setAll(pane);
+        activePane = "announcements";
+    }
+
+    @FXML
+    private void signOut(){
+        // TODO: Implement sign out functionality
+    }
+
+    @FXML
+    private void refresh() throws IOException{
+        switch(activePane){
+            case("events"): loadEvents();
+            case("amenities"): loadAmenities();
+            case("announcements"): loadAnnouncements();
+        }
     }
 }

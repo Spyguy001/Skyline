@@ -40,6 +40,9 @@ public class EventsController {
     @FXML
     private ChoiceBox<String> timeChoice;
 
+    @FXML
+    private TextField loc;
+
     private IDatabase database;
     private CondoManager manager;
     private Condo condo;
@@ -81,15 +84,15 @@ public class EventsController {
 
     @FXML
     private void addEvent(){
-        if (title.getText().equals("") || description.getText().equals("") || date.getValue() == null){
+        if (title.getText().equals("") || description.getText().equals("") || date.getValue() == null || loc.getText() == null){
             Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill in all the required fields!", ButtonType.CANCEL);
             alert.setHeaderText(null);
             alert.showAndWait();
         }else {
-            // TODO: Add an event to the database, the following code is for testing
             Event event = new Event();
             event.setTitle(title.getText());
             String timeStr = time.getText() + " " + timeChoice.getValue();
+            event.setLocation(loc.getText());
             LocalDateTime dateTime = date.getValue()
                     .atTime(LocalTime.parse(timeStr, DateTimeFormatter.ofPattern("h:mm a")));
             Date dateA = Date.from(dateTime.atZone(ZoneId.systemDefault()).toInstant());

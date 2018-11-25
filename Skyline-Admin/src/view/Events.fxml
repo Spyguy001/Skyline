@@ -46,9 +46,12 @@
                 <Label style="-fx-text-fill: white;" text="Date:    " GridPane.rowIndex="3"
                        GridPane.halignment="RIGHT"/>
                 <DatePicker fx:id="date" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                <Label style="-fx-text-fill: white;" text="Time:    " GridPane.rowIndex="4"
+                <Label style="-fx-text-fill: white;" text="Location:    " GridPane.rowIndex="4"
+                       GridPane.halignment="RIGHT"/>
+                <TextField fx:id="loc" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                <Label style="-fx-text-fill: white;" text="Time:    " GridPane.rowIndex="5"
                        GridPane.halignment="RIGHT" GridPane.valignment="TOP"/>
-                <HBox GridPane.columnIndex="1" GridPane.rowIndex="4">
+                <HBox GridPane.columnIndex="1" GridPane.rowIndex="5">
                     <TextField fx:id="time" promptText="hh:mm"/>
                     <ChoiceBox styleClass="button-utility" fx:id="timeChoice" value="PM">
                         <items>

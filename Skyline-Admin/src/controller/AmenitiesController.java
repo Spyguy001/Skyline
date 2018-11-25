@@ -11,12 +11,6 @@ import javafx.stage.Stage;
 import model.Amenity;
 import model.Condo;
 import model.CondoManager;
-import model.Event;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Optional;
 
 public class AmenitiesController {
     @FXML
@@ -32,16 +26,7 @@ public class AmenitiesController {
     private CheckBox bookable;
 
     @FXML
-    private TextField timeFrom;
-
-    @FXML
-    private ChoiceBox amPmFrom;
-
-    @FXML
-    private TextField timeTo;
-
-    @FXML
-    private ChoiceBox amPmTo;
+    private TextField interval;
 
     private CondoManager manager;
     private Condo condo;
@@ -54,27 +39,33 @@ public class AmenitiesController {
         this.manager = manager;
     }
 
-    public void loadAmenitiesForCondo(){
-        for (Amenity amenity: this.condo.getAmenities()){
+    public void loadAmenitiesForCondo() {
+        for (Amenity amenity : this.condo.getAmenities()) {
             amenitiesTable.getItems().add(amenity);
         }
     }
 
     @FXML
     private void addAmenity() {
-        if (name.getText().equals("") || details.getText().equals("")) {
+        if (name.getText().equals("") || details.getText().equals("") || (bookable.isSelected() && interval.getText().equals(""))) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill in all the required fields!", ButtonType.CANCEL);
             alert.setHeaderText(null);
             alert.showAndWait();
         } else {
-            // TODO: Add an amenity to the database, the following code is for testing
-            Amenity am = new Amenity();
-            am.setName(name.getText());
-            am.setDetails(details.getText());
-            am.setId(Long.toString(System.currentTimeMillis()));
-            this.manager.addAmenityToCondo(am, this.condo);
-            amenitiesTable.getItems().add(am);
-            createAmenityPopup();
+            int inter = Integer.parseInt(interval.getText());
+            if (bookable.isSelected() && (inter > 24 || inter < 0)) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter a valid time interval!", ButtonType.CANCEL);
+                alert.setHeaderText(null);
+                alert.showAndWait();
+            } else {
+                Amenity am = new Amenity();
+                am.setName(name.getText());
+                am.setDetails(details.getText());
+                am.setId(Long.toString(System.currentTimeMillis()));
+                this.manager.addAmenityToCondo(am, this.condo);
+                amenitiesTable.getItems().add(am);
+                createAmenityPopup();
+            }
         }
     }
 
@@ -99,17 +90,11 @@ public class AmenitiesController {
     }
 
     @FXML
-    private void isBookable(){
-        if (bookable.isSelected()){
-            timeFrom.setDisable(false);
-            timeTo.setDisable(false);
-            amPmFrom.setDisable(false);
-            amPmTo.setDisable(false);
-        }else{
-            timeFrom.setDisable(true);
-            timeTo.setDisable(true);
-            amPmFrom.setDisable(true);
-            amPmTo.setDisable(true);
+    private void isBookable() {
+        if (bookable.isSelected()) {
+            interval.setDisable(false);
+        } else {
+            interval.setDisable(true);
         }
     }
 

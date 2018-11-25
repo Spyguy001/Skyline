@@ -28,6 +28,21 @@ public class AmenitiesController {
     @FXML
     private TextArea details;
 
+    @FXML
+    private CheckBox bookable;
+
+    @FXML
+    private TextField timeFrom;
+
+    @FXML
+    private ChoiceBox amPmFrom;
+
+    @FXML
+    private TextField timeTo;
+
+    @FXML
+    private ChoiceBox amPmTo;
+
     private CondoManager manager;
     private Condo condo;
 
@@ -80,6 +95,21 @@ public class AmenitiesController {
                 this.manager.removeAmenityFromCondo(toRemove, this.condo);
                 amenitiesTable.getItems().remove(toRemove);
             }
+        }
+    }
+
+    @FXML
+    private void isBookable(){
+        if (bookable.isSelected()){
+            timeFrom.setDisable(false);
+            timeTo.setDisable(false);
+            amPmFrom.setDisable(false);
+            amPmTo.setDisable(false);
+        }else{
+            timeFrom.setDisable(true);
+            timeTo.setDisable(true);
+            amPmFrom.setDisable(true);
+            amPmTo.setDisable(true);
         }
     }
 

@@ -4,6 +4,8 @@ public class Amenity {
     private String id;
     private String name;
     private String details;
+    private boolean isBookable;
+    private int intervalAllowed;
 
     public Amenity(){
         //need empty constructor for firebase
@@ -31,6 +33,22 @@ public class Amenity {
 
     public void setDetails(String details) {
         this.details = details;
+    }
+
+    public boolean isBookable() {
+        return isBookable;
+    }
+
+    public void setBookable(boolean bookable) {
+        isBookable = bookable;
+    }
+
+    public int getIntervalAllowed() {
+        return intervalAllowed;
+    }
+
+    public void setIntervalAllowed(int intervalAllowed) {
+        this.intervalAllowed = intervalAllowed;
     }
 
     @Override

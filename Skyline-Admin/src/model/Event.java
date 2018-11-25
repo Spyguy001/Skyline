@@ -6,6 +6,7 @@ public class Event {
     private String id;
     private Date date;
     private String title;
+    private String location;
     private String description;
 
     public Event(){
@@ -34,6 +35,14 @@ public class Event {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getDescription() {

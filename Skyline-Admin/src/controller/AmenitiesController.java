@@ -61,6 +61,8 @@ public class AmenitiesController {
                 Amenity am = new Amenity();
                 am.setName(name.getText());
                 am.setDetails(details.getText());
+                am.setBookable(bookable.isSelected());
+                am.setIntervalAllowed(Integer.parseInt(interval.getText()));
                 am.setId(Long.toString(System.currentTimeMillis()));
                 this.manager.addAmenityToCondo(am, this.condo);
                 amenitiesTable.getItems().add(am);

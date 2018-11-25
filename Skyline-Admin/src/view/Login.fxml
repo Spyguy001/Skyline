@@ -18,38 +18,39 @@
                        AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                 <children>
                     <Label alignment="CENTER" prefWidth="Infinity" styleClass="label-title"
-                           text="Skyline" style="-fx-background-color: none"/>
+                           text="Skyline" style="-fx-background-color: none; -fx-font-weight: bold;"/>
                 </children>
             </StackPane>
-            <GridPane prefWidth="$WIDTH" style="-fx-background-color: none;">
+            <GridPane prefWidth="$WIDTH" id="login-pane">
                 <columnConstraints>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="${WIDTH * 0.25}"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="${WIDTH * 0.50}"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="${WIDTH * 0.35}"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="${WIDTH * 0.15}"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="${WIDTH * 0.15}"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="${WIDTH * 0.35}"/>
                 </columnConstraints>
                 <rowConstraints>
-                    <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="${HEIGHT * 0.3}" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="${HEIGHT * 0.1}" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="${HEIGHT * 0.1}" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="${HEIGHT * 0.1}" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="${HEIGHT * 0.4}" vgrow="SOMETIMES"/>
                 </rowConstraints>
                 <children>
-                    <Label style="-fx-text-fill: white;" text="Username:    " GridPane.rowIndex="1" GridPane.halignment="RIGHT"/>
-                    <TextField fx:id="username" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                    <Label style="-fx-text-fill: white;" text="Password:    " GridPane.rowIndex="2" GridPane.halignment="RIGHT"/>
-                    <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                    <Label fx:id="loginFailed" style="-fx-text-fill: red;" text="" GridPane.rowIndex="3" GridPane.columnSpan="2"/>
-                    <Pane nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1"
+                    <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="Username:    "
+                           GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="LEFT"/>
+                    <TextField fx:id="username" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                    <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="Password:    "
+                           GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.halignment="LEFT"/>
+                    <PasswordField fx:id="password" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                    <Label fx:id="loginFailed" style="-fx-text-fill: red;" text="" GridPane.rowIndex="3"
+                           GridPane.columnSpan="2"/>
+                    <Pane nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2"
                           GridPane.rowIndex="4">
-                        <children>
-                            <Button styleClass="button-signIn" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="39.0" prefWidth="83.0"
-                                    text="Sign In" onAction="#signIn"/>
-                        </children>
+                        <Button styleClass="button-utility" style="-fx-font-size: 14px; -fx-font-weight: bold;"
+                                textAlignment="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="64.0"
+                                text="Sign In" onAction="#signIn"/>
                     </Pane>
                 </children>
-                <VBox.margin>
-                    <Insets left="50.0" right="75.0"/>
-                </VBox.margin>
             </GridPane>
         </children>
     </VBox>

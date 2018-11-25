@@ -209,6 +209,15 @@
     -fx-text-fill: white;
 }
 
+/* ==== LOGIN === */
+#login-pane{
+    -fx-background-color: none;
+    -fx-background-image: url("background.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: 1024 576;
+    -fx-background-position: center center;
+}
+
 #testing{
    -fx-border-color: black;
    -fx-border-insets: 0;

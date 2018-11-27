@@ -91,6 +91,7 @@ public class LoginController {
             controller.setDatabase(database);
             controller.setupPanes();
 
+            rootPane.setOnKeyPressed(null);
             rootPane.getChildren().setAll(pane);
         }
         else if(userLevel == 2) {
@@ -104,6 +105,7 @@ public class LoginController {
             controller.setDatabase(database);
             controller.setCondoOwner(owner);
 
+            rootPane.setOnKeyPressed(null);
             rootPane.getChildren().setAll(pane);
         }
         else {

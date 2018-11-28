@@ -1,5 +1,7 @@
 package model;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import io.github.openunirest.http.HttpResponse;
 import io.github.openunirest.http.JsonNode;
 import io.github.openunirest.http.Unirest;
@@ -27,7 +29,7 @@ public class FirebaseAuthHandler {
         HttpResponse<JsonNode> jsonResponse = sendCredentials(email, password, VERIFY_ENDPOINT);
         int status = jsonResponse.getStatus();
         JSONObject responseBody = jsonResponse.getBody().getObject();
-
+        
         // success
         if(status == 200) {
             return responseBody.getString("localId");
@@ -83,6 +85,14 @@ public class FirebaseAuthHandler {
         }
         else {
             throw new RuntimeException("Error: " + errorMessage);
+        }
+    }
+
+    public void deleteUserAcc(String uid) {
+        try {
+            FirebaseAuth.getInstance().deleteUser(uid);
+        } catch (FirebaseAuthException e) {
+            e.printStackTrace();
         }
     }
 

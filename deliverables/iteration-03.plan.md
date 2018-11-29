@@ -43,8 +43,8 @@ Dev Team (Everyone)
   - Develop the desktop application to be used by Condo Owners and Condo managers
    ##### For this iteration:
   - Alesksey is responsible for the GUI 
-  - Amrit is responsible for  
-  - Krishna is responsible for
+  - Amrit is responsible for the events and announcements controllers and condo/condo manager models
+  - Krishna is responsible for residents and amenities controllers and condo/condo manager models
   - Sumit is responsible for implementing the database access object
   
   #### Android team (Sumit)

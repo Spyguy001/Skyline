@@ -16,22 +16,23 @@
 
 #### Decisions that turned out well
 
-List process-related (i.e. team organization) decisions that, in retrospect, turned out to be successful.
+ 1. While there was a rocky start with regards to team organization and branching, near the 
+ end of development, good use of specialized branches allowed for excellent task management 
+ and overall organization. There were no cases of duplicate code or unexpected merge conflicts.
 
-
- * 2 - 4 decisions.
- * Ordered from most to least important.
- * Explain why (i.e. give a supporting argument) you consider a decision to be successful.
- * Feel free to refer/link to process artifact(s).
+ 2. Good task assignment during this iteration; everyone's roles and responsibilities were clear
+ and straightforward. The primary goals were achieved at the quickest possible pace as a result
+ of this.
 
 #### Decisions that did not turn out as well as we hoped
 
-List process-related (i.e. team organization) decisions that, in retrospect, were not as successful as you thought they would be.
+ 1. Git issues was rarely used and did not impact the development of the project all that much. 
+ It would have been more successful if it was expanded upon and provided a more detailed rundown 
+ of all the issues and requirements that were present.
 
- * 2 - 4 decisions.
- * Ordered from most to least important.
- * Feel free to refer/link to process artifact(s).
-
+ 2. Several features were neglected during development leading to them being introduced quite late 
+ and in an inefficient manner. This could be resolved through better monitoring of our initial 
+ requirements and all promised features.
 
 #### Planned changes
 

@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.ColumnConstraints;
@@ -59,27 +60,12 @@ public class EventsController {
         for(Event event : this.condo.getEvents()){
             eventsTable.getItems().add(event);
         }
+        createEventPopup();
     }
 
     @FXML
     private void initialize(){
-        eventsTable.getColumns().forEach(this::addDescriptionTooltip);
         date.setValue(LocalDate.now());
-    }
-
-    private <T> void addDescriptionTooltip(TableColumn<Event,T> column) {
-        Callback<TableColumn<Event, T>, TableCell<Event,T>> existingCellFactory
-                = column.getCellFactory();
-
-        column.setCellFactory(c -> {
-            TableCell<Event, T> cell = existingCellFactory.call(c);
-
-            Tooltip tooltip = new Tooltip();
-            tooltip.textProperty().bind(cell.itemProperty().asString());
-
-            cell.setTooltip(tooltip);
-            return cell ;
-        });
     }
 
     @FXML
@@ -159,6 +145,8 @@ public class EventsController {
                     RowConstraints r2 = new RowConstraints();
                     r2.setPercentHeight(75);
                     gridPane.getRowConstraints().addAll(r1, r2);
+
+                    gridPane.setPadding(new Insets(10, 10, 10, 10));
 
                     // Add the info to the grid pane
                     gridPane.add(new Label("Date:"), 0, 0);

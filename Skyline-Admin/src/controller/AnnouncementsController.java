@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
@@ -53,6 +54,7 @@ public class AnnouncementsController {
         for (Announcement announcement: this.condo.getAnnouncements()){
             announcementsTable.getItems().add(announcement);
         }
+        createAnnouncementPopup();
     }
 
     @FXML
@@ -149,6 +151,8 @@ public class AnnouncementsController {
                     RowConstraints r2 = new RowConstraints();
                     r2.setPercentHeight(75);
                     gridPane.getRowConstraints().addAll(r1, r2);
+
+                    gridPane.setPadding(new Insets(10, 10, 10, 10));
 
                     // Add the info to the grid pane
                     gridPane.add(new Label("Date:"), 0, 0);

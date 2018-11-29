@@ -14,6 +14,7 @@ public class Main extends Application {
         primaryStage.setTitle("Skyline");
         Scene scene = new Scene(root, 1024, 576);
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         scene.getStylesheets().add("view/StylesheetGlobal.css");
         primaryStage.show();
 

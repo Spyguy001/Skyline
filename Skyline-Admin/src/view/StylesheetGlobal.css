@@ -163,12 +163,6 @@
    -fx-pref-width: 125px;
    -fx-text-fill: white;
    -fx-effect: dropshadow(three-pass-box, #242A79, 5, 0, 0, 2);
-
-    /*
-   -fx-border-color: white;
-   -fx-border-insets: 0;
-   -fx-border-width: 1 1 1 1;
-   */
 }
 
 .button-utility .label{
@@ -180,12 +174,13 @@
 }
 
 .button-signIn{
-    -fx-background-color: #545AA7;
+    -fx-background-color: linear-gradient(#545AA7, #ABAFDF);
     -fx-pref-width: 125px;
     -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, #242A79, 5, 0, 0, 2);
 }
 
-.button-signIn:hover{
+.button-signIn:hover:selected{
     -fx-background-color: #F1CC66;
 }
 

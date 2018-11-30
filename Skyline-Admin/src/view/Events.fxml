@@ -68,19 +68,24 @@
                 <TableView fx:id="eventsTable" prefHeight="${HEIGHT * 0.48}" GridPane.columnIndex="2"
                            GridPane.columnSpan="2" GridPane.rowSpan="7">
                     <columns>
-                        <TableColumn fx:id="dateCol" text="Date" prefWidth="${WIDTH * 0.20}">
+                        <TableColumn fx:id="dateCol" text="Date" prefWidth="${WIDTH * 0.15}">
                             <cellValueFactory>
                                 <PropertyValueFactory property="date"/>
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="titleCol" text="Title" prefWidth="${WIDTH * 0.20}">
+                        <TableColumn fx:id="titleCol" text="Title" prefWidth="${WIDTH * 0.15}">
                             <cellValueFactory>
                                 <PropertyValueFactory property="title"/>
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="descCol" text="Description" prefWidth="${WIDTH * 0.30}">
+                        <TableColumn fx:id="descCol" text="Description" prefWidth="${WIDTH * 0.25}">
                             <cellValueFactory>
                                 <PropertyValueFactory property="description"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="locCol" text="Location" prefWidth="${WIDTH * 0.15}">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="location"/>
                             </cellValueFactory>
                         </TableColumn>
                     </columns>

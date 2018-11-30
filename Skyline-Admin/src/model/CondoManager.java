@@ -37,6 +37,8 @@ public class CondoManager extends User {
         condo.removeFromResidentsList(resident);
         this.database.removeResidentFromCondo(resident.getId(), condo.getId());
         this.database.removeCondoFromUser(resident.getId(), condo.getId());
+        this.database.deleteUser(resident.getId());
+        new FirebaseAuthHandler().deleteUserAcc(resident.getId());
     }
 
     /**

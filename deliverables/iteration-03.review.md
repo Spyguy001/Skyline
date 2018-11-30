@@ -1,14 +1,14 @@
-# YOUR PRODUCT/TEAM NAME
+# Skyline 
 
  > _Note:_ This document is meant to be written during (or shortly after) your review meeting, which should happen fairly close to the due date.      
  >      
  > _Suggestion:_ Have your review meeting a day or two before the due date. This way you will have some time to go over (and edit) this document, and all team members should have a chance to make their contribution.
 
 
-## Iteration XX - Review & Retrospect
+## Iteration 03 - Review & Retrospect
 
- * When: FILL IN THE DATE WHEN YOU ACTUALLY HAD YOUR REVIEW MEETING
- * Where: PHYSICAL LOCATION AND/OR ONLINE
+ * When: 27th November 2018 
+ * Where: BA3200
 
 ## Process - Reflection
 
@@ -36,17 +36,32 @@
 
 #### Planned changes
 
-List any process-related changes you are planning to make (if there are any)
-
- * Ordered from most to least important.
- * Explain why you are making a change.
+1) We are planning on making individual features smaller. 
+   There have been situations in our development where it takes too long to deliver what we 
+   classified as a single feature and thus a lot of time had to be spent updating a single 
+   branch that changed many classes. Having smaller features would expedite the development 
+   process and make the progress more granular.
+   
+2) We plan on making our meetings more succinct and relevant. As development started 
+   finishing up, the meetings no longer needed to be as long (and we ended up getting
+   discussing irrelevant issues during them). 
+   Thus, we will make the meetings smaller and cover the relevant details quickly.
+   
+3) We plan on making better use of Issues. Issues were often not created when bugs
+   were found as we relied mostly on direct communication via Discord. However,
+   there were situations were discussions on Discord were forgotten (or remembered 
+   to late) and we hope to solve this problem using git Issues.
 
 
 ## Product - Review
 
 #### Goals and/or tasks that were met/completed:
 
-- Goal: Implement the Data Access Object (For Java)
+(Note: the Goals are ordered from most to least important within each category.)
+
+##### Database:
+
+- Goal: Implement the Data Access Object (For Java; Android DAO was implemented in last iteration)
     - Completed tasks:
        - Methods for adding / deleting Managers and Residents to a specified Condo 
        - Methods for retrieving Managers and Residents from a specified Condo 
@@ -56,40 +71,45 @@ List any process-related changes you are planning to make (if there are any)
        - Source code under git
  
 ##### Desktop App 
-  - Goal: Allow Condo Owners to add Condos to their profile 
+  - Goal: Allow Condo Owners to add/delete Condos to their profile 
       - Completed tasks:
          - Fields for owners to enter details of their new Condo 
          - Getting data from the fields and creating a new Condo.
-         - Changing the Database to reflect the addition of the new Condo
+         - Button and logic to allow deletion of an existing Condo
+         - Changing the Database to reflect the addition / deletion of a Condo
            to the owner
       - Artifacts to verify completion:
           - Screenshots are provided under "deliverables/screenshots/d3/" on the git repo 
+            (document names appearing in italics signify that they were successful deleted)
           
-  - Goal: Allow Condo Owners to add Managers to specified Condo
+  - Goal: Allow Condo Owners to add / remove Managers to / from specified Condo
       - Completed tasks:
          - Fields for owners to enter credentials for new Manager 
          - Getting data from the fields and creating a new Manager.
-         - Changing the Database to reflect the addition of the new Manager
+         - Button and logic to remove an existing manager
+         - Changing the Database to reflect the addition / deletion of a Manager
            to the Condo specified
       - Artifacts to verify completion:
          - Screenshots are provided under "deliverables/screenshots/d3/" on the git repo 
          
-  - Goal: Allow Condo Managers create Events, Amenities and Announcements for the condo
+  - Goal: Allow Condo Managers create/delete Events, Amenities and Announcements for the condo
           they are managing  
       - Completed tasks:
          - Fields for entering details of new Event / Amenity / Announcement 
          - Getting data from the fields and creating a new Event / Amenity / Announcement 
-         - Changing the Database to reflect the addition of the new 
-           Event / Amenity / Announcement to the Condo the manager is managing 
+         - Button and logic to remove an existing Event, Amenity or Announcement
+         - Changing the Database to reflect the addition/deletion of an 
+           Event / Amenity / Announcement to/from the Condo the manager is managing 
       - Artifacts to verify completion:
          - Screenshots are provided under "deliverables/screenshots/d3/" on the git repo 
          
-  - Goal: Allow Condo Managers to add Residents to the Condo they are managing
+  - Goal: Allow Condo Managers to add/remove Residents to/ rom the Condo they are managing
       - Completed tasks:
          - Fields to enter credentials for new Resident 
-         - Getting data from the fields and creating a new Residnet.
-         - Changing the Database to reflect the addition of the new Resident 
-           to the Condo specified
+         - Getting data from the fields and creating a new Resident.
+         - Button and logic to remove an existing Resident 
+         - Changing the Database to reflect the addition/removal of a Resident 
+           to/from the Condo specified
       - Artifacts to verify completion:
          - Screenshots are provided under "deliverables/screenshots/d3/" on the git repo 
   
@@ -148,7 +168,7 @@ List any process-related changes you are planning to make (if there are any)
       - Page with the above mentioned GUI's displayed when
         an amenity item is clicked on 
      - Artifacts to verify completion:
-       - Video under "deliverables/" on the git repo   
+       - Screenshots are provided under "deliverables/screenshots/d3/" on the git repo 
   
   - Goal: Allow Residents to receive push notifications 
       - Completed tasks: 
@@ -170,7 +190,7 @@ List any process-related changes you are planning to make (if there are any)
       - Completed tasks:
          - GUI added to list details of all bookings made by user  
       - Artifacts to verify completion:
-       - Video under "deliverables/" on the git repo    
+       - Screenshots are provided under "deliverables/screenshots/d3/" on the git repo 
  
  #### Goals and/or tasks that were planned but not met/completed:
  
@@ -181,6 +201,14 @@ List any process-related changes you are planning to make (if there are any)
    - Reason: Due to lack of time, we decided to focus more on making
              sure that the essential eatures where
              completed first
+             
+             
+- Goal: Allow Managers to view the bookings made for a particular amenity 
+   - Tasks not completed:
+     - Work on this feature was not started 
+   - Reason: The tasks planned for the iteration together with tasks left over from
+             previous iteration turned out to be more than could be completed
+             during the iteration. Hence no work for this feature could be started.  
         
 - Goal: Allow Residents to select whether they will be going to an event 
   - Tasks not completed:
@@ -189,13 +217,6 @@ List any process-related changes you are planning to make (if there are any)
             with this feature. We decided to focus on completing the
             features which we thought were more essential (based on our initial research which can 
             be found under deliverable 1).
-             
-- Goal: Allow Managers to view the bookings made for a particular amenity 
-   - Tasks not completed:
-     - Work on this feature was not started 
-   - Reason: The tasks planned for the iteration together with tasks left over from
-             previous iteration turned out to be more than could be completed
-             during the iteration. Hence no work for this feature could be started.    
 
 - Goal: Allow Managers to see if residents are interested or going
         to a certain event 
@@ -211,9 +232,9 @@ List any process-related changes you are planning to make (if there are any)
 
 Going into the next iteration, our main insights are:
 
-- We were behind our planned schedule this iteration as well. Going forward have
-  more accurate estimates for plans taking into account assignments and midterms
-  that each member may have 
+- We were behind our planned schedule this iteration as well. Going forward we plan to
+  have more accurate estimates of the time it will take to complete a feature 
+  taking into account assignments and midterms that each member may have 
   
 - Having more meetings over Discord seemed to solve (or at least alleviate) the
   problems of lack of clarity of task and problems of lack of direction. Hence going forward, 

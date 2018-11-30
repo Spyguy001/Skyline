@@ -16,7 +16,7 @@ List the most significant changes you made to your process (if any).
   - We plan to have more sync meeting than during last iteration. 
     Lack of clarity with assigned tasks and goals lead to 
     delayed development of the desktop application during last iteration
-    and we hope to tacle this problem by ensuring better communication
+    and we hope to tackle this problem by ensuring better communication
     
   - Lack of concrete plans at the start of the previous iteration led to
     contradictory ideas, and numerous changes throughout development.
@@ -57,17 +57,17 @@ Dev Team (Everyone)
 
 #### Events
 
-- We will have a `planning meeting` every Tuesday from 11:30-12pm
-  These are held in BA3200 as well. The purpose of this meeting 
-  would be to decide on tasks to be completed during the
-  week and assign tickets to individuals 
-  
 - We will have a `review meeting` every Tuesday from 11:00 am to 11:30 am
   in BA3200. The purpose of these meetings would be to discuss the 
   completion of the tasks for previous the week as laid out in the 
   planning meeting the week before and/or difficulties encountered in their pursuit.
 
-- We will have a `sync' meeting` over Discord every Thursday 
+- We will have a `planning meeting` every Tuesday from 11:30-12pm
+  These will be held in BA3200 as well. The purpose of this meeting 
+  would be to decide on tasks to be completed during the
+  week and assign tickets to individuals 
+
+- We will have a `sync' meeting` over Discord every Thursday and Sunday
   from 11 pm to 11.30 pm to make sure everyone is on track 
   to complete the tasks discussed in the planning meeting
 
@@ -115,11 +115,13 @@ Out Github workflow remains unchanged from last itteration.
 
 #### Goals and tasks
 
-- Goals for the Database:
-  - Implement the data access object to allow for the addition and deletion of condos
-    managers, residents, events, amenities and announcements to the Databse 
+(Note: the Goals are ordered from highest to lowest priority within each category.)
 
-- Goals for the Desktop Version:
+##### Goals for the Database:
+  1) Implement the data access object to allow for the addition and deletion of condos
+    managers, residents, events, amenities and announcements to the Database 
+
+##### Goals for the Desktop Version:
 
   - Functionality for Condo Owners
     1)  Condo owners should be able to : (carried from iteration 2 and hence top priority)
@@ -154,7 +156,7 @@ Out Github workflow remains unchanged from last itteration.
         to a certain event (this is conditional on the android version
         being completed)
   	
-- Goals for the Mobile Version: 
+##### Goals for the Mobile Version: 
    
    1) Residents should be able to create their own events
    
@@ -172,7 +174,7 @@ Out Github workflow remains unchanged from last itteration.
       
 #### Artifacts
  
- - Screenshots GUI while the GUI is being worked on to ensure that
+ - Screenshots for the GUI while the GUI is being worked on to ensure that
    the feature looks as what the developer of the feature intended for it
    to look like 
     

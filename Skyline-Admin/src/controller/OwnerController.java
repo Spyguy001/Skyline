@@ -1,6 +1,5 @@
 package controller;
 
-import Database.DatabaseHandler;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +13,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class OwnerController {
 
@@ -46,15 +44,26 @@ public class OwnerController {
     @FXML
     private TextField password;
 
+    /**
+     * Sets the data access object
+     * @param database the data access object
+     */
     public void setDatabase(IDatabase database){
         this.database = database;
     }
-    
+
+    /**
+     * Sets the condoOwner to be used
+     * @param condoOwner the condoOwner to be used
+     */
     public void setCondoOwner(CondoOwner condoOwner){
         this.condoOwner = condoOwner;
         this.updateCondosToManagersMap();
     }
 
+    /**
+     * Fills the GUI list of condos and managers with ones retrieved from the database
+     */
     private void updateCondosToManagersMap(){
         this.condosToManagers = new HashMap<>();
         for(Condo c : this.condoOwner.getCondos()){
@@ -63,6 +72,9 @@ public class OwnerController {
         }
     }
 
+    /**
+     * Creates a new condo based on the values in the fields in the GUI
+     */
     @FXML
     private void createCondo(){
         // Check if all required fields are filled in
@@ -71,6 +83,7 @@ public class OwnerController {
             alert.setHeaderText(null);
             alert.showAndWait();
         }else {
+            //making the condo based on the fields and adding it to the condo owner's list of condos
             Condo condo = new Condo();
             condo.setAddress(address.getText());
             condo.setName(nameCondo.getText());
@@ -79,11 +92,15 @@ public class OwnerController {
 
             this.condoOwner.addCondo(condo);
 
+            //adding the condo to the list of condos in the GUI
             listCondos.getItems().add(condo);
             condosToManagers.put(condo, new ArrayList<CondoManager>());
         }
     }
 
+    /**
+     * Adds a manager to the selected condo, based on the values of the fields in the GUI
+     */
     @FXML
     private void addManager(){
         // Check if all the required fields are filled in
@@ -99,6 +116,7 @@ public class OwnerController {
                 alert.setHeaderText(null);
                 alert.showAndWait();
             } else {
+                //making a manager object and adding it to the condo and the condo owner's lists
                 CondoManager manager = new CondoManager();
                 String uid;
                 try {
@@ -119,6 +137,7 @@ public class OwnerController {
 
                 this.condoOwner.addManager(manager, selected);
 
+                //adding the manager to the list of managers for a selected condo in the GUI
                 if (condosToManagers.get(selected) == null) {
                     ArrayList<CondoManager> list = new ArrayList<>();
                     list.add(manager);
@@ -132,6 +151,9 @@ public class OwnerController {
         }
     }
 
+    /**
+     * Deletes a manager from the selected condo
+     */
     @FXML
     private void deleteManager(){
         CondoManager selected = listManagers.getSelectionModel().getSelectedItem();
@@ -152,6 +174,9 @@ public class OwnerController {
         }
     }
 
+    /**
+     * Deletes the selected condo
+     */
     @FXML
     private void deleteCondo(){
         Condo selected = listCondos.getSelectionModel().getSelectedItem();
@@ -171,6 +196,9 @@ public class OwnerController {
         }
     }
 
+    /**
+     * Initializes the GUI, making empty lists for condos and managers
+     */
     @FXML
     private void initialize(){
         listCondos.setCellFactory(param -> new ListCell<Condo>(){
@@ -205,6 +233,10 @@ public class OwnerController {
         });
     }
 
+    /**
+     * Signs out the user from this page and takes him to the login page
+     * @throws IOException if the login page cannot be found and loaded
+     */
     @FXML
     private void signOut() throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Login.fxml"));
@@ -212,6 +244,9 @@ public class OwnerController {
         rootPane.getChildren().setAll(pane);
     }
 
+    /**
+     * Refreshes the page, getting the condos and owner attributes from the database and updating the GUI accordingly
+     */
     @FXML
     private void refresh(){
         this.condoOwner = (CondoOwner)this.database.getUser(this.condoOwner.getId());

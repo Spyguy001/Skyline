@@ -33,6 +33,11 @@ public class LoginController {
     @FXML
     private Label loginFailed;
 
+    /**
+     * Initializes auth handler, dao, and enter key listener
+     *
+     * @throws IOException
+     */
     @FXML
     private void initialize() throws IOException {
         if(authHandler == null){
@@ -42,7 +47,7 @@ public class LoginController {
             database = new DatabaseHandler();
         }
 
-        //press enter to login
+        // press enter to login
         rootPane.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent key) {
@@ -55,6 +60,11 @@ public class LoginController {
         });
     }
 
+    /**
+     * Fired when sign in is clicked, tries to authenticate user and switches to the appropriate scene.
+     * 
+     * @throws IOException
+     */
     @FXML
     private void signIn() throws IOException {
         String uid;
@@ -72,6 +82,7 @@ public class LoginController {
         user = database.getUser(uid);
         int userLevel = user.getLevel();
         if(userLevel == 1) {
+            // manager
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Manager.fxml"));
             AnchorPane pane = fxmlLoader.load();
             ManagerController controller = fxmlLoader.<ManagerController>getController();
@@ -79,6 +90,7 @@ public class LoginController {
             manager.setDatabase(database);
             manager.setCondos(database.getCondosForUser(manager.getId()));
 
+            // update condo model from database
             for(Condo condo : manager.getCondos()){
                 condo.setEvents(database.getEventsForCondo(condo.getId()));
                 condo.setAmenities(database.getAmenitiesForCondo(condo.getId()));
@@ -95,6 +107,7 @@ public class LoginController {
             rootPane.getChildren().setAll(pane);
         }
         else if(userLevel == 2) {
+            // owner
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Owner.fxml"));
             AnchorPane pane = fxmlLoader.load();
             OwnerController controller = fxmlLoader.<OwnerController>getController();
@@ -109,6 +122,7 @@ public class LoginController {
             rootPane.getChildren().setAll(pane);
         }
         else {
+            // residents must use android app
             Alert alert = new Alert(Alert.AlertType.ERROR, "Need to be a condo owner or manager to login!");
             alert.setHeaderText("Insufficient Access Level");
             alert.showAndWait();

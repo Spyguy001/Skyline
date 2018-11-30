@@ -18,12 +18,12 @@ public class FirebaseAuthHandler {
     private final String CREATE_ENDPOINT = "signupNewUser";
 
     /**
+     * Sends a request to Firebase Authentication to see if the email/password is a valid combination.
+     * If the authentication succeeds, return the user id of the authenticated user, else raise an exception.
+     *
      * @param email the email of the user
      * @param password the password of the user
      * @return uid if the authentication succeeds
-     *
-     * Sends a request to Firebase Authentication to see if the email/password is a valid combination.
-     * If the authentication succeeds, return the user id of the authenticated user, else raise an exception.
      */
     public String verifyUserAuth(String email, String password) {
         HttpResponse<JsonNode> jsonResponse = sendCredentials(email, password, VERIFY_ENDPOINT);
@@ -54,12 +54,12 @@ public class FirebaseAuthHandler {
     }
 
     /**
+     * Asks Firebase Authentication to create a new account with the given email/password.
+     * Throws an exception if sign up failed.
+     *
      * @param email the email id for the account to be made
      * @param password the password for the account to be made.
      * @return uid of the newly created user, if sign up succeeds, else raise an exception.
-     *
-     * Asks Firebase Authentication to create a new account with the given email/password.
-     * Throws an exception if sign up failed.
      */
     public String createUserAcc(String email, String password) {
         HttpResponse<JsonNode> jsonResponse = sendCredentials(email, password, CREATE_ENDPOINT);
@@ -88,6 +88,11 @@ public class FirebaseAuthHandler {
         }
     }
 
+    /**
+     * Deletes the given user from firebase authentication.
+     *
+     * @param uid the uid of the user to delete
+     */
     public void deleteUserAcc(String uid) {
         try {
             FirebaseAuth.getInstance().deleteUser(uid);
@@ -97,13 +102,13 @@ public class FirebaseAuthHandler {
     }
 
     /**
+     * A helper method that sends an email id and password in JSON format to the given URL endpoint.
+     * Returns the response from the rest server.
+     * 
      * @param email the email id to send
      * @param password the password to send
      * @param endpoint the route endpoint to send credentials to
      * @return the response from the server
-     *
-     * A helper method that sends an email id and password in JSON format to the given URL endpoint.
-     * Returns the response from the rest server.
      */
     private HttpResponse<JsonNode> sendCredentials(String email, String password, String endpoint) {
         return Unirest.post(BASE_URL + endpoint + "?key=" + API_KEY)

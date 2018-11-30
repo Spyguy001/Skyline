@@ -42,14 +42,25 @@ public class AnnouncementsController {
     private CondoManager manager;
     private Condo condo;
 
+    /**
+     * Sets the condo in which the events are happening
+     * @param condo the condo in which the events are happening
+     */
     public void setCondo(Condo condo) {
         this.condo = condo;
     }
 
+    /**
+     * Sets the manager managing the events currently
+     * @param manager the manager currently managing the events
+     */
     public void setManager(CondoManager manager) {
         this.manager = manager;
     }
 
+    /**
+     * Loads the announcements from the condo and sets them in the GUI
+     */
     public void loadAnnouncementsForCondo(){
         for (Announcement announcement: this.condo.getAnnouncements()){
             announcementsTable.getItems().add(announcement);
@@ -57,6 +68,9 @@ public class AnnouncementsController {
         createAnnouncementPopup();
     }
 
+    /**
+     * Initializes the GUI with an empty list of announcements
+     */
     @FXML
     private void initialize() {
         impCol.setCellFactory(col -> new TableCell<Announcement, Boolean>() {
@@ -79,6 +93,9 @@ public class AnnouncementsController {
         });
     }
 
+    /**
+     * Adds an announcement to the condo based on the values in the GUI fields
+     */
     @FXML
     private void addAnnouncement() {
         if (title.getText().equals("") || description.getText().equals("")) {
@@ -86,25 +103,31 @@ public class AnnouncementsController {
             alert.setHeaderText(null);
             alert.showAndWait();
         } else {
+            //making the announcement and adding it to the condo
             Announcement an = new Announcement();
             an.setTitle(title.getText());
             an.setId(Long.toString(System.currentTimeMillis()));
-            //DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             Date date = new Date();
             an.setDate(date);
             an.setDescription(description.getText());
             an.setImportant(important.isSelected());
 
             this.manager.addAnnouncementToCondo(an, this.condo);
+
+            //sending the notification to the residents
             if (notification.isSelected()) {
                 this.manager.sendNotificationToResidents(an, this.condo);
             }
 
+            //adding the announcement to the list of announcements in the GUI
             announcementsTable.getItems().add(an);
             createAnnouncementPopup();
         }
     }
 
+    /**
+     * Removes the selected announcement from the condo
+     */
     @FXML
     private void removeAnnouncement() {
         if (announcementsTable.getSelectionModel().getSelectedItem() == null) {
@@ -124,6 +147,9 @@ public class AnnouncementsController {
         }
     }
 
+    /**
+     * Makes a popup showing a single announcement in detail
+     */
     private void createAnnouncementPopup() {
         announcementsTable.setRowFactory(tv -> {
             TableRow<Announcement> row = new TableRow<>();
@@ -173,6 +199,10 @@ public class AnnouncementsController {
         });
     }
 
+    /**
+     * Sets the behaviour of the important checkbox, automatically checking the notification box if it is checked
+     * and automatically disabling the notification box if it is not checked
+     */
     @FXML
     private void importantCheck(){
         if (important.isSelected()){

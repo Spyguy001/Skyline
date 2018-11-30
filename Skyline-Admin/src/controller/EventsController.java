@@ -48,14 +48,25 @@ public class EventsController {
     private CondoManager manager;
     private Condo condo;
 
+    /**
+     * Sets the condo in which the events are happening
+     * @param condo the condo in which the events are happening
+     */
     public void setCondo(Condo condo) {
         this.condo = condo;
     }
 
+    /**
+     * Sets the manager managing the events currently
+     * @param manager the manager currently managing the events
+     */
     public void setManager(CondoManager manager) {
         this.manager = manager;
     }
 
+    /**
+     * Loads the events from the condo and sets them in the GUI
+     */
     public void loadEventsForCondo(){
         for(Event event : this.condo.getEvents()){
             eventsTable.getItems().add(event);
@@ -63,11 +74,17 @@ public class EventsController {
         createEventPopup();
     }
 
+    /**
+     * Initializes the GUI with a default date value
+     */
     @FXML
     private void initialize(){
         date.setValue(LocalDate.now());
     }
 
+    /**
+     * Adds an event to the condo based on the values in the GUI fields
+     */
     @FXML
     private void addEvent(){
         if (title.getText().equals("") || description.getText().equals("") || date.getValue() == null || loc.getText() == null){
@@ -75,6 +92,7 @@ public class EventsController {
             alert.setHeaderText(null);
             alert.showAndWait();
         }else {
+            //making the event and adding it to the condo's list of events
             Event event = new Event();
             event.setTitle(title.getText());
             String timeStr = time.getText() + " " + timeChoice.getValue();
@@ -86,6 +104,8 @@ public class EventsController {
             event.setId(Long.toString(System.currentTimeMillis()));
             event.setDescription(description.getText());
             String[] hoursMinutes = time.getText().split(":");
+
+            //checking for a valid time
             if (Integer.parseInt(hoursMinutes[0]) < 1 || Integer.parseInt(hoursMinutes[0]) > 12 || Integer.parseInt(hoursMinutes[0]) < 0 || Integer.parseInt(hoursMinutes[1]) > 59){
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter a valid time!", ButtonType.CANCEL);
                 alert.setHeaderText(null);
@@ -98,6 +118,9 @@ public class EventsController {
         }
     }
 
+    /**
+     * Removes the selected event from the condo
+     */
     @FXML
     private void removeEvent(){
         if (eventsTable.getSelectionModel().getSelectedItem() == null){
@@ -105,7 +128,6 @@ public class EventsController {
             alert.setHeaderText(null);
             alert.showAndWait();
         }else {
-            // TODO: Remove an event from the database
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete " + eventsTable.getSelectionModel().getSelectedItem().getTitle() + " ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
             alert.setHeaderText(null);
             alert.showAndWait();
@@ -118,6 +140,9 @@ public class EventsController {
         }
     }
 
+    /**
+     * Creates a popup showing the details for an event
+     */
     private void createEventPopup(){
         eventsTable.setRowFactory( tv -> {
             TableRow<Event> row = new TableRow<>();

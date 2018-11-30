@@ -32,14 +32,29 @@ public class AmenitiesController {
     private CondoManager manager;
     private Condo condo;
 
+    /**
+     * Attaches the condo to operate on to this controller.
+     * Needs to be called before UI switches to amenity scene.
+     *
+     * @param condo the condo whose amenities we display/manipulate.
+     */
     public void setCondo(Condo condo) {
         this.condo = condo;
     }
 
+    /**
+     * Attaches the current manager to this controller
+     * Needs to be called before UI switches to amenity scene.
+     *
+     * @param manager the manager who is performing actions.
+     */
     public void setManager(CondoManager manager) {
         this.manager = manager;
     }
 
+    /**
+     * Fetches the amenities from the condo model and populates the view.
+     */
     public void loadAmenitiesForCondo() {
         for (Amenity amenity : this.condo.getAmenities()) {
             amenitiesTable.getItems().add(amenity);
@@ -47,15 +62,21 @@ public class AmenitiesController {
         createAmenityPopup();
     }
 
+    /**
+     * Fired when user clicks add amenity button.
+     * Updates the model(by extension, the database) and view to reflect the new amenity.
+     */
     @FXML
     private void addAmenity() {
         if (name.getText().equals("") || details.getText().equals("") || (bookable.isSelected() && interval.getText().equals(""))) {
+            // missing required fields
             Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill in all the required fields!", ButtonType.CANCEL);
             alert.setHeaderText(null);
             alert.showAndWait();
         } else {
             int inter = Integer.parseInt(interval.getText());
             if (bookable.isSelected() && (inter > 24 || inter < 0)) {
+                // invalid time interval entered
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter a valid time interval!", ButtonType.CANCEL);
                 alert.setHeaderText(null);
                 alert.showAndWait();
@@ -73,6 +94,10 @@ public class AmenitiesController {
         }
     }
 
+    /**
+     * Fired when user clicks remove amenity.
+     * Removes the amenity from the view and makes the manager model remove the amenity from the database.
+     */
     @FXML
     private void removeAmenity() {
         if (amenitiesTable.getSelectionModel().getSelectedItem() == null) {
@@ -80,8 +105,10 @@ public class AmenitiesController {
             alert.setHeaderText(null);
             alert.showAndWait();
         } else {
-            // TODO: Remove an event from the database
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete " + amenitiesTable.getSelectionModel().getSelectedItem().getName() + " ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+            // confirmation dialog
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete " +
+                    amenitiesTable.getSelectionModel().getSelectedItem().getName() + " ?", ButtonType.YES,
+                    ButtonType.NO, ButtonType.CANCEL);
             alert.setHeaderText(null);
             alert.showAndWait();
 
@@ -93,6 +120,9 @@ public class AmenitiesController {
         }
     }
 
+    /**
+     * Updates the interval textfield based on bookable state
+     */
     @FXML
     private void isBookable() {
         if (bookable.isSelected()) {
@@ -102,6 +132,10 @@ public class AmenitiesController {
         }
     }
 
+    /**
+     * Called when user double clicks an amenity entry
+     * Displays the selected amenity info in a pop up window
+     */
     private void createAmenityPopup() {
         amenitiesTable.setRowFactory(tv -> {
             TableRow<Amenity> row = new TableRow<>();

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
-
 <?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.Double?>
+<?import java.lang.String?>
 <AnchorPane fx:id="rootPane" prefHeight="200" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.EventsController">
     <fx:define>
@@ -42,10 +39,11 @@
                 <TextField fx:id="title" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
                 <Label style="-fx-text-fill: white;" text="Description:    " GridPane.rowIndex="1"
                        GridPane.halignment="RIGHT" GridPane.rowSpan="2" GridPane.valignment="CENTER"/>
-                <TextArea fx:id="description" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2"/>
+                <TextArea fx:id="description" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                          GridPane.rowSpan="2"/>
                 <Label style="-fx-text-fill: white;" text="Date:    " GridPane.rowIndex="3"
                        GridPane.halignment="RIGHT"/>
-                <DatePicker fx:id="date" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <DatePicker fx:id="date" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
                 <Label style="-fx-text-fill: white;" text="Location:    " GridPane.rowIndex="4"
                        GridPane.halignment="RIGHT"/>
                 <TextField fx:id="loc" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
@@ -56,8 +54,8 @@
                     <ChoiceBox styleClass="button-utility" fx:id="timeChoice" value="PM">
                         <items>
                             <FXCollections fx:factory="observableArrayList">
-                                <String fx:value="PM" />
-                                <String fx:value="AM" />
+                                <String fx:value="PM"/>
+                                <String fx:value="AM"/>
                             </FXCollections>
                         </items>
                     </ChoiceBox>
@@ -71,15 +69,18 @@
                            GridPane.columnSpan="2" GridPane.rowSpan="7">
                     <columns>
                         <TableColumn fx:id="dateCol" text="Date" prefWidth="${WIDTH * 0.20}">
-                            <cellValueFactory><PropertyValueFactory property="date" />
+                            <cellValueFactory>
+                                <PropertyValueFactory property="date"/>
                             </cellValueFactory>
                         </TableColumn>
                         <TableColumn fx:id="titleCol" text="Title" prefWidth="${WIDTH * 0.20}">
-                            <cellValueFactory><PropertyValueFactory property="title" />
+                            <cellValueFactory>
+                                <PropertyValueFactory property="title"/>
                             </cellValueFactory>
                         </TableColumn>
                         <TableColumn fx:id="descCol" text="Description" prefWidth="${WIDTH * 0.30}">
-                            <cellValueFactory><PropertyValueFactory property="description" />
+                            <cellValueFactory>
+                                <PropertyValueFactory property="description"/>
                             </cellValueFactory>
                         </TableColumn>
                     </columns>

@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-
+<?import java.lang.Double?>
 <AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.LoginController">
     <fx:define>
@@ -42,7 +40,8 @@
                     <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="Password:    "
                            GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.halignment="LEFT"/>
                     <PasswordField fx:id="password" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
-                    <Label fx:id="loginFailed" style="-fx-text-fill: red;" text="" GridPane.rowIndex="3" GridPane.columnIndex="1"
+                    <Label fx:id="loginFailed" style="-fx-text-fill: red;" text="" GridPane.rowIndex="3"
+                           GridPane.columnIndex="1"
                            GridPane.columnSpan="2"/>
                     <Pane nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2"
                           GridPane.rowIndex="4">

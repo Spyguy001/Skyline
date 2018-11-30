@@ -504,9 +504,15 @@ public class DatabaseHandler implements IDatabase {
      */
     @Override
     public void createUser(User user) {
+
+        Map<String, Object> userToStore = new HashMap<>();
+        userToStore.put("id", user.getId());
+        userToStore.put("name", user.getName());
+        userToStore.put("level", user.getLevel());
+
         ApiFuture<WriteResult> writeResult = this.db.collection(USERS)
             .document(user.getId())
-            .set(user);
+            .set(userToStore);
 
         writeResult.isDone();
     }

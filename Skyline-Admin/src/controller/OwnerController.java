@@ -66,6 +66,7 @@ public class OwnerController {
      */
     private void updateCondosToManagersMap(){
         this.condosToManagers = new HashMap<>();
+        listCondos.getItems().clear();
         for(Condo c : this.condoOwner.getCondos()){
             this.condosToManagers.put(c, this.database.getManagersForCondo(c.getId()));
             listCondos.getItems().add(c);

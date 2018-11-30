@@ -24,6 +24,8 @@ public class CondoOwner extends User{
         condo.removeFromManagersList(manager);
         this.database.removeManagerFromCondo(manager.getId(), condo.getId());
         this.database.removeCondoFromUser(manager.getId(), condo.getId());
+        this.database.deleteUser(manager.getId());
+        new FirebaseAuthHandler().deleteUserAcc(manager.getId());
     }
 
     /**

@@ -35,6 +35,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * Fragment to display the list of Events
+ */
 public class EventsFragment extends Fragment implements DataFetchCallback {
 
     private RecyclerView recyclerView;

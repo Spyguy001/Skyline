@@ -2,6 +2,9 @@ package com.share.info.skyline.Model;
 
 import java.util.Date;
 
+/**
+ * Virtual representation of an Announcement
+ */
 public class Announcement {
 
     private String title;

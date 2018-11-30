@@ -35,36 +35,6 @@ public class LocalFirebase implements LocalDatabase {
     }
 
     @Override
-    public void clearEvents() {
-        this.eventList.clear();
-    }
-
-    @Override
-    public void clearAnnouncements() {
-        this.announcementsList.clear();
-    }
-
-    @Override
-    public void clearAmenities() {
-        this.amenityList.clear();
-    }
-
-    @Override
-    public void addEvent(Event event) {
-        this.eventList.add(event);
-    }
-
-    @Override
-    public void addAmenity(Amenity amenity) {
-        this.amenityList.add(amenity);
-    }
-
-    @Override
-    public void addAnnouncement(Announcement announcement) {
-        this.announcementsList.add(announcement);
-    }
-
-    @Override
     public void updateEvents(List<Event> eventList) {
         this.eventList = eventList;
     }

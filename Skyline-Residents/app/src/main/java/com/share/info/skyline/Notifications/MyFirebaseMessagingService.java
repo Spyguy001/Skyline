@@ -22,7 +22,7 @@ import com.share.info.skyline.R;
 
 import java.util.Random;
 
-/* Idea from https://www.pluralsight.com/guides/push-notifications-with-firebase-cloud-messaging */
+/** Idea from https://www.pluralsight.com/guides/push-notifications-with-firebase-cloud-messaging **/
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 

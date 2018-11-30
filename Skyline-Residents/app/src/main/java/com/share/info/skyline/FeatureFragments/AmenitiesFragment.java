@@ -18,6 +18,9 @@ import com.share.info.skyline.Model.CondoController;
 import com.share.info.skyline.R;
 import com.share.info.skyline.RecyclerViewAdapters.AmenitiesAdapter;
 
+/**
+ * Fragment to display the list of Amenities
+ */
 public class AmenitiesFragment extends Fragment implements DataFetchCallback{
 
     private RecyclerView recyclerView;

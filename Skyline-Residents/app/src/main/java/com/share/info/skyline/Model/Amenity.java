@@ -1,5 +1,8 @@
 package com.share.info.skyline.Model;
 
+/**
+ * Virtual representation of an Amenity
+ */
 public class Amenity {
 
     private String name;

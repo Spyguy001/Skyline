@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/** Activity to retrieve and initialze the condo the user belongs to */
 public class InitilizationActivity extends AppCompatActivity implements DataFetchCallback {
 
     private static final String USERS = "Users";

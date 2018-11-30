@@ -2,6 +2,9 @@ package com.share.info.skyline.Model;
 
 import java.util.Date;
 
+/**
+ * Virtual representation of an Event
+ */
 public class Event {
 
     private Date date;

@@ -18,6 +18,9 @@ import com.share.info.skyline.Model.CondoController;
 import com.share.info.skyline.R;
 import com.share.info.skyline.RecyclerViewAdapters.AnnouncementsAdapter;
 
+/**
+ * Fragment to display the list of Announcements
+ */
 public class AnnouncementFragment extends Fragment implements DataFetchCallback{
 
     private RecyclerView recyclerView;

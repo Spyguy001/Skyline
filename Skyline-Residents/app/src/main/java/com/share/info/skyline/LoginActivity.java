@@ -98,7 +98,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Intent intent = new Intent(getApplicationContext(), InitilizationActivity.class);
                             intent.putExtra("uid", firebaseAuth.getCurrentUser().getUid());
 
-                            // TODO: this is a temporary hack
+                            // update the token each time the user logs in
+                            // to reflect the fact that a different device might have been used
                             FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener( LoginActivity.this,
                                     new OnSuccessListener<InstanceIdResult>() {
                                 @Override
